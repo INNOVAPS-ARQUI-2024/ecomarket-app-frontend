@@ -53,9 +53,12 @@
 
   <!-- Sección 4: Explorar más productos -->
   <section class="more-products-section">
-    <h3>Categorías</h3>
-    <h2>Productos más Vendidos</h2>
-    <button class="view-all-btn">View All</button>
+    <h3>Este mes</h3>
+    <div class="more-products-header">
+      <h2>Productos más Vendidos</h2>
+      <button class="view-all-btn">View All</button>
+    </div>
+    
 
     <div class="products-grid">
       <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
@@ -81,10 +84,13 @@
   
   <!-- Sección 5: Productos más vendidos -->
   <section class="bestseller-section">
-    <h3>Categorías</h3>
-    <h2>Productos más Vendidos</h2>
-    <button class="view-all-btn">View All</button>
 
+    <h3>mas productos</h3>
+
+    <div class="bestseller-section-head">
+      <h1>Explora mas productos</h1>
+    </div>
+    
     <div class="products-grid">
       <div class="product-card" *ngFor="let product of moreProducts; let i = index">
         <a [href]="'/producto/' + i"> <!-- Usamos el índice del array como identificador -->
