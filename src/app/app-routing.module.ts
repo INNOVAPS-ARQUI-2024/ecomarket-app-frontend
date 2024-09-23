@@ -9,8 +9,10 @@ import { ServicioDetalleComponent } from './servicio-detalle/servicio-detalle.co
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 
 const routes: Routes = [
+  { path: 'login-usuario',component: LoginUsuarioComponent},
   { path: 'home-usuario',component:  HomeUsuarioComponent},
   { path: 'header',component:  HeaderComponent},
   { path: 'footer',component:  FooterComponent},

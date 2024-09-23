@@ -14,6 +14,7 @@ import { ServicioDetalleComponent } from './servicio-detalle/servicio-detalle.co
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     ServicioDetalleComponent,
     HomeUsuarioComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
