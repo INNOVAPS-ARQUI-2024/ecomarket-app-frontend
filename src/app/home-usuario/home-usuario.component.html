@@ -17,7 +17,7 @@
         <button class="buy-packages-btn">Comprar Paquetes</button>
       </div>
       <div class="menu-image">
-        <img src="./assets/homeImage.png" alt="Imagen de sección">
+        <img src="/assets/images/PrimeraSeccion.png" alt="Imagen de sección">
       </div>
     </div>      
   </section>
@@ -37,6 +37,8 @@
     <a href="/todos-los-vendedores" class="see-all-vendors-btn">Ver todos los vendedores</a> <!-- Ruta agregada -->
   </div>
 
+  
+
   <!-- Sección 3: Categorías desplazables -->
   <div class="category-section">
     <h3>Categorías</h3>
@@ -48,37 +50,8 @@
       </div>
     </div>
   </div>
-  
-  <!-- Sección 4: Productos más vendidos -->
-  <div class="bestseller-section">
-    <h3>Categorías</h3>
-    <h2>Productos más Vendidos</h2>
-    <button class="view-all-btn">View All</button>
 
-    <div class="products-grid">
-      <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
-        <a [href]="'/producto/' + i"> <!-- Usamos el índice del array como identificador -->
-          <img [src]="product.image" alt="{{product.name}}">
-        </a>
-        <div class="product-info">
-          <h4>{{product.name}}</h4>
-          <p class="price">
-            ${{product.price}} <span class="old-price" *ngIf="product.oldPrice">{{product.oldPrice}}</span>
-          </p>
-          <p class="rating">
-            {{product.stars}} estrellas <span>({{product.reviews}})</span>
-          </p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="centered-image">
-      <img src="ruta/de/tu/imagen.png" alt="Imagen centrada">
-    </div>
-  </div>
-
-
-  <!-- Sección 5: Explorar más productos -->
+  <!-- Sección 4: Explorar más productos -->
   <section class="more-products-section">
     <h3>Categorías</h3>
     <h2>Productos más Vendidos</h2>
@@ -96,6 +69,34 @@
           </p>
           <p class="rating">
             {{product.stars}} estrellas <span>({{product.reviews}})</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="centered-image">
+      <img src="./assets/images/SegundaSeccion.png" alt="Imagen centrada">
+    </div>
+  </section>
+  
+  <!-- Sección 5: Productos más vendidos -->
+  <section class="bestseller-section">
+    <h3>Categorías</h3>
+    <h2>Productos más Vendidos</h2>
+    <button class="view-all-btn">View All</button>
+
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of moreProducts; let i = index">
+        <a [href]="'/producto/' + i"> <!-- Usamos el índice del array como identificador -->
+          <img [src]="product.imageUrl" alt="{{product.name}}"> <!-- Cambié 'product.image' a 'product.imageUrl' -->
+        </a>
+        <div class="product-info">
+          <h4>{{product.name}}</h4>
+          <p class="price">
+            ${{product.price}} <span class="price" *ngIf="product.price">{{product.price}}</span>
+          </p>
+          <p class="rating">
+            {{calculateStars(product.starsArray)}} estrellas <span>({{product.reviews}})</span>
           </p>
         </div>
       </div>

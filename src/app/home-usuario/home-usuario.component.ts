@@ -12,27 +12,27 @@ export class HomeUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
   vendedores = [
-    { nombre: 'Blanca Rosa', imagen: 'ruta-vendedor1.jpg' },
-    { nombre: 'John PO', imagen: 'ruta-vendedor2.jpg' },
-    { nombre: 'Fabian Fabrizio', imagen: 'ruta-vendedor3.jpg' },
-    { nombre: 'Juanpis', imagen: 'ruta-vendedor4.jpg' },
-    { nombre: 'Jhon Abraham', imagen: 'ruta-vendedor5.jpg' },
-    { nombre: 'Julia & Romina', imagen: 'ruta-vendedor6.jpg' }
+    { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },
+    { nombre: 'John PO', imagen: './assets/images/JohnPo.png' },
+    { nombre: 'Fabian Fabrizio', imagen: './assets/images/FabianFabrizio.png' },
+    { nombre: 'Juanpis', imagen: './assets/images/Juampis.png' },
+    { nombre: 'Jhon Abraham', imagen: './assets/images/JohnAbraham.png' },
+    { nombre: 'Julia & Romina', imagen: './assets/images/Juli&Romina.png' }
   ];
 
   categories = [
-    { name: 'Phone', icon: 'assets/phone-icon.png' },
-    { name: 'Computers', icon: 'assets/computer-icon.png' },
-    { name: 'SmartWatch', icon: 'assets/smartwatch-icon.png' },
-    { name: 'Tecnología', icon: 'assets/technology-icon.png' },
-    { name: 'HeadPhones', icon: 'assets/headphones-icon.png' },
-    { name: 'Gaming', icon: 'assets/gaming-icon.png' }
+    { name: 'Phone', icon: './assets/images/Telefonos.png' },
+    { name: 'Computers', icon: './assets/images/Computadores.png' },
+    { name: 'SmartWatch', icon: './assets/images/Smartwatch.png' },
+    { name: 'Tecnología', icon: './assets/images/Tecnologia.png' },
+    { name: 'HeadPhones', icon: './assets/images/Audifonos.png' },
+    { name: 'Gaming', icon: './assets/images/Gaming.png' }
   ];
 
   // Array de productos más vendidos
   productosMasVendidos = [
     {
-      image: 'assets/havic-gamepad.png',
+      image: './assets/images/Control.png',
       name: 'Havic HV G-92 Gamepad',
       price: 260,
       oldPrice: 300,
@@ -40,7 +40,7 @@ export class HomeUsuarioComponent implements OnInit {
       reviews: 65
     },
     {
-      image: 'assets/gucci-bag.png',
+      image: './assets/images/BolsoGucci.png',
       name: 'Gucci Duffled Bag',
       price: 960,
       oldPrice: 1160,
@@ -48,7 +48,7 @@ export class HomeUsuarioComponent implements OnInit {
       reviews: 65
     },
     {
-      image: 'assets/rgb-cooler.png',
+      image: './assets/images/RGBcooler.png',
       name: 'RGB Liquid CPU Cooler',
       price: 160,
       oldPrice: 170,
@@ -56,7 +56,7 @@ export class HomeUsuarioComponent implements OnInit {
       reviews: 65
     },
     {
-      image: 'assets/small-bookshelf.png',
+      image: './assets/images/Bookshelf.png',
       name: 'Small Bookshelf',
       price: 360,
       stars: 5,
@@ -66,7 +66,7 @@ export class HomeUsuarioComponent implements OnInit {
 
   moreProducts = [
     {
-      imageUrl: 'assets/breed-dog-food.jpg',
+      imageUrl: './assets/images/ComidaPerro.png',
       name: 'Breed Dry Dog Food',
       price: 100,
       starsArray: [true, true, true, false, false],
@@ -74,7 +74,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: null
     },
     {
-      imageUrl: 'assets/canon-camera.jpg',
+      imageUrl: './assets/images/Camara.png',
       name: 'CANON EOS DSLR Camera',
       price: 360,
       starsArray: [true, true, true, true, false],
@@ -82,7 +82,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: null
     },
     {
-      imageUrl: 'assets/asus-laptop.jpg',
+      imageUrl: './assets/images/Portatil.png',
       name: 'ASUS FHD Gaming Laptop',
       price: 700,
       starsArray: [true, true, true, true, true],
@@ -90,7 +90,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: null
     },
     {
-      imageUrl: 'assets/curology-set.jpg',
+      imageUrl: './assets/images/Curologia.png',
       name: 'Curology Product Set',
       price: 500,
       starsArray: [true, true, true, true, false],
@@ -98,7 +98,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: null
     },
     {
-      imageUrl: 'assets/kids-electric-car.jpg',
+      imageUrl: './assets/images/Carrito.png',
       name: 'Kids Electric Car',
       price: 960,
       starsArray: [true, true, true, true, true],
@@ -106,7 +106,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#ff0000', '#ffa500'] // rojo y naranja
     },
     {
-      imageUrl: 'assets/jr-zoom-cleats.jpg',
+      imageUrl: './assets/images/Zapatos.png',
       name: 'Jr. Zoom Soccer Cleats',
       price: 1160,
       starsArray: [true, true, true, true, true],
@@ -114,7 +114,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#ffff00', '#ff0000'] // amarillo y rojo
     },
     {
-      imageUrl: 'assets/gp11-gamepad.jpg',
+      imageUrl: './assets/images/Control2.png',
       name: 'GP11 Shooter USB Gamepad',
       price: 660,
       starsArray: [true, true, true, true, false],
@@ -122,7 +122,7 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#000000', '#ff0000'] // negro y rojo
     },
     {
-      imageUrl: 'assets/quilted-jacket.jpg',
+      imageUrl: './assets/images/Chaqueta.png',
       name: 'Quilted Satin Jacket',
       price: 660,
       starsArray: [true, true, true, true, false],
@@ -130,6 +130,10 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#003300', '#ff0000'] // verde oscuro y rojo
     }
   ];
+
+  calculateStars(starsArray: boolean[]): number {
+    return starsArray.filter(star => star).length; // Cuenta cuántas estrellas son verdaderas
+  }
 
   changeColor(product: { name: any; }, color: any) {
     // Lógica para cambiar la imagen dependiendo del color seleccionado
@@ -139,22 +143,22 @@ export class HomeUsuarioComponent implements OnInit {
 
   newProducts = [
     {
-      backgroundImageUrl: 'assets/playstation5.jpg',
+      backgroundImageUrl: './assets/images/Ps5.png',
       name: 'Play Station 5',
       description: 'Black and white version of the PS5 coming out on sale'
     },
     {
-      backgroundImageUrl: 'assets/womens-collection.jpg',
+      backgroundImageUrl: './assets/images/WomensCollection.png',
       name: 'Women’s Collection',
       description: 'Women featured collection that gives you another vibe'
     },
     {
-      backgroundImageUrl: 'assets/amazon-speakers.jpg',
+      backgroundImageUrl: './assets/images/Speakers.png',
       name: 'Speakers',
       description: 'Amazon speakers collection'
     },
     {
-      backgroundImageUrl: 'assets/perfume.jpg',
+      backgroundImageUrl: './assets/images/Perfume.png',
       name: 'Perfume',
       description: 'Gucci Intense OUD PEF'
     }
@@ -164,17 +168,17 @@ export class HomeUsuarioComponent implements OnInit {
     {
       title: 'FREE AND FAST DELIVERY',
       content: 'Free delivery for all orders over $140',
-      icon: 'assets/delivery-icon.png'
+      icon: './assets/images/Delivery.png'
     },
     {
       title: '24/7 CUSTOMER SERVICE',
       content: 'Friendly 24/7 customer support',
-      icon: 'assets/customer-service-icon.png'
+      icon: './assets/images/CostumerService.png'
     },
     {
       title: 'MONEY BACK GUARANTEE',
       content: 'We return money within 30 days',
-      icon: 'assets/money-back-icon.png'
+      icon: './assets/images/Security.png'
     }
   ];
 

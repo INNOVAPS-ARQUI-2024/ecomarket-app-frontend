@@ -66,6 +66,11 @@
   margin-bottom: 10px;
 }
 
+.app-section img {
+  width: 80px; /* Ajusta este valor según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
 .app-buttons img {
   display: block;
   margin-bottom: 5px;
