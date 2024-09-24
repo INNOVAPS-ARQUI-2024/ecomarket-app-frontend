@@ -3,6 +3,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+h3{
+  font-size: 20px;
+  color: #4AB7B6;
+}
+
 /* Estilos para la primera sección */
 .first-section {
     display: flex;
@@ -42,25 +47,33 @@ body {
   .see-all-vendors-btn,
   .view-all-btn,
   .view-all-button {
-    background-color: #4AB7B6;
+    background-color: #C6A4CE;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+
   }
   
   .see-all-vendors-btn:hover,
   .view-all-btn:hover,
   .view-all-button:hover {
-    background-color: #399e9e;
+    background-color: #896d8f;
   }
   
   .centered-image img {
     width: 100%;
     height: auto;
   }
+
+  .menu-image img {
+    width: 50%; /* Cambia este valor según lo que necesites */
+    height: auto; /* Mantiene la proporción de la imagen */
+    padding-left: 40%;
+}
+
   
   /* Estilos para la sección de vendedores */
   .vendors {
@@ -129,13 +142,30 @@ body {
   }
   
   .category-card img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   }
+
+  .category-card span {
+    display: block; /* Asegura que el texto esté en una nueva línea */
+    margin-top: 5px; /* Espacio entre la imagen y el nombre */
+}
   
   /* Estilo para los productos más vendidos */
+
+  .bestseller-section-head{
+    display: flex;
+  }
+
   .bestseller-section {
     margin: 40px 0;
+    text-align: center; /* Centrar el texto en el contenedor */
+    margin-top: 20px; /* Espaciado superior opcional */
+  }
+
+  .more-products-header{
+    display: flex;
+    justify-content: space-between;
   }
   
   .products-grid {
@@ -182,7 +212,7 @@ body {
   }
   
   .more-products-section {
-    text-align: center;
+    text-align: start;
     padding: 20px;
   }
   
@@ -230,7 +260,7 @@ body {
   }
   
   .view-all-button {
-    background-color: #4AB7B6;
+    background-color: #896d8f;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -242,7 +272,7 @@ body {
   /* seccion de nuevos productos */
 
   .new-products-section {
-    text-align: center;
+    text-align: start;
     padding: 20px;
   }
   

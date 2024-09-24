@@ -2,9 +2,9 @@
   background-color: #4AB7B6;
   padding: 40px 20px;
   color: white;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: flex; /* Permite que las columnas estén en línea */
+  justify-content: space-between; /* Espaciado entre columnas */
+  padding: 20px;
 }
 
 .footer-container {
@@ -15,8 +15,10 @@
 }
 
 .footer-column {
-  flex: 1;
-  margin-right: 20px;
+  flex: 1; /* Permite que cada columna ocupe el mismo ancho */
+  margin: 10px; /* Espacio entre columnas */
+  min-width: 200px; /* Ancho mínimo para cada columna */
+  flex-wrap: wrap;
 }
 
 .footer h3 {
@@ -66,16 +68,30 @@
   margin-bottom: 10px;
 }
 
+.app-section img {
+  width: 80px; /* Ajusta este valor según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
 .app-buttons img {
   display: block;
   margin-bottom: 5px;
 }
+
+.social-icons img {
+  width: 30px; /* Ajusta este valor según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 0 5px; /* Espacio entre los íconos */
+}
+
 
 .social-icons i {
   font-size: 18px;
   color: white;
   margin-right: 10px;
   cursor: pointer;
+  width: 20px;
+  height: auto;
 }
 
 .social-icons i:hover {
