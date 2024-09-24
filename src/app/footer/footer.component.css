@@ -1,0 +1,83 @@
+.footer {
+  background-color: #4AB7B6;
+  padding: 40px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footer-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.footer p, .footer a {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.subscribe {
+  display: flex;
+  align-items: center;
+}
+
+.subscribe input {
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.subscribe button {
+  background-color: white;
+  color: #4AB7B6;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.app-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.app-buttons img {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.social-icons i {
+  font-size: 18px;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.social-icons i:hover {
+  color: #ddd;
+}
