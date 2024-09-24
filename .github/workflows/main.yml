@@ -1,0 +1,52 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build -- --prod
+
+      - name: Archive build output
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: dist/
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Deploy build to Production server
+        run: |
+          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" scp -P ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no -r dist/ecomarket-app-frontend/* ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }}:/path/to/prod/html
+
+      - name: Run script on Production server
+        run: |
+          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" ssh -p ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }} "
+          echo 'Deployment to Production successful!'
+          "
