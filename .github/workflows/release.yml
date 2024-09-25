@@ -30,23 +30,27 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --prod
+        run: npm run build -- --configuration production
 
-      - name: Archive build output
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-output
-          path: dist/
+      - name: Create Dockerfile for Angular App
+        run: |
+          echo 'FROM nginx:alpine' > Dockerfile
+          echo 'COPY dist/ecomarket-app-frontend /usr/share/nginx/html' >> Dockerfile
+          echo 'EXPOSE 80' >> Dockerfile
+
+      - name: Build Docker Image
+        run: docker build -t ecomarket-app-frontend:qa .
+
+      - name: Save Docker Image to Tar File
+        run: docker save ecomarket-app-frontend:qa -o ecomarket-app-frontend-qa.tar
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Deploy build to QA server
+      - name: Copy Docker Image to QA Server
         run: |
-          sshpass -p "${{ secrets.QA_SERVER_PASSWORD }}" scp -P ${{ secrets.QA_SERVER_PORT }} -o StrictHostKeyChecking=no -r dist/ecomarket-app-frontend/* ${{ secrets.QA_SERVER_USER }}@${{ secrets.QA_SERVER_HOST }}:/path/to/qa/html
+          sshpass -p "${{ secrets.QA_SERVER_PASSWORD }}" scp -P ${{ secrets.QA_SERVER_PORT }} -o StrictHostKeyChecking=no ecomarket-app-frontend-qa.tar ${{ secrets.QA_SERVER_USER }}@${{ secrets.QA_SERVER_HOST }}:/tmp/ecomarket-app-frontend-qa.tar
 
-      - name: Run script on QA server
+      - name: Run Deployment Script on QA Server
         run: |
-          sshpass -p "${{ secrets.QA_SERVER_PASSWORD }}" ssh -p ${{ secrets.QA_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.QA_SERVER_USER }}@${{ secrets.QA_SERVER_HOST }} "
-          echo 'Deployment to QA successful!'
-          "
+          sshpass -p "${{ secrets.QA_SERVER_PASSWORD }}" ssh -p ${{ secrets.QA_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.QA_SERVER_USER }}@${{ secrets.QA_SERVER_HOST }} "/home/estudiante/scripts/deploy_docker_image-ecomarket-app-frontend-qa.sh"
