@@ -29,8 +29,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Puppeteer
+        run: |
+          npm install puppeteer --save-dev
+
       - name: Build Angular app
         run: npm run build
 
-      - name: Run tests
-        run: npm run test -- --watch=false
+      - name: Run tests in headless mode
+        run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
+
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: coverage/
