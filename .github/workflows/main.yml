@@ -1,12 +1,12 @@
-name: Deploy to Production
+name: Deploy to PROD
 
 on:
   push:
     branches:
-      - main
+      - release
 
 jobs:
-  deploy-to-production:
+  deploy-to-PROD:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,23 +30,27 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --prod
+        run: npm run build -- --configuration production
 
-      - name: Archive build output
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-output
-          path: dist/
+      - name: Create Dockerfile for Angular App
+        run: |
+          echo 'FROM nginx:alpine' > Dockerfile
+          echo 'COPY dist/ecomarket-app-frontend /usr/share/nginx/html' >> Dockerfile
+          echo 'EXPOSE 80' >> Dockerfile
+
+      - name: Build Docker Image
+        run: docker build -t ecomarket-app-frontend:PROD .
+
+      - name: Save Docker Image to Tar File
+        run: docker save ecomarket-app-frontend:PROD -o ecomarket-app-frontend-PROD.tar
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Deploy build to Production server
+      - name: Copy Docker Image to PROD Server
         run: |
-          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" scp -P ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no -r dist/ecomarket-app-frontend/* ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }}:/path/to/prod/html
+          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" scp -P ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ecomarket-app-frontend-prod.tar ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }}:/tmp/ecomarket-app-frontend-prod.tar
 
-      - name: Run script on Production server
+      - name: Run Deployment Script on PROD Server
         run: |
-          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" ssh -p ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }} "
-          echo 'Deployment to Production successful!'
-          "
+          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" ssh -p ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }} "/home/estudiante/scripts/deploy_docker_image-ecomarket-app-frontend-prod.sh"
