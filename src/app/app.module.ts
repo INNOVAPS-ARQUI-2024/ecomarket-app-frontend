@@ -1,7 +1,10 @@
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +36,10 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // Asegúrate de que HttpClientModule esté en imports
+    HttpClientModule, // Asegúrate de que HttpClientModule esté en imports
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    FormsModule // Asegúrate de incluir FormsModule aquí
   ],
   providers: [],
   bootstrap: [AppComponent]
