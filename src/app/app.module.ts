@@ -18,6 +18,7 @@ import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
+import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
     HomeUsuarioComponent,
     FooterComponent,
     HeaderComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
