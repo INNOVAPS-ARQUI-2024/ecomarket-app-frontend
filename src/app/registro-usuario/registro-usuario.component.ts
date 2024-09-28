@@ -12,45 +12,54 @@ import { Usuario } from '../model/Usuario';
 export class RegistroUsuarioComponent implements OnInit {
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';  // Campo para confirmar la contraseña
   name: string = '';
-  role: string = 'Comprador';
-  profilePicture: string = '';
-  errorMessage: string = '';
+  role: string = 'Comprador';  // Comprador por defecto
+  profilePicture: string = '';  // Imagen de perfil (URL)
+  phone: string = '';  // Número de teléfono
+  errorMessage: string = '';  // Mensajes de error
 
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase,
+    private db: AngularFireDatabase,  
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onRegister() {
+    // Verificar si las contraseñas coinciden
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = "Las contraseñas no coinciden.";
+      return;
+    }
+
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
       .then((result) => {
-        // El usuario ya está autenticado automáticamente después del registro.
+        // Usuario autenticado automáticamente después del registro
         const userId = result.user?.uid;
         const createdAt = new Date();
         const updatedAt = createdAt;
         const isActive = true;
 
-        // Crea el objeto usuario
+        // Crea el objeto de Usuario con todos los campos
         const usuario: Usuario = {
           userId: userId || '',
           name: this.name,
           email: this.email,
-          role: this.role,
-          profilePicture: this.profilePicture || '',  // Si no se especifica, será un string vacío.
+          role: this.role,  // Guardar el rol (Comprador o Vendedor)
+          profilePicture: this.profilePicture || '',  // Imagen de perfil (opcional)
           createdAt: createdAt,
           updatedAt: updatedAt,
-          isActive: isActive
+          isActive: isActive,
+          phone: this.phone || ''  // Guardar el teléfono (opcional)
         };
 
-        // Una vez que el usuario está autenticado, guarda la información en Firebase
+        // Guardar el usuario en Firebase Realtime Database
         if (userId) {
           this.db.object(`/users/${userId}`).set(usuario)
             .then(() => {
-              // Redirige a la página de inicio del usuario después de guardar los datos
+              // Redirige al usuario después del registro
               this.router.navigate(['/home-usuario']);
             })
             .catch((error) => {
@@ -59,7 +68,7 @@ export class RegistroUsuarioComponent implements OnInit {
         }
       })
       .catch((error) => {
-        // Maneja los errores de registro/autenticación
+        // Manejar errores en el registro
         this.errorMessage = "Error en el registro: " + error.message;
       });
   }

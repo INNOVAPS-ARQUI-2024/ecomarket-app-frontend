@@ -39,12 +39,13 @@
 
 .container-search-icons {
   display: flex;
-  flex-direction: row;
+  align-items: center; /* Alinear verticalmente */
 }
 
 .search-bar {
   display: flex;
   align-items: center;
+  margin-right: 10px; /* Espacio entre el campo de búsqueda y la imagen */
 }
 
 .search-bar input {
@@ -73,3 +74,29 @@
   margin-left: 15px;
   cursor: pointer;
 }
+
+.profile-picture {
+  margin-left: 10px; /* Asegura que haya espacio entre los iconos y la imagen */
+}
+
+.profile-picture img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.logout-btn {
+  background-color: #C6A4CE;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 12px;
+}
+
+.logout-btn:hover {
+  background-color: #b16fbf;
+}
+
