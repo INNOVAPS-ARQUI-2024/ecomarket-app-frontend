@@ -3,8 +3,21 @@
         <h2>Registro de Usuario</h2>
 
         <form (ngSubmit)="onRegister()">
+            <label for="name">Nombre Completo:</label>
+            <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Nombre Completo" required>
+
             <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+            <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Correo Electrónico" required>
+
+            <label for="role">Rol:</label>
+            <select id="role" [(ngModel)]="role" name="role" required>
+                <option value="Comprador">Comprador</option>
+                <option value="Vendedor">Vendedor</option>
+            </select>
+
+            <label for="profilePicture">Imagen de Perfil (URL):</label>
+            <input type="text" id="profilePicture" [(ngModel)]="profilePicture" name="profilePicture"
+                placeholder="URL de la Imagen de Perfil">
 
             <label for="password">Contraseña:</label>
             <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Contraseña"
