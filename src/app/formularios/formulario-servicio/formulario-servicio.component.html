@@ -20,7 +20,7 @@
 
         <label for="precio">Precio</label>
         <div class="precio-input">
-            <span>$</span> <!-- Symbol before input -->
+            <span>$</span>
             <input id="precio" type="number" [(ngModel)]="servicio.price" name="precio" required min="0" step="1"
                 placeholder="0.00">
         </div>
@@ -28,6 +28,9 @@
         <label for="disponibilidad">Disponibilidad</label>
         <input id="disponibilidad" [(ngModel)]="servicio.availability" name="disponibilidad"
             placeholder="Ej. Lunes a Viernes 9AM - 5PM" required>
+
+        <!-- Mostrar el mensaje de error si existe -->
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
         <button type="submit" class="btn-continuar">Continuar</button>
     </form>

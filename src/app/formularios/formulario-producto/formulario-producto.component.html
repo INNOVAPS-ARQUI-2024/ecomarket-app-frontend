@@ -27,6 +27,9 @@
         <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required min="1" step="1"
             placeholder="0">
 
+        <!-- Display error message if it exists -->
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
         <button type="submit" class="btn-continuar">Continuar</button>
     </form>
 </div>

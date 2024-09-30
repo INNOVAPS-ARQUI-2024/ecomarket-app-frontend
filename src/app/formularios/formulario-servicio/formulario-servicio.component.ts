@@ -13,24 +13,48 @@ export class FormularioServicioComponent {
   servicio: Servicio = {
     name: '',
     description: '',
-    price: 0,           // Campo no visible en el formulario
+    price: 0,
     category: '',
     providerId: '',
-    availability: '',    // Campo no visible en el formulario
-    reviews: [],         // Campo no visible en el formulario
+    availability: '',
+    reviews: [],
     createdAt: new Date(),
     updatedAt: new Date()
   };
-  
+
+  errorMessage: string = '';  // Variable para almacenar el mensaje de error
 
   constructor(
     private servicioService: ServicioService,
     private router: Router,
-    private afAuth: AngularFireAuth  // Para obtener el ID del usuario autenticado
+    private afAuth: AngularFireAuth
   ) {}
 
+  // Validar que el precio sea mayor o igual a 0
+  validatePrice(): boolean {
+    if (this.servicio.price < 0) {
+      this.errorMessage = 'El precio no puede ser negativo.';
+      return false;
+    }
+    return true;
+  }
+
+  // Validar que los campos de nombre, descripción, categoría y disponibilidad no estén vacíos
+  validateFields(): boolean {
+    if (!this.servicio.name.trim() || !this.servicio.description.trim() || !this.servicio.category.trim() || !this.servicio.availability.trim()) {
+      this.errorMessage = 'El nombre, descripción, categoría y disponibilidad no pueden estar vacíos.';
+      return false;
+    }
+    return true;
+  }
+
+  // Función principal de validación
   onSubmit() {
-    // Obtener el ID del usuario autenticado
+    // Validar los campos
+    if (!this.validateFields() || !this.validatePrice()) {
+      return;  // No proceder si falla alguna validación
+    }
+
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.servicio.providerId = user.uid;  // Asignar el providerId del usuario autenticado
