@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Servicio } from 'src/app/model/Servicio';
 
 @Component({
   selector: 'app-formulario-servicio',
@@ -7,16 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-servicio.component.css']
 })
 export class FormularioServicioComponent {
-  nombreServicio: string = '';
-  descripcion: string = '';
-  tipoServicio: string[] = ['Educación', 'Tecnología', 'Mascotas', 'Salud y bienestar', 'Hogar y decoración', 'Alimentación'];  // Lista de tipos de servicio
-  tipoServicioSeleccionado: { [key: string]: boolean } = {};  // Objeto para guardar el estado de los checkboxes
+  servicio: Servicio = {
+    serviceId: '',
+    name: '',
+    description: '',
+    price: 0,           // Campo no visible en el formulario
+    category: '',
+    providerId: '',
+    availability: '',    // Campo no visible en el formulario
+    reviews: [],         // Campo no visible en el formulario
+    createdAt: new Date(),
+    updatedAt: new Date()
+  };
 
   constructor(private router: Router) { }
 
-
   onSubmit() {
+    console.log(this.servicio);
     this.router.navigate(['/home-usuario']);
-
   }
 }

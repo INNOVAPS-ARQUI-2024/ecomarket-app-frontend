@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Producto } from 'src/app/model/Producto';
 
 @Component({
   selector: 'app-formulario-producto',
@@ -7,15 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-producto.component.css']
 })
 export class FormularioProductoComponent {
-  nombreProducto: string = '';
-  descripcion: string = '';
-  tipoProductoSeleccionado: { [key: string]: boolean } = {};  // Aquí almacenamos los tipos seleccionados
-  tipoProducto: string[] = ['Ropa', 'Tecnología', 'Alimentos', 'Mascotas'];
+  producto: Producto = {
+    productId: '',
+    name: '',
+    description: '',
+    price: 0,        // Campo no visible en el formulario
+    currency: '',    // Campo no visible en el formulario
+    category: '',
+    stock: 0,        // Campo no visible en el formulario
+    sellerId: '',
+    reviews: [],     // Campo no visible en el formulario
+    createdAt: new Date()
+  };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   onSubmit() {
-    // Esta parte no cambia por ahora
+    console.log(this.producto);
     this.router.navigate(['/home-usuario']);
   }
 }
