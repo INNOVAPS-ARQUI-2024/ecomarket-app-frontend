@@ -3,7 +3,6 @@
     padding: 30px;
     border-radius: 10px;
     max-width: 450px;
-    /* Ajustado el ancho */
     margin: 0 auto;
     text-align: left;
 }
@@ -14,6 +13,12 @@
     margin-bottom: 10px;
 }
 
+.formulario-servicio p {
+    font-size: 1em;
+    color: #6b7eae;
+    margin-bottom: 20px;
+}
+
 .formulario-servicio label {
     display: block;
     margin-bottom: 5px;
@@ -21,12 +26,31 @@
 }
 
 .formulario-servicio input,
-.formulario-servicio textarea {
+.formulario-servicio textarea,
+.formulario-servicio select {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+
+.precio-input {
+    display: flex;
+    align-items: center;
+}
+
+.precio-input span {
+    font-size: 1.2em;
+    color: #6b7eae;
+    margin-right: 5px;
+    margin-bottom: 20px;
+
+}
+
+.precio-input input {
+    width: auto;
+    flex-grow: 1;
 }
 
 .btn-continuar {

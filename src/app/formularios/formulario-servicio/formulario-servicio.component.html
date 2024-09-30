@@ -13,10 +13,21 @@
             <option value="Educación">Educación</option>
             <option value="Tecnología">Tecnología</option>
             <option value="Mascotas">Mascotas</option>
-            <option value="Salud">Salud y bienestar</option>
-            <option value="Hogar">Hogar y decoración</option>
+            <option value="Salud y bienestar">Salud y bienestar</option>
+            <option value="Hogar y decoración">Hogar y decoración</option>
             <option value="Alimentación">Alimentación</option>
         </select>
+
+        <label for="precio">Precio</label>
+        <div class="precio-input">
+            <span>$</span> <!-- Symbol before input -->
+            <input id="precio" type="number" [(ngModel)]="servicio.price" name="precio" required min="0" step="1"
+                placeholder="0.00">
+        </div>
+
+        <label for="disponibilidad">Disponibilidad</label>
+        <input id="disponibilidad" [(ngModel)]="servicio.availability" name="disponibilidad"
+            placeholder="Ej. Lunes a Viernes 9AM - 5PM" required>
 
         <button type="submit" class="btn-continuar">Continuar</button>
     </form>

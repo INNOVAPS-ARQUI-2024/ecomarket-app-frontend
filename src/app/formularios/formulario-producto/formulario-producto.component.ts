@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/model/Producto';
+import { ProductoService } from 'src/app/services/ProductoService';
 
 @Component({
   selector: 'app-formulario-producto',
@@ -9,22 +11,41 @@ import { Producto } from 'src/app/model/Producto';
 })
 export class FormularioProductoComponent {
   producto: Producto = {
-    productId: '',
     name: '',
     description: '',
-    price: 0,        // Campo no visible en el formulario
-    currency: '',    // Campo no visible en el formulario
+    price: 0,
+    currency: 'USD',
     category: '',
-    stock: 0,        // Campo no visible en el formulario
+    stock: 0,
     sellerId: '',
-    reviews: [],     // Campo no visible en el formulario
+    reviews: [],
     createdAt: new Date()
   };
 
-  constructor(private router: Router) { }
+  constructor(
+    private productoService: ProductoService,
+    private router: Router,
+    private afAuth: AngularFireAuth
+  ) {}
 
   onSubmit() {
-    console.log(this.producto);
-    this.router.navigate(['/home-usuario']);
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.producto.sellerId = user.uid; // Asignar el sellerId del usuario autenticado
+
+        // Llamar al servicio para crear el producto
+        this.productoService.createProducto(this.producto).subscribe(
+          response => {
+            console.log('Producto creado:', response);
+            this.router.navigate(['/home-usuario']);  // Redirigir después de la creación exitosa
+          },
+          error => {
+            console.error('Error al crear el producto:', error);
+          }
+        );
+      } else {
+        console.error('Usuario no autenticado');
+      }
+    });
   }
 }

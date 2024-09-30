@@ -16,6 +16,17 @@
             <option value="Mascotas">Mascotas</option>
         </select>
 
+        <label for="precio">Precio</label>
+        <div class="precio-input">
+            <span>$</span>
+            <input id="precio" type="number" [(ngModel)]="producto.price" name="precio" required min="0" step="1"
+                placeholder="0.00">
+        </div>
+
+        <label for="stock">Cantidad en stock</label>
+        <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required min="1" step="1"
+            placeholder="0">
+
         <button type="submit" class="btn-continuar">Continuar</button>
     </form>
 </div>

@@ -1,5 +1,5 @@
 export interface Usuario {
-  userId: string;
+  userId?: string;
   name: string;
   email: string;
   role: string;  // "Comprador" o "Vendedor"

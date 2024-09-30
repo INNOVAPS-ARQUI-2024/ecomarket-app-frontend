@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Servicio } from 'src/app/model/Servicio';
+import { ServicioService } from 'src/app/services/ServicioService';
 
 @Component({
   selector: 'app-formulario-servicio',
@@ -9,7 +11,6 @@ import { Servicio } from 'src/app/model/Servicio';
 })
 export class FormularioServicioComponent {
   servicio: Servicio = {
-    serviceId: '',
     name: '',
     description: '',
     price: 0,           // Campo no visible en el formulario
@@ -20,11 +21,33 @@ export class FormularioServicioComponent {
     createdAt: new Date(),
     updatedAt: new Date()
   };
+  
 
-  constructor(private router: Router) { }
+  constructor(
+    private servicioService: ServicioService,
+    private router: Router,
+    private afAuth: AngularFireAuth  // Para obtener el ID del usuario autenticado
+  ) {}
 
   onSubmit() {
-    console.log(this.servicio);
-    this.router.navigate(['/home-usuario']);
+    // Obtener el ID del usuario autenticado
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.servicio.providerId = user.uid;  // Asignar el providerId del usuario autenticado
+
+        // Llamar al servicio para crear el servicio
+        this.servicioService.createServicio(this.servicio).subscribe(
+          response => {
+            console.log('Servicio creado:', response);
+            this.router.navigate(['/home-usuario']);  // Redirigir después de la creación exitosa
+          },
+          error => {
+            console.error('Error al crear el servicio:', error);
+          }
+        );
+      } else {
+        console.error('Usuario no autenticado');
+      }
+    });
   }
 }
