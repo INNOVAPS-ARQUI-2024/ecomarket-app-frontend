@@ -1,0 +1,19 @@
+<div class="formulario-publicidad">
+    <h2>Soy vendedor de publicidad :)</h2>
+    <form (ngSubmit)="onSubmit()">
+
+        <label for="fechaHora">Fecha y Hora</label>
+        <input id="fechaHora" type="datetime-local" [(ngModel)]="fechaHora" name="fechaHora" required>
+
+        <label for="tipoPublicidad">Tipo de publicidad</label>
+        <input id="tipoPublicidad" [(ngModel)]="tipoPublicidad" name="tipoPublicidad" required>
+
+        <label for="objetivo">Objetivo</label>
+        <textarea id="objetivo" [(ngModel)]="objetivo" name="objetivo" required></textarea>
+
+        <label for="rangoPrecios">Rango de precios</label>
+        <input type="range" id="rangoPrecios" [(ngModel)]="rangoPrecios" name="rangoPrecios" min="0" max="100" step="5">
+
+        <button type="submit" class="btn-continuar">Continuar</button>
+    </form>
+</div>

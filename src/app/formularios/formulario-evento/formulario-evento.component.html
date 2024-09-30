@@ -1,0 +1,22 @@
+<div class="formulario-evento">
+    <h2>Soy vendedor de un evento :)</h2>
+    <form (ngSubmit)="onSubmit()">
+
+        <label for="fechaHora">Fecha y Hora</label>
+        <input id="fechaHora" type="datetime-local" [(ngModel)]="fechaHora" name="fechaHora" required>
+
+        <label for="nombreEvento">Nombre del evento</label>
+        <input id="nombreEvento" [(ngModel)]="nombreEvento" name="nombreEvento" required>
+
+        <label for="lugar">Lugar</label>
+        <input id="lugar" [(ngModel)]="lugar" name="lugar" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" required></textarea>
+
+        <label for="rangoPrecios">Rango de precios</label>
+        <input type="range" id="rangoPrecios" [(ngModel)]="rangoPrecios" name="rangoPrecios" min="0" max="100" step="5">
+
+        <button type="submit" class="btn-continuar">Continuar</button>
+    </form>
+</div>

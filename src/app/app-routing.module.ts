@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
+import { FormularioProductoComponent } from './formularios/formulario-producto/formulario-producto.component';
+import { FormularioPublicidadComponent } from './formularios/formulario-publicidad/formulario-publicidad.component';
+import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
@@ -11,6 +15,7 @@ import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.co
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { ResenaDetalleComponent } from './resena-detalle/resena-detalle.component';
 import { ServicioDetalleComponent } from './servicio-detalle/servicio-detalle.component';
+import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
 
 const routes: Routes = [
   { path: 'login-usuario',component: LoginUsuarioComponent},
@@ -24,7 +29,12 @@ const routes: Routes = [
   { path: 'servicios', component: ListaServiciosComponent },
   { path: 'servicio-detalle/:id', component: ServicioDetalleComponent },
   { path: 'registro-usuario', component: RegistroUsuarioComponent },
-  { path: '', redirectTo: '/home-usuario', pathMatch: 'full' }
+  { path: '', redirectTo: '/home-usuario', pathMatch: 'full' },
+  { path: 'vender-seleccion', component: VenderSeleccionComponent },
+  { path: 'formularios/producto', component: FormularioProductoComponent },
+  { path: 'formularios/servicio', component: FormularioServicioComponent },
+  { path: 'formularios/evento', component: FormularioEventoComponent },
+  { path: 'formularios/publicidad', component: FormularioPublicidadComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,22 @@
+<div class="formulario-producto">
+    <h2>Soy vendedor de un producto :)</h2>
+    <p>Registra tu información</p>
+    <form (ngSubmit)="onSubmit()">
+        <label for="nombreProducto">Nombre de tu producto</label>
+        <input id="nombreProducto" [(ngModel)]="nombreProducto" name="nombreProducto" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" required></textarea>
+
+        <label for="tipoProducto">Tipo de producto</label>
+        <div >
+            <!-- Iteramos sobre los tipos de producto con *ngFor -->
+            <label *ngFor="let tipo of tipoProducto">
+                {{ tipo }}
+                <input type="checkbox" [(ngModel)]="tipoProductoSeleccionado[tipo]" [name]="tipo">
+            </label>
+        </div>
+
+        <button type="submit" class="btn-continuar">Continuar</button>
+    </form>
+</div>

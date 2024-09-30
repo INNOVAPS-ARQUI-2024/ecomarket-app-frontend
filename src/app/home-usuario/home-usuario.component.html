@@ -19,12 +19,12 @@
       <div class="menu-image">
         <img src="/assets/images/PrimeraSeccion.png" alt="Imagen de sección">
       </div>
-    </div>      
+    </div>
   </section>
 
   <!-- Sección 2: Vendedores destacados -->
   <div class="vendor-section">
-    <h2>Hoy!</h2>
+    <h3>Hoy!</h3>
     <div class="vendors">
       <div *ngFor="let vendedor of vendedores" class="vendor-card">
         <div class="vendor-info">
@@ -37,7 +37,7 @@
     <a href="/todos-los-vendedores" class="see-all-vendors-btn">Ver todos los vendedores</a> <!-- Ruta agregada -->
   </div>
 
-  
+
 
   <!-- Sección 3: Categorías desplazables -->
   <div class="category-section">
@@ -58,7 +58,7 @@
       <h2>Productos más Vendidos</h2>
       <button class="view-all-btn">View All</button>
     </div>
-    
+
 
     <div class="products-grid">
       <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
@@ -81,7 +81,7 @@
       <img src="./assets/images/SegundaSeccion.png" alt="Imagen centrada">
     </div>
   </section>
-  
+
   <!-- Sección 5: Productos más vendidos -->
   <section class="bestseller-section">
 
@@ -90,7 +90,7 @@
     <div class="bestseller-section-head">
       <h1>Explora mas productos</h1>
     </div>
-    
+
     <div class="products-grid">
       <div class="product-card" *ngFor="let product of moreProducts; let i = index">
         <a [href]="'/producto/' + i"> <!-- Usamos el índice del array como identificador -->
@@ -117,7 +117,8 @@
     <h2>Nuevos Productos</h2>
 
     <div class="new-products-grid">
-      <div class="product-box" *ngFor="let product of newProducts" [style.backgroundImage]="'url(' + product.backgroundImageUrl + ')'">
+      <div class="product-box" *ngFor="let product of newProducts"
+        [style.backgroundImage]="'url(' + product.backgroundImageUrl + ')'">
         <div class="product-info">
           <h4>{{ product.name }}</h4>
           <p>{{ product.description }}</p>

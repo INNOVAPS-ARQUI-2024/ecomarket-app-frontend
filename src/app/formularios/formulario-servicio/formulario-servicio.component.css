@@ -1,0 +1,45 @@
+.formulario-servicio {
+    background-color: #f4f0fa;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 450px;
+    /* Ajustado el ancho */
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formulario-servicio h2 {
+    font-size: 1.5em;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.formulario-servicio label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6b7eae;
+}
+
+.formulario-servicio input,
+.formulario-servicio textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-continuar {
+    background-color: #ac8dfa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-continuar:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
