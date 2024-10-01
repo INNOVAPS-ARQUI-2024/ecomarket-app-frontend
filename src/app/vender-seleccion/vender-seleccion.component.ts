@@ -16,7 +16,7 @@ export class VenderSeleccionComponent implements OnInit {
     private router: Router,
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Obtener el estado del usuario autenticado
@@ -44,35 +44,48 @@ export class VenderSeleccionComponent implements OnInit {
   // Guardar las selecciones y redirigir
   continuar() {
     if (this.userId) {
-      // Actualizar los tipos de vendedor del usuario en Firebase
-      this.db.object(`/users/${this.userId}`).update({ tiposVendedor: this.selectedOptions })
-        .then(() => {
-          // Redirigir dinámicamente al primer formulario seleccionado
-          if (this.selectedOptions.length > 0) {
-            const tipoSeleccionado = this.selectedOptions[0];
-            switch (tipoSeleccionado) {
-              case 'producto':
-                this.router.navigate(['/formularios/producto']);
-                break;
-              case 'servicio':
-                this.router.navigate(['/formularios/servicio']);
-                break;
-              case 'evento':
-                this.router.navigate(['/formularios/evento']);
-                break;
-              case 'publicidad':
-                this.router.navigate(['/formularios/publicidad']);
-                break;
-              default:
-                this.router.navigate(['/home-usuario']);
+      // Obtener las opciones previamente guardadas en Firebase
+      this.db.object(`/users/${this.userId}`).valueChanges().subscribe((user: any) => {
+        let tiposVendedorPrevios = user?.tiposVendedor || [];
+
+        // Combinar las opciones previas con las nuevas sin duplicados
+        const nuevasOpciones = this.selectedOptions.filter(opt => !tiposVendedorPrevios.includes(opt));
+        const opcionesActualizadas = [...tiposVendedorPrevios, ...nuevasOpciones];
+
+        // Actualizar los tipos de vendedor en Firebase
+        this.db.object(`/users/${this.userId}`).update({ tiposVendedor: opcionesActualizadas })
+          .then(() => {
+            // Redirigir dinámicamente al primer formulario seleccionado
+            if (this.selectedOptions.length > 0) {
+              const tipoSeleccionado = this.selectedOptions[0];
+              switch (tipoSeleccionado) {
+                case 'producto':
+                  this.router.navigate(['/formularios/producto']);
+                  break;
+                case 'servicio':
+                  this.router.navigate(['/formularios/servicio']);
+                  break;
+                case 'evento':
+                  this.router.navigate(['/formularios/evento']);
+                  break;
+                case 'publicidad':
+                  this.router.navigate(['/formularios/publicidad']);
+                  break;
+                default:
+                  this.router.navigate(['/home-usuario']);
+              }
             }
-          }
-        })
-        .catch((error) => {
-          console.error('Error al actualizar el usuario:', error);
-        });
+          })
+          .catch((error) => {
+            console.error('Error al actualizar el usuario:', error);
+          });
+      }, (error) => {
+        console.error('Error al obtener los tipos de vendedor previos:', error);
+      });
     } else {
       console.error('Error: Usuario no autenticado.');
     }
   }
+
+
 }
