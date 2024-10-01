@@ -7,14 +7,8 @@ import { FormularioPublicidadComponent } from './formularios/formulario-publicid
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
-import { ListaProductosComponent } from './lista-productos/lista-productos.component';
-import { ListaResenasComponent } from './lista-resenas/lista-resenas.component';
-import { ListaServiciosComponent } from './lista-servicios/lista-servicios.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
-import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
-import { ResenaDetalleComponent } from './resena-detalle/resena-detalle.component';
-import { ServicioDetalleComponent } from './servicio-detalle/servicio-detalle.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
 
 const routes: Routes = [
@@ -22,12 +16,6 @@ const routes: Routes = [
   { path: 'home-usuario',component:  HomeUsuarioComponent},
   { path: 'header',component:  HeaderComponent},
   { path: 'footer',component:  FooterComponent},
-  { path: 'productos', component: ListaProductosComponent },
-  { path: 'producto-detalle/:id', component: ProductoDetalleComponent },
-  { path: 'reseñas', component: ListaResenasComponent },
-  { path: 'resena-detalle/:id', component: ResenaDetalleComponent },
-  { path: 'servicios', component: ListaServiciosComponent },
-  { path: 'servicio-detalle/:id', component: ServicioDetalleComponent },
   { path: 'registro-usuario', component: RegistroUsuarioComponent },
   { path: '', redirectTo: '/home-usuario', pathMatch: 'full' },
   { path: 'vender-seleccion', component: VenderSeleccionComponent },
