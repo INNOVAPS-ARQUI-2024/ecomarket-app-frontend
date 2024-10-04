@@ -417,7 +417,11 @@ h3{
   border-radius: 5px;
   cursor: pointer;
   width: 200px;
+  text-decoration: none; /* Removes underline */
+  display: inline-block; /* Ensures the element behaves like a button */
+  text-align: center; /* Centers text inside the button */
 }
+
 
 .action-btn:hover {
   background-color: #6aa0b7;
