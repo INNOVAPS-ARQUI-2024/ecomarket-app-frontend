@@ -50,13 +50,18 @@ export class VenderSeleccionComponent implements OnInit {
 
         // Combinar las opciones previas con las nuevas sin duplicados
         const nuevasOpciones = this.selectedOptions.filter(opt => !tiposVendedorPrevios.includes(opt));
-        const opcionesActualizadas = [...tiposVendedorPrevios, ...nuevasOpciones];
-
+  
+        // Combinar los arrays sin duplicados y filtrar valores undefined o vacíos
+        const opcionesActualizadas = [...tiposVendedorPrevios, ...nuevasOpciones].filter(opt => opt !== undefined && opt !== null && opt !== '');
+  
         // Actualizar los tipos de vendedor en Firebase
         this.db.object(`/users/${this.userId}`).update({ tiposVendedor: opcionesActualizadas })
           .then(() => {
+            // Redirigir a la página deseada después de actualizar
+            this.router.navigate(['']);
+
             // Redirigir dinámicamente al primer formulario seleccionado
-            if (this.selectedOptions.length > 0) {
+            /*if (this.selectedOptions.length > 0) {
               const tipoSeleccionado = this.selectedOptions[0];
               switch (tipoSeleccionado) {
                 case 'producto':
@@ -74,7 +79,7 @@ export class VenderSeleccionComponent implements OnInit {
                 default:
                   this.router.navigate(['/home-usuario']);
               }
-            }
+            }*/
           })
           .catch((error) => {
             console.error('Error al actualizar el usuario:', error);
