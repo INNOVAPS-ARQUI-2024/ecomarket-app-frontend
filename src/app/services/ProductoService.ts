@@ -9,7 +9,7 @@ import { Producto } from '../model/Producto';
 export class ProductoService {
   private apiUrl = 'http://localhost:8080/api/productos';  // Aquí colocas tu URL base del backend de Spring Boot
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todos los productos
   getProductos(): Observable<Producto[]> {
@@ -34,5 +34,9 @@ export class ProductoService {
   // Eliminar un producto
   deleteProducto(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  // Obtener productos por sellerId
+  getProductosPorUsuario(sellerId: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.apiUrl}/usuario/${sellerId}`);
   }
 }

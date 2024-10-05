@@ -36,33 +36,33 @@ export class FormularioEventoComponent {
   }
 
   updateSlider() {
-    // Si el valor del slider mínimo supera al máximo, lo igualamos al máximo
-    if (this.precioMinimo >= this.precioMaximo) {
-      this.precioMinimo = this.precioMaximo - 1;  // Restamos 1 para evitar que sean iguales
+    // Verificar si el valor del slider mínimo es mayor al máximo
+    if (this.precioMinimo > this.precioMaximo) {
+      this.precioMinimo = this.precioMaximo;  // Ajustar el mínimo al máximo
     }
   
-    // Si el valor del slider máximo es menor o igual al mínimo, lo igualamos al mínimo
-    if (this.precioMaximo <= this.precioMinimo) {
-      this.precioMaximo = this.precioMinimo + 1;  // Sumamos 1 para evitar que sean iguales
+    // Verificar si el valor del slider máximo es menor al mínimo
+    if (this.precioMaximo < this.precioMinimo) {
+      this.precioMaximo = this.precioMinimo;  // Ajustar el máximo al mínimo
     }
   
-    // Actualiza la visualización del rango seleccionado
+    // Asegúrate de actualizar visualmente los sliders después del ajuste
     this.actualizarVisualizacionSlider();
   }
   
+  // Método para ajustar la visualización del rango seleccionado
   actualizarVisualizacionSlider() {
     const rangeSelected = document.querySelector('.range-selected') as HTMLElement;
     const minSlider = document.querySelector('.min') as HTMLInputElement;
     const maxSlider = document.querySelector('.max') as HTMLInputElement;
   
-    // Calcula el porcentaje de la parte seleccionada del rango y ajusta el estilo
+    // Calcula el ancho de la parte seleccionada del rango y ajusta el estilo
     const minPercent = (Number(minSlider.value) / Number(minSlider.max)) * 100;
     const maxPercent = (Number(maxSlider.value) / Number(maxSlider.max)) * 100;
   
     rangeSelected.style.left = `${minPercent}%`;
     rangeSelected.style.right = `${100 - maxPercent}%`;
   }
-  
   
   
   

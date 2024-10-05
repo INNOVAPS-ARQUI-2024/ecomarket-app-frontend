@@ -58,33 +58,50 @@
         <h3>Mis productos :)</h3>
         <div class="product-actions">
           <!-- Producto actions -->
-          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['//producto']">Ver la lista de productos</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/formularios/producto']">Crear producto nuevo</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/modificar/producto']">Modificar un producto</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/eliminar/producto']">Eliminar un producto</a>
-        
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']">Ver la lista
+            de productos</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/formularios/producto']">Crear
+            producto nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']"
+            [queryParams]="{ action: 'modificar' }">Modificar un producto</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un producto</a>
+
           <!-- Servicio actions -->
-          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['//servicio']">Ver la lista de servicios</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/formularios/servicio']">Crear servicio nuevo</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/modificar/servicio']">Modificar un servicio</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/eliminar/servicio']">Eliminar un servicio</a>
-        
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']">Ver la lista
+            de servicios</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/formularios/servicio']">Crear
+            servicio nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']"
+            [queryParams]="{ action: 'modificar' }">Modificar un servicio</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un servicio</a>
+
           <!-- Evento actions -->
-          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['//evento']">Ver la lista de eventos</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/formularios/evento']">Crear evento nuevo</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/modificar/evento']">Modificar un evento</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/eliminar/evento']">Eliminar un evento</a>
-        
-          <!-- Organización (Publicidad) actions -->
-          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['//publicidad']">Ver la lista de publicidad</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/formularios/publicidad']">Crear publicidad nueva</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/modificar/publicidad']">Modificar una publicidad</a>
-          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/eliminar/publicidad']">Eliminar una publicidad</a>
-        
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']">Ver la lista de
+            eventos</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/formularios/evento']">Crear evento
+            nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']"
+            [queryParams]="{ action: 'modificar' }">Modificar un evento</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un evento</a>
+
+          <!-- Publicidad actions -->
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']">Ver la
+            lista de publicidad</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'"
+            [routerLink]="['/formularios/publicidad']">Crear publicidad nueva</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']"
+            [queryParams]="{ action: 'modificar' }">Modificar una publicidad</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar una publicidad</a>
+
+
           <!-- Image at the bottom of the actions -->
           <img src="./assets/images/ProductImage.png" alt="imagen de opciones " />
         </div>
-        
+
 
 
       </div>

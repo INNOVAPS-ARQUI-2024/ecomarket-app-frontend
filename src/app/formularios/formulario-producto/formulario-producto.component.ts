@@ -28,7 +28,18 @@ export class FormularioProductoComponent {
     private productoService: ProductoService,
     private router: Router,
     private afAuth: AngularFireAuth
-  ) {}
+  ) { }
+
+  ngOnInit(): void {
+    // Aquí nos suscribimos una sola vez al estado de autenticación
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.producto.sellerId = user.uid;
+      } else {
+        console.error('Usuario no autenticado');
+      }
+    });
+  }
 
   // Validate stock to ensure it's an integer and greater than zero
   validateStock(): boolean {
@@ -57,30 +68,28 @@ export class FormularioProductoComponent {
     return true;
   }
 
-  // Main form validation function
-  onSubmit() {
-    // Check all validation rules
+  // onSubmit: Se ejecuta cuando el formulario es enviado
+  onSubmit(): void {
     if (!this.validateFields() || !this.validateStock() || !this.validatePrice()) {
-      return;  // Do not proceed if validation fails
+      return;  // No proceder si la validación falla
     }
-
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.producto.sellerId = user.uid;  // Assign the sellerId of the authenticated user
-
-        // Call the service to create the product
-        this.productoService.createProducto(this.producto).subscribe(
-          response => {
-            console.log('Producto creado:', response);
-            this.router.navigate(['/home-usuario']);  // Redirect after successful creation
-          },
-          error => {
-            console.error('Error al crear el producto:', error);
-          }
-        );
-      } else {
-        console.error('Usuario no autenticado');
+  
+    if (!this.producto.sellerId) {
+      console.error('No se ha asignado un sellerId.');
+      return;
+    }
+  
+    // Llama al servicio para crear el producto
+    this.productoService.createProducto(this.producto).subscribe(
+      response => {
+        console.log('Producto creado:', response);
+        this.router.navigate(['/home-usuario']);
+      },
+      error => {
+        console.error('Error al crear el producto:', error);
       }
-    });
+    );
   }
+  
+
 }

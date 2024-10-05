@@ -1,0 +1,47 @@
+<div class="modificar-producto-container">
+    <div class="imagen-producto-container">
+        <div class="imagen-producto">
+            <h3>Agrega fotos de tu producto!</h3>
+            <div class="imagen-placeholder">
+                <div class="placeholder-box">Add photos</div> <!-- Placeholder temporal -->
+            </div>
+        </div>
+    </div>
+
+    <div class="formulario-producto-container">
+        <div class="formulario-modificar">
+            <h2>Modifica tu producto!</h2>
+
+            <form (ngSubmit)="guardarCambios()">
+                <label class="labels" for="nombreProducto">Nombre Producto</label>
+                <input id="nombreProducto" [(ngModel)]="producto.name" name="name" required />
+
+                <div>
+                    <!-- Selector de categoría con las opciones proporcionadas -->
+                    <label class="labels" for="categoriaProducto">Categoría del producto</label>
+                    <div>
+                        <select id="categoriaProducto" [(ngModel)]="producto.category" name="categoria" required>
+                            <option value="Ropa">Ropa</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Mascotas">Mascotas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Campo de precio como número entero -->
+                <label class="labels" for="precio">Precio</label>
+                <input id="precio" type="number" [(ngModel)]="producto.price" name="price" required min="0" step="1" />
+
+                <!-- Campo de stock como número entero -->
+                <label class="labels" for="stock">Cantidad en stock</label>
+                <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required min="1" step="1" />
+
+                <label class="labels" for="descripcion">Descripción</label>
+                <textarea id="descripcion" [(ngModel)]="producto.description" name="description" required></textarea>
+
+                <button type="submit" class="submit-btn">¡Listo!</button>
+            </form>
+        </div>
+    </div>
+</div>

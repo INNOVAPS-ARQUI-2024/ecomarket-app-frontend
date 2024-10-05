@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Mis productos a la venta</h2>
+
+    <div class="actions-header">
+        <button class="add-btn" [routerLink]="['/formularios/producto']">Añadir +</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>IMAGEN</th>
+                <th>NOMBRE</th>
+                <th>PRECIO</th>
+                <th>FECHA DE PUBLICACIÓN</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td><img [src]="" alt="{{ producto.name }}" class="product-image" /></td>
+                <td>{{ producto.name }}</td>
+                <td>{{ producto.price | currency: 'USD':true }}</td>
+                <td>{{ producto.createdAt | date: 'dd-MMM-yyyy' }}</td>
+                <td>
+                    <!-- Mostrar ambos botones si no se ha recibido ningún parámetro 'action' -->
+                    <!-- Mostrar ambos botones si no se ha recibido ningún parámetro 'action' -->
+                    <ng-container *ngIf="!action">
+                        <button class="edit-btn" (click)="modificarProducto(producto.productId!)">✏️</button>
+                        <button class="delete-btn" (click)="eliminarProducto(producto.productId!)">🗑️ Eliminar</button>
+                    </ng-container>
+
+                    <!-- Mostrar solo el botón de modificar si 'action' es 'modificar' -->
+                    <button class="edit-btn" *ngIf="action === 'modificar'"
+                        (click)="modificarProducto(producto.productId!)">✏️</button>
+
+                    <!-- Mostrar solo el botón de eliminar si 'action' es 'eliminar' -->
+                    <button class="delete-btn" *ngIf="action === 'eliminar'"
+                        (click)="eliminarProducto(producto.productId!)">🗑️ Eliminar</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="back-btn-container">
+        <button class="back-btn" (click)="goBack()">Volver a la página principal</button>
+    </div>
+</div>

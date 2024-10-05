@@ -19,6 +19,8 @@ import { FormularioEventoComponent } from './formularios/formulario-evento/formu
 import { FormularioProductoComponent } from './formularios/formulario-producto/formulario-producto.component';
 import { FormularioPublicidadComponent } from './formularios/formulario-publicidad/formulario-publicidad.component';
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
+import { ListaProductosComponent } from './lista-productos/lista-productos.component';
+import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FormularioServicioComponent } from './formularios/formulario-servicio/f
     FormularioProductoComponent,
     FormularioServicioComponent,
     FormularioEventoComponent,
-    FormularioPublicidadComponent
+    FormularioPublicidadComponent,
+    ListaProductosComponent,
+    ModificarProductoComponent
   ],
   imports: [
     BrowserModule,
