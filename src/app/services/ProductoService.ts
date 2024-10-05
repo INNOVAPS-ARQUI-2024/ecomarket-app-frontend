@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Producto } from '../model/Producto';
 
 @Injectable({
@@ -23,13 +23,31 @@ export class ProductoService {
 
   // Crear un nuevo producto
   createProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(this.apiUrl, producto);
+    return this.http.post<Producto>(this.apiUrl, producto).pipe(
+      catchError(error => {
+        if (error.status === 400) {
+          console.error('Error: Datos del producto inválidos');
+          alert('Error: Los datos del producto no son válidos. Por favor verifica la información.');
+        }
+        return throwError(error);
+      })
+    );
   }
+
 
   // Actualizar un producto existente
   updateProducto(id: string, producto: Producto): Observable<Producto> {
-    return this.http.put<Producto>(`${this.apiUrl}/${id}`, producto);
+    return this.http.put<Producto>(`${this.apiUrl}/${id}`, producto).pipe(
+      catchError(error => {
+        if (error.status === 400) {
+          console.error('Error: Datos del producto inválidos para la actualización');
+          alert('Error: Los datos del producto no son válidos. Por favor verifica la información.');
+        }
+        return throwError(error);
+      })
+    );
   }
+
 
   // Eliminar un producto
   deleteProducto(id: string): Observable<void> {
