@@ -37,8 +37,28 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--no-sandbox', // Para evitar problemas de permisos en entornos de CI
+          '--disable-gpu', // Desactiva la aceleración de hardware (no es necesaria en entornos de CI)
+          '--disable-extensions',
+          '--disable-dev-shm-usage', // Soluciona problemas en sistemas con poco espacio en /dev/shm
+          '--disable-setuid-sandbox',
+          '--disable-software-rasterizer',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--headless',
+          '--remote-debugging-port=9222'
+        ]
+      }
+    },
+    singleRun: true, // Cambiar a true para que Karma ejecute las pruebas una sola vez en CI/CD
+    restartOnFileChange: false // Cambiar a false para evitar reinicios en CI/CD
   });
 };
+
+// Configurar Puppeteer para utilizar la versión correcta de Chrome en CI
+process.env.CHROME_BIN = require('puppeteer').executablePath();
