@@ -1,5 +1,5 @@
 export interface Resena {
-    reviewId: string;
+    reviewId?: string;
     itemId: string;   // productId o serviceId
     itemType: string; // Tipo de ítem
     userId: string;
