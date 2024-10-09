@@ -40,10 +40,10 @@ jobs:
           echo 'EXPOSE 80' >> Dockerfile
 
       - name: Build Docker Image
-        run: docker build -t ecomarket-app-frontend:PROD .
+        run: docker build -t ecomarket-app-frontend:prod .
 
       - name: Save Docker Image to Tar File
-        run: docker save ecomarket-app-frontend:PROD -o ecomarket-app-frontend-PROD.tar
+        run: docker save ecomarket-app-frontend:prod -o ecomarket-app-frontend-prod.tar
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
