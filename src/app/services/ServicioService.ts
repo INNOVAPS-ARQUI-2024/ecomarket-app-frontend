@@ -7,7 +7,7 @@ import { Servicio } from '../model/Servicio';
   providedIn: 'root'
 })
 export class ServicioService {
-  private baseUrl = 'http://localhost:8080/api/servicios'; // La URL del backend
+  private baseUrl = 'http://localhost:7999/api/servicios'; // La URL del backend
 
   constructor(private http: HttpClient) { }
 

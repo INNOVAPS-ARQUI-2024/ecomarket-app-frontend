@@ -11,7 +11,7 @@ import { Servicio } from '../model/Servicio';
 })
 export class EcomarketService {
 
-  private apiUrl = 'http://localhost:8080/api'; // Cambia esta URL si es necesario
+  private apiUrl = 'http://localhost:7999/api'; // Cambia esta URL si es necesario
 
   constructor(private http: HttpClient) { }
 
