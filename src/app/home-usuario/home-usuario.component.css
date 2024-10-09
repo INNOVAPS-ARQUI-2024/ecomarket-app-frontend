@@ -359,5 +359,79 @@ h3{
     color: #666;
   }
   
+/* General content styling */
+.content {
+  padding: 20px;
+}
 
-  
+.vendor-type-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vendor-type-section h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.vendor-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.vendor-options label {
+  font-size: 1em;
+  color: #6b7eae;
+}
+
+.vendor-options input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Styling for products section */
+.products-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.products-section h3 {
+  font-size: 1.5em;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-btn {
+  background-color: #8BB7CF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  text-decoration: none; /* Removes underline */
+  display: inline-block; /* Ensures the element behaves like a button */
+  text-align: center; /* Centers text inside the button */
+}
+
+
+.action-btn:hover {
+  background-color: #6aa0b7;
+}
+
+.product-image {
+  margin-top: 20px;
+}
+
+.product-image img {
+  width: 200px;
+  height: auto;
+}

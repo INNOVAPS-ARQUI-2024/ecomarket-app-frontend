@@ -19,120 +19,200 @@
       <div class="menu-image">
         <img src="/assets/images/PrimeraSeccion.png" alt="Imagen de sección">
       </div>
-    </div>      
+    </div>
   </section>
 
-  <!-- Sección 2: Vendedores destacados -->
-  <div class="vendor-section">
-    <h2>Hoy!</h2>
-    <div class="vendors">
-      <div *ngFor="let vendedor of vendedores" class="vendor-card">
-        <div class="vendor-info">
-          <h3>{{vendedor.nombre}}</h3>
-          <button>Consultar</button>
+  <div class="content">
+
+    <div *ngIf="isVendedor" class="vendor-menu">
+      <h3>Mostrar menú de...</h3>
+
+      <div class="vendor-options">
+        <!-- Show 'Vendedor producto' if 'producto' is in tiposVendedor -->
+        <label *ngIf="showProducto">
+          <input type="radio" name="vendorType" value="producto" [(ngModel)]="selectedVendor" />
+          Vendedor producto
+        </label>
+
+        <!-- Show 'Vendedor evento' if 'evento' is in tiposVendedor -->
+        <label *ngIf="showEvento">
+          <input type="radio" name="vendorType" value="evento" [(ngModel)]="selectedVendor" />
+          Vendedor evento
+        </label>
+
+        <!-- Show 'Vendedor servicio' if 'servicio' is in tiposVendedor -->
+        <label *ngIf="showServicio">
+          <input type="radio" name="vendorType" value="servicio" [(ngModel)]="selectedVendor" />
+          Vendedor servicio
+        </label>
+
+        <!-- Show 'Organización' (for publicidad) if 'publicidad' is in tiposVendedor -->
+        <label *ngIf="showPublicidad">
+          <input type="radio" name="vendorType" value="organizacion" [(ngModel)]="selectedVendor" />
+          Organización
+        </label>
+      </div>
+
+      <!-- Show this section only if a vendor type is selected -->
+      <div class="products-section" *ngIf="selectedVendor">
+        <h3>Mis productos :)</h3>
+        <div class="product-actions">
+          <!-- Producto actions -->
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']">Ver la lista
+            de productos</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/formularios/producto']">Crear
+            producto nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']"
+            [queryParams]="{ action: 'modificar' }">Modificar un producto</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'producto'" [routerLink]="['/lista-productos']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un producto</a>
+
+          <!-- Servicio actions -->
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']">Ver la lista
+            de servicios</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/formularios/servicio']">Crear
+            servicio nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']"
+            [queryParams]="{ action: 'modificar' }">Modificar un servicio</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'servicio'" [routerLink]="['/lista-servicios']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un servicio</a>
+
+          <!-- Evento actions -->
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']">Ver la lista de
+            eventos</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/formularios/evento']">Crear evento
+            nuevo</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']"
+            [queryParams]="{ action: 'modificar' }">Modificar un evento</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'evento'" [routerLink]="['/lista-eventos']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar un evento</a>
+
+          <!-- Publicidad actions -->
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']">Ver la
+            lista de publicidad</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'"
+            [routerLink]="['/formularios/publicidad']">Crear publicidad nueva</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']"
+            [queryParams]="{ action: 'modificar' }">Modificar una publicidad</a>
+          <a class="action-btn" *ngIf="selectedVendor === 'organizacion'" [routerLink]="['/lista-publicidad']"
+            [queryParams]="{ action: 'eliminar' }">Eliminar una publicidad</a>
+
+
+          <!-- Image at the bottom of the actions -->
+          <img src="./assets/images/ProductImage.png" alt="imagen de opciones " />
         </div>
-        <img [src]="vendedor.imagen" alt="{{vendedor.nombre}}">
+
+
+
       </div>
     </div>
-    <a href="/todos-los-vendedores" class="see-all-vendors-btn">Ver todos los vendedores</a> <!-- Ruta agregada -->
+
+
+
+
+    <!-- Sección 4: Vendedores destacados -->
+    <div class="vendor-section">
+      <h3>Hoy!</h3>
+      <div class="vendors">
+        <div *ngFor="let vendedor of vendedores" class="vendor-card">
+          <div class="vendor-info">
+            <h3>{{vendedor.nombre}}</h3>
+            <button>Consultar</button>
+          </div>
+          <img [src]="vendedor.imagen" alt="{{vendedor.nombre}}">
+        </div>
+      </div>
+      <a href="/todos-los-vendedores" class="see-all-vendors-btn">Ver todos los vendedores</a>
+    </div>
+
+    <!-- Sección 5: Categorías desplazables -->
+    <div class="category-section">
+      <h3>Categorías</h3>
+      <h2>Buscar por Categorías</h2>
+      <div class="categories-grid">
+        <div class="category-card" *ngFor="let category of categories">
+          <img [src]="category.icon" alt="{{category.name}}">
+          <span>{{category.name}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 6: Explorar más productos -->
+    <section class="more-products-section">
+      <h3>Este mes</h3>
+      <div class="more-products-header">
+        <h2>Productos más Vendidos</h2>
+        <button class="view-all-btn">Ver todo</button>
+      </div>
+      <div class="products-grid">
+        <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
+          <a [routerLink]="['producto-detalle/:id', i]">
+            <img [src]="product.image" alt="{{product.name}}">
+          </a>
+          <div class="product-info">
+            <h4>{{product.name}}</h4>
+            <p class="price">
+              ${{product.price}} <span class="old-price" *ngIf="product.oldPrice">{{product.oldPrice}}</span>
+            </p>
+            <p class="rating">
+              {{product.stars}} estrellas <span>({{product.reviews}})</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="centered-image">
+        <img src="./assets/images/SegundaSeccion.png" alt="Imagen centrada">
+      </div>
+    </section>
+
+    <!-- Sección 7: Productos más vendidos -->
+    <section class="bestseller-section">
+      <h3>más productos</h3>
+      <div class="bestseller-section-head">
+        <h1>Explora más productos</h1>
+      </div>
+      <div class="products-grid">
+        <div class="product-card" *ngFor="let product of moreProducts; let i = index">
+          <a [routerLink]="['/producto', i]">
+            <img [src]="product.imageUrl" alt="{{product.name}}">
+          </a>
+          <div class="product-info">
+            <h4>{{product.name}}</h4>
+            <p class="price">
+              ${{product.price}} <span class="price" *ngIf="product.price">{{product.price}}</span>
+            </p>
+            <p class="rating">
+              {{calculateStars(product.starsArray)}} estrellas <span>({{product.reviews}})</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <a href="/productos" class="view-all-button">Ver todos los productos</a>
+    </section>
+
+    <!-- Sección 8: Nuevos productos -->
+    <section class="new-products-section">
+      <h3>Lo Nuevo</h3>
+      <h2>Nuevos Productos</h2>
+      <div class="new-products-grid">
+        <div class="product-box" *ngFor="let product of newProducts"
+          [style.backgroundImage]="'url(' + product.backgroundImageUrl + ')'">
+          <div class="product-info">
+            <h4>{{ product.name }}</h4>
+            <p>{{ product.description }}</p>
+            <a href="#">Ir a la sección</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 9: Características del servicio -->
+    <div class="service-features-section">
+      <div class="service-feature" *ngFor="let feature of serviceFeatures">
+        <img [src]="feature.icon" alt="{{ feature.title }}">
+        <h4>{{ feature.title }}</h4>
+        <p>{{ feature.content }}</p>
+      </div>
+    </div>
+
   </div>
-
-  
-
-  <!-- Sección 3: Categorías desplazables -->
-  <div class="category-section">
-    <h3>Categorías</h3>
-    <h2>Buscar por Categorías</h2>
-    <div class="categories-grid">
-      <div class="category-card" *ngFor="let category of categories">
-        <img [src]="category.icon" alt="{{category.name}}">
-        <span>{{category.name}}</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sección 4: Explorar más productos -->
-  <section class="more-products-section">
-    <h3>Este mes</h3>
-    <div class="more-products-header">
-      <h2>Productos más Vendidos</h2>
-      <button class="view-all-btn">View All</button>
-    </div>
-    
-
-    <div class="products-grid">
-      <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
-        <a [routerLink]="['producto-detalle/:id', i]"> <!-- Usamos routerLink en lugar de href -->
-          <img [src]="product.image" alt="{{product.name}}">
-        </a>
-        <div class="product-info">
-          <h4>{{product.name}}</h4>
-          <p class="price">
-            ${{product.price}} <span class="old-price" *ngIf="product.oldPrice">{{product.oldPrice}}</span>
-          </p>
-          <p class="rating">
-            {{product.stars}} estrellas <span>({{product.reviews}})</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="centered-image">
-      <img src="./assets/images/SegundaSeccion.png" alt="Imagen centrada">
-    </div>
-  </section>
-  
-  <!-- Sección 5: Productos más vendidos -->
-  <section class="bestseller-section">
-
-    <h3>mas productos</h3>
-
-    <div class="bestseller-section-head">
-      <h1>Explora mas productos</h1>
-    </div>
-    
-    <div class="products-grid">
-      <div class="product-card" *ngFor="let product of moreProducts; let i = index">
-        <a [href]="'/producto/' + i"> <!-- Usamos el índice del array como identificador -->
-          <img [src]="product.imageUrl" alt="{{product.name}}"> <!-- Cambié 'product.image' a 'product.imageUrl' -->
-        </a>
-        <div class="product-info">
-          <h4>{{product.name}}</h4>
-          <p class="price">
-            ${{product.price}} <span class="price" *ngIf="product.price">{{product.price}}</span>
-          </p>
-          <p class="rating">
-            {{calculateStars(product.starsArray)}} estrellas <span>({{product.reviews}})</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <a href="/productos" class="view-all-button">View All Products</a> <!-- Ruta agregada -->
-  </section>
-
-  <!-- Sección 6: Nuevos productos -->
-  <section class="new-products-section">
-    <h3>Lo Nuevo</h3>
-    <h2>Nuevos Productos</h2>
-
-    <div class="new-products-grid">
-      <div class="product-box" *ngFor="let product of newProducts" [style.backgroundImage]="'url(' + product.backgroundImageUrl + ')'">
-        <div class="product-info">
-          <h4>{{ product.name }}</h4>
-          <p>{{ product.description }}</p>
-          <a href="#">Ir a la sección</a> <!-- Aquí irá el link a cada sección -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="service-features-section">
-    <div class="service-feature" *ngFor="let feature of serviceFeatures">
-      <img [src]="feature.icon" alt="{{ feature.title }}">
-      <h4>{{ feature.title }}</h4>
-      <p>{{ feature.content }}</p>
-    </div>
-  </div>
-
-</div>

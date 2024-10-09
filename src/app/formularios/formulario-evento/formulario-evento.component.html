@@ -1,0 +1,42 @@
+<!-- src/app/component/formulario-evento.component.html -->
+<div class="formulario-evento">
+    <h2>Soy vendedor de un evento :)</h2>
+    <form (ngSubmit)="onSubmit()">
+
+        <label for="fechaHora">Fecha y Hora</label>
+        <input id="fechaHora" type="datetime-local" [(ngModel)]="fechaHora" name="fechaHora" required>
+
+        <input id="nombreEvento" [(ngModel)]="nombreEvento" name="nombreEvento" required
+            placeholder="Nombre del evento">
+
+        <input id="lugar" [(ngModel)]="lugar" name="lugar" required placeholder="Lugar">
+
+        <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" required
+            placeholder="Descripción"></textarea>
+
+        <label for="rangoPrecios">Rango de precios</label>
+        <div class="range">
+            <div class="range-slider">
+                <span class="range-selected"></span>
+            </div>
+            <div class="range-input">
+                <input type="range" class="min" min="0" max="1000" [(ngModel)]="precioMinimo" name="precioMinimo"
+                    (input)="updateSlider()" style="z-index: 2;">
+                <input type="range" class="max" min="1" max="1000" [(ngModel)]="precioMaximo" name="precioMaximo"
+                    (input)="updateSlider()" style="z-index: 1;">
+            </div>
+            <div class="range-price">
+                <div>
+                    <label for="min">Min</label>
+                    <input type="number" name="min" [(ngModel)]="precioMinimo" (input)="updateSlider()">
+                </div>
+                <div>
+                    <label for="max">Max</label>
+                    <input type="number" name="max" [(ngModel)]="precioMaximo" (input)="updateSlider()">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-continuar">Continuar</button>
+    </form>
+</div>

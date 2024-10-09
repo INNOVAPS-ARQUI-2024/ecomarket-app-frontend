@@ -1,0 +1,31 @@
+<div class="vender-contenedor">
+    <div class="vender-seleccion">
+        <h2>¿Qué quieres vender?</h2>
+        <div class="opciones-vendedor">
+            <label>
+                Producto
+                <input type="checkbox" (change)="onOptionChange($event, 'producto')">
+            </label>
+            <label>
+                Servicio
+                <input type="checkbox" (change)="onOptionChange($event, 'servicio')">
+            </label>
+            <label>
+                Evento
+                <input type="checkbox" (change)="onOptionChange($event, 'evento')">
+            </label>
+            <label>
+                Publicidad
+                <input type="checkbox" (change)="onOptionChange($event, 'publicidad')">
+            </label>
+        </div>
+
+
+        <button class="btn-continuar" (click)="continuar()" [disabled]="selectedOptions.length === 0">Continuar</button>
+    </div>
+
+    <div class="vender-imagen">
+        <!-- Aquí puedes colocar la imagen -->
+        <img src="path/to/your-image.png" alt="Ilustración de venta" />
+    </div>
+</div>

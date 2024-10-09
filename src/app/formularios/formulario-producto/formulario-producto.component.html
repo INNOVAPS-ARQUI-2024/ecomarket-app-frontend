@@ -1,0 +1,35 @@
+<div class="formulario-producto">
+    <h2>Soy vendedor de un producto :)</h2>
+    <form (ngSubmit)="onSubmit()">
+
+        <label for="nombreProducto">Nombre del producto</label>
+        <input id="nombreProducto" [(ngModel)]="producto.name" name="nombreProducto" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" [(ngModel)]="producto.description" name="descripcion" required></textarea>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" [(ngModel)]="producto.category" name="categoria" required>
+            <option value="Ropa">Ropa</option>
+            <option value="Tecnología">Tecnología</option>
+            <option value="Alimentos">Alimentos</option>
+            <option value="Mascotas">Mascotas</option>
+        </select>
+
+        <label for="precio">Precio</label>
+        <div class="precio-input">
+            <span>$</span>
+            <input id="precio" type="number" [(ngModel)]="producto.price" name="precio" required min="0" step="1"
+                placeholder="0.00">
+        </div>
+
+        <label for="stock">Cantidad en stock</label>
+        <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required min="1" step="1"
+            placeholder="0">
+
+        <!-- Display error message if it exists -->
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+        <button type="submit" class="btn-continuar">Continuar</button>
+    </form>
+</div>
