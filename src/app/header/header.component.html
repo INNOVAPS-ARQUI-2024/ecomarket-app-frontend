@@ -7,9 +7,12 @@
       <a href="#">Admin</a>
       <a href="#">Home</a>
       <a href="#">Categorías</a>
-      <a href="#">Vender</a>
-      <a href="#">Crear Cuenta</a>
-      <a routerLink="/login-usuario">Ingresar</a>
+      <a [routerLink]="['/vender-seleccion']">Vender</a>
+      <!-- Mostrar enlaces de registro/inicio solo si el usuario NO está autenticado -->
+      <ng-container *ngIf="!isAuthenticated">
+        <a [routerLink]="['/registro-usuario']">Crear Cuenta</a>
+        <a routerLink="/login-usuario">Ingresar</a>
+      </ng-container>
     </nav>
     <div class="container-search-icons">
       <div class="search-bar">
@@ -20,7 +23,12 @@
         <i class="fa fa-heart"></i>
         <i class="fa fa-shopping-cart"></i>
       </div>
+      <!-- Mostrar la imagen de perfil solo si el usuario está autenticado -->
+      <div *ngIf="isAuthenticated" class="profile-picture">
+        <img [src]="profilePictureUrl" alt="Imagen de perfil">
+      </div>
+      <!-- Botón de log out, solo visible si el usuario está autenticado -->
+      <button *ngIf="isAuthenticated" (click)="logOut()" class="logout-btn">Log Out</button>
     </div>
-    
   </div>
 </header>

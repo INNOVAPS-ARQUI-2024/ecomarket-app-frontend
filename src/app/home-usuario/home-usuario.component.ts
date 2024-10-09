@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-usuario',
@@ -7,10 +10,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeUsuarioComponent implements OnInit {
 
-  constructor() { }
+  isVendedor: boolean = false; // Controlamos si el usuario es vendedor
+  userId: string | null = null;
+
+  // Declare the boolean flags for each vendor type
+  showProducto: boolean = false;
+  showServicio: boolean = false;
+  showEvento: boolean = false;
+  showPublicidad: boolean = false; // For "Organización"
+
+  constructor(
+    private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase, // Para acceder a Firebase Realtime Database
+    private router: Router
+  ) {}
+
+  selectedVendor: string = ''; // Initialize with an empty string or a default value
 
   ngOnInit(): void {
+    // Verifica si el usuario está autenticado
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+
+        // Accede a los detalles del usuario en la base de datos
+        this.db.object(`/users/${this.userId}`).valueChanges().subscribe((userDetails: any) => {
+          if (userDetails && userDetails.role === 'Vendedor') {
+            this.isVendedor = true; // El usuario es un vendedor
+
+            // Verificar la lista de tipos de vendedor y configurar las banderas
+            const tiposVendedor = userDetails.tiposVendedor || [];
+            this.showProducto = tiposVendedor.includes('producto');
+            this.showServicio = tiposVendedor.includes('servicio');
+            this.showEvento = tiposVendedor.includes('evento');
+            this.showPublicidad = tiposVendedor.includes('publicidad'); // For "Organización"
+          } else {
+            this.isVendedor = false; // El usuario no es vendedor
+          }
+        });
+      } else {
+        this.router.navigate(['/login']); // Redirige al login si no está autenticado
+      }
+    });
   }
+
+  // Other logic and methods remain the same
   vendedores = [
     { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },
     { nombre: 'John PO', imagen: './assets/images/JohnPo.png' },
@@ -29,7 +73,6 @@ export class HomeUsuarioComponent implements OnInit {
     { name: 'Gaming', icon: './assets/images/Gaming.png' }
   ];
 
-  // Array de productos más vendidos
   productosMasVendidos = [
     {
       image: './assets/images/Control.png',
@@ -136,9 +179,7 @@ export class HomeUsuarioComponent implements OnInit {
   }
 
   changeColor(product: { name: any; }, color: any) {
-    // Lógica para cambiar la imagen dependiendo del color seleccionado
     console.log(`Cambiando el color del producto ${product.name} a ${color}`);
-    // Aquí puedes agregar la lógica para cambiar la imagen si es necesario
   }
 
   newProducts = [

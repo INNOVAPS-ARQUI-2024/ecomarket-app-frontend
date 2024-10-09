@@ -1,29 +1,29 @@
 <div class="content">
-    <section class="login">
-      <div class="general-section">
-        <div class="login-image">
-          <img src="./assets/loginImage.png" alt="Imagen Login">
-        </div>
-        <section class="form-login">
-          <h2>Log In to Exclusive</h2>
-          <p id="p1">Enter your details below</p>
-  
-          <!-- Inputs con two-way data binding -->
-          <input class="controls" type="email" name="correo" id="correo" placeholder="Email" [(ngModel)]="email">
-          <input class="controls" type="password" name="passw" id="passw" placeholder="Contraseña" [(ngModel)]="password">
-  
-          <div class="btns-array">
-            <!-- Botón que llama al método login() al hacer clic -->
-            <button class="login-btn" (click)="login()">Log In</button>
-            <p><a href="#">¿Olvidó su contraseña?</a></p>
-          </div>
-  
-          <div class="texts-array">
-            <p>¿No tienes una cuenta?</p> 
-            <a href="#">Crea una :)</a>
-          </div>
-        </section>
+  <section class="login">
+    <div class="general-section">
+      <div class="login-image">
+        <img src="./assets/loginImage.png" alt="Imagen Login">
       </div>
-    </section>
-  </div>
-  
+      <section class="form-login">
+        <h2>Log In to Exclusive</h2>
+        <p id="p1">Enter your details below</p>
+
+        <!-- Inputs con two-way data binding -->
+        <input class="controls" type="email" name="correo" id="correo" placeholder="Email" [(ngModel)]="email">
+        <input class="controls" type="password" name="passw" id="passw" placeholder="Contraseña" [(ngModel)]="password">
+
+        <div class="btns-array">
+          <!-- Botón que llama al método login() al hacer clic -->
+          <button class="login-btn" (click)="login()">Log In</button>
+          <p><a href="#">¿Olvidó su contraseña?</a></p>
+        </div>
+
+        <div class="texts-array">
+          <p>¿No tienes una cuenta?</p>
+          <!-- Enlace para redirigir a la página de registro -->
+          <a [routerLink]="['/registro-usuario']">Crea una :)</a>
+        </div>
+      </section>
+    </div>
+  </section>
+</div>

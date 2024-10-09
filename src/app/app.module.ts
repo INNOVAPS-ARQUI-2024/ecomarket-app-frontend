@@ -1,37 +1,42 @@
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaProductosComponent } from './lista-productos/lista-productos.component';
-import { ListaResenasComponent } from './lista-resenas/lista-resenas.component';
-import { ListaServiciosComponent } from './lista-servicios/lista-servicios.component';
-import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component';
-import { ResenaDetalleComponent } from './resena-detalle/resena-detalle.component';
-import { ServicioDetalleComponent } from './servicio-detalle/servicio-detalle.component';
-import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
+import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
+
+import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
+import { FormularioProductoComponent } from './formularios/formulario-producto/formulario-producto.component';
+import { FormularioPublicidadComponent } from './formularios/formulario-publicidad/formulario-publicidad.component';
+import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
+import { ListaProductosComponent } from './lista-productos/lista-productos.component';
+import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaProductosComponent,
-    ProductoDetalleComponent,
-    ListaResenasComponent,
-    ResenaDetalleComponent,
-    ListaServiciosComponent,
-    ServicioDetalleComponent,
     HomeUsuarioComponent,
     FooterComponent,
     HeaderComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    RegistroUsuarioComponent,
+    VenderSeleccionComponent,
+    FormularioProductoComponent,
+    FormularioServicioComponent,
+    FormularioEventoComponent,
+    FormularioPublicidadComponent,
+    ListaProductosComponent,
+    ModificarProductoComponent
   ],
   imports: [
     BrowserModule,
