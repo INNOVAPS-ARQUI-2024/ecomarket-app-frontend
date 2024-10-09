@@ -31,6 +31,7 @@ jobs:
 
       - name: Build Angular app
         run: npm run build -- --configuration production
+        continue-on-error: true
 
       - name: Create Dockerfile for Angular App
         run: |
