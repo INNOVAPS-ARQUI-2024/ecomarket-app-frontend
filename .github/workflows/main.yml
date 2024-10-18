@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 jobs:
-  deploy-to-PROD:
+  deploy-to-prod:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,18 +40,20 @@ jobs:
           echo 'EXPOSE 80' >> Dockerfile
 
       - name: Build Docker Image
-        run: docker build -t ecomarket-app-frontend:PROD .
+        run: docker build -t ecomarket-app-frontend:prod .
 
-      - name: Save Docker Image to Tar File
-        run: docker save ecomarket-app-frontend:PROD -o ecomarket-app-frontend-PROD.tar
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Tag Docker Image
+        run: docker tag ecomarket-app-frontend:prod ${{ secrets.DOCKERHUB_USERNAME }}/ecomarket-app-frontend:prod
+
+      - name: Push Docker Image to Docker Hub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/ecomarket-app-frontend:prod
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Copy Docker Image to PROD Server
+      - name: Run Deployment Script on prod Server
         run: |
-          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" scp -P ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ecomarket-app-frontend-prod.tar ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }}:/tmp/ecomarket-app-frontend-prod.tar
-
-      - name: Run Deployment Script on PROD Server
-        run: |
-          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" ssh -p ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }} "/home/estudiante/scripts/deploy_docker_image-ecomarket-app-frontend-prod.sh"
+          sshpass -p "${{ secrets.PROD_SERVER_PASSWORD }}" ssh -p ${{ secrets.PROD_SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_HOST }} "/home/estudiante/ecomarket-app-backend-springboot/scripts/PROD/deploy_docker_image-ecomarket-app-frontend-prod.sh"
