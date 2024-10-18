@@ -33,12 +33,6 @@ jobs:
         run: npm run build -- --configuration production
         continue-on-error: true
 
-      - name: Create Dockerfile for Angular App
-        run: |
-          echo 'FROM nginx:alpine' > Dockerfile
-          echo 'COPY dist/ecomarket-app-frontend /usr/share/nginx/html' >> Dockerfile
-          echo 'EXPOSE 80' >> Dockerfile
-
       - name: Build Docker Image
         run: docker build -t ecomarket-app-frontend:prod .
 
