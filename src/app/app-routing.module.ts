@@ -13,6 +13,7 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
+import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 
 const routes: Routes = [
   { path: 'login-usuario', component: LoginUsuarioComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'formularios/evento', component: FormularioEventoComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'formularios/publicidad', component: FormularioPublicidadComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'lista-productos', component: ListaProductosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
-  { path: 'modificar-producto/:id', component: ModificarProductoComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } }  // Solo para Vendedor
+  { path: 'modificar-producto/:id', component: ModificarProductoComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
+  { path: 'lista-eventos', component: ListaEventosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } }  // Solo para Vendedor
 ];
 
 @NgModule({
