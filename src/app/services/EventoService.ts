@@ -22,6 +22,11 @@ export class EventoService {
     return this.http.get<Evento>(`${this.apiUrl}/${id}`);
   }
 
+  // Obtener eventos por ID de usuario
+  getEventosPorUsuario(userId: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/usuario/${userId}`);
+  }
+
   // Crear un nuevo evento
   createEvento(evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(`${this.apiUrl}`, evento);
