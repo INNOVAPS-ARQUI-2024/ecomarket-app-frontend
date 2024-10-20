@@ -1,1 +1,39 @@
-<p>modificar-evento works!</p>
+<div class="modificar-evento-container">
+    <div class="imagen-evento-container">
+        <div class="imagen-evento">
+            <h3>Imagen del evento</h3>
+            <div class="imagen-placeholder">
+                <div class="placeholder-box">Add photos</div> <!-- Placeholder temporal -->
+            </div>
+        </div>
+    </div>
+    <div class="formulario-evento-container">
+        <div class="formulario-modificar">
+            <h2>Modifica tu evento!</h2>
+            <form (ngSubmit)="guardarCambios()">
+                <label class="labels" for="nombreEvento">Nombre del evento</label>
+                <input id="nombreEvento" [(ngModel)]="evento.nombre" name="nombre" required />
+
+                <label class="labels" for="descripcionEvento">¿De qué se trata tu evento?</label>
+                <textarea id="descripcionEvento" [(ngModel)]="evento.descripcion" name="descripcion" required></textarea>
+
+                <label class="labels" for="lugarEvento">Lugar del evento</label>
+                <input id="lugarEvento" [(ngModel)]="evento.lugar" name="lugar" required />
+
+                <label class="labels" for="fechaHora">Fecha y hora del evento</label>
+                <input id="fechaHora" type="datetime-local" [(ngModel)]="evento.fechaHora" name="fechaHora" required />
+
+                <label class="labels" for="costo">¿El evento tiene algún costo?</label>
+                <input type="checkbox" id="costo" [(ngModel)]="eventoConCosto" (change)="toggleCosto()" />
+
+                <div *ngIf="eventoConCosto" class="range-input">
+                    <label class="labels" for="rangoPrecios">Rango de Precios</label>
+                    <input type="range" class="min" min="0" max="1000" [(ngModel)]="precioMinimo" name="precioMinimo" (input)="updateSlider()" style="z-index: 2;">
+                    <input type="range" class="max" min="1" max="1000" [(ngModel)]="precioMaximo" name="precioMaximo" (input)="updateSlider()" style="z-index: 1;">
+                </div>
+
+                <button type="submit" class="submit-btn">¡Listo!</button>
+            </form>
+        </div>
+    </div>
+</div>
