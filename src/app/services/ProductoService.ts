@@ -7,7 +7,7 @@ import { Producto } from '../model/Producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:7999/api/productos';  // Aquí colocas tu URL base del backend de Spring Boot
+  private apiUrl = 'http://localhost:7999/api/productos'; 
 
   constructor(private http: HttpClient) { }
 
