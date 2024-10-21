@@ -54,6 +54,14 @@ export class HomeUsuarioComponent implements OnInit {
     });
   }
 
+  registrarse(): void {
+    this.router.navigate(['/eventos-disponibles']);
+  }
+
+  verEventosRegistrados(): void {
+    this.router.navigate(['/mis-eventos']);
+  }
+
   // Other logic and methods remain the same
   vendedores = [
     { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },

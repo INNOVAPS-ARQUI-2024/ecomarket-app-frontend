@@ -8,7 +8,7 @@ import { Evento } from '../model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://localhost:7999/api/eventos';
+  private apiUrl = 'ecomarket-servicio-api-gateway:7999/api/eventos';
 
   constructor(private http: HttpClient) {}
 
@@ -40,5 +40,17 @@ export class EventoService {
   // Eliminar un evento por su ID
   deleteEvento(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  registrarUsuarioEnEvento(eventoId: string, userId: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registrar/${eventoId}/${userId}`, {});
+  }
+
+  obtenerEventosPorUsuario(userId: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/registrados/${userId}`);
+  }
+
+  getEventosPorFechaHora(fechaHora: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/fechahora/${fechaHora}`);
   }
 }
