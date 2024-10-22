@@ -22,20 +22,32 @@ export class EventosDisponiblesComponent implements OnInit {
     this.fechaBusqueda = new Date().toISOString().substring(0, 16); 
   }
 
-  buscarEventos(): void {
-    if (this.fechaBusqueda) {
-      this.eventoService.getEventosPorFecha(this.fechaBusqueda).subscribe(
-        (eventos: Evento[]) => {
-          this.eventos = eventos;
-        },
-        error => {
-          console.error('Error al buscar eventos:', error);
-        }
-      );
-    } else {
-      console.error('Fecha de búsqueda no proporcionada.');
-    }
+  private formatDate(fechaISO: string): string {
+    return fechaISO.split('T')[0]; // Extrae solo la fecha
   }
+  
+  buscarEventos(): void {
+  const fechaSolo = this.formatDate(this.fechaBusqueda);
+  if (fechaSolo) {
+    this.eventoService.getEventosPorFecha(fechaSolo).subscribe(
+      (eventos: Evento[]) => {
+        if (eventos.length > 0) {
+          this.eventos = eventos;
+        } else {
+          console.warn('No se encontraron eventos para esta fecha.');
+        }
+      },
+      error => {
+        console.error('Error al buscar eventos:', error);
+        alert('Ocurrió un error al buscar eventos. Inténtelo de nuevo más tarde.');
+      }
+    );
+  } else {
+    console.error('Fecha de búsqueda no proporcionada.');
+    alert('Por favor, proporcione una fecha válida.');
+  }
+}
+
 
   registrarse(eventoId: string): void {
     if (eventoId) {

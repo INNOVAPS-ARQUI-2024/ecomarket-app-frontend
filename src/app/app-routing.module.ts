@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'modificar-producto/:id', component: ModificarProductoComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'lista-eventos', component: ListaEventosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'eventos-disponibles', component: EventosDisponiblesComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
-  { path: 'mis-eventos', component: MisEventosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } }
+  { path: 'mis-eventos', component: MisEventosComponent, canActivate: [AuthGuard], data: { role: 'comprador' } }
 ];
 
 @NgModule({
