@@ -53,4 +53,9 @@ export class EventoService {
   getEventosPorFechaHora(fechaHora: string): Observable<Evento[]> {
     return this.http.get<Evento[]>(`${this.apiUrl}/fechahora/${fechaHora}`);
   }
+
+  getEventosPorFecha(fecha: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/fecha/${fecha}`);
+  }
+
 }

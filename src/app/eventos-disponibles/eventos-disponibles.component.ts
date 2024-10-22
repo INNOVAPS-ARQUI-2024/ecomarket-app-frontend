@@ -10,7 +10,7 @@ import { Evento } from 'src/app/model/Evento';
   styleUrls: ['./eventos-disponibles.component.css']
 })
 export class EventosDisponiblesComponent implements OnInit {
-  fechaHoraBusqueda: string = ''; // Inicializar la fecha y hora de búsqueda
+  fechaBusqueda: string = ''; // Inicializar la fecha y hora de búsqueda
   eventos: Evento[] = [];
 
   constructor(
@@ -19,13 +19,12 @@ export class EventosDisponiblesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fechaHoraBusqueda = new Date().toISOString().substring(0, 16); // Formato YYYY-MM-DDTHH:mm
-    this.buscarEventos();
+    this.fechaBusqueda = new Date().toISOString().substring(0, 16); 
   }
 
   buscarEventos(): void {
-    if (this.fechaHoraBusqueda) {
-      this.eventoService.getEventosPorFechaHora(this.fechaHoraBusqueda).subscribe(
+    if (this.fechaBusqueda) {
+      this.eventoService.getEventosPorFecha(this.fechaBusqueda).subscribe(
         (eventos: Evento[]) => {
           this.eventos = eventos;
         },
@@ -34,7 +33,7 @@ export class EventosDisponiblesComponent implements OnInit {
         }
       );
     } else {
-      console.error('Fecha y hora de búsqueda no proporcionadas.');
+      console.error('Fecha de búsqueda no proporcionada.');
     }
   }
 

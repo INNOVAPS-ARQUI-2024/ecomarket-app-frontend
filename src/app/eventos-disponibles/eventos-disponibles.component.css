@@ -77,3 +77,25 @@ td {
 .back-btn:hover {
     background-color: #005f5f;
 }
+
+.search-btn {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #005f5f;
+}
+
+.datetime-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

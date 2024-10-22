@@ -1,7 +1,8 @@
 <div class="container">
     <h2>Buscar Eventos</h2>
     <div class="actions-header">
-        <input type="datetime-local" [(ngModel)]="fechaHoraBusqueda" (change)="buscarEventos()" class="datetime-input">
+        <input type="date" [(ngModel)]="fechaBusqueda" class="date-input">
+        <button class="search-btn" (click)="buscarEventos()">Buscar</button>
     </div>
     <table>
         <thead>
@@ -15,10 +16,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let evento of eventos">
-            <!-- <td><img [src]="evento.imagenUrl || 'placeholder.png'" alt="{{ evento.nombre }}" class="event-image" /></td> -->
+                <!-- <td><img [src]="evento.imagenUrl || 'placeholder.png'" alt="{{ evento.nombre }}" class="event-image" /></td> -->
                 <td>{{ evento.nombre }}</td>
                 <td>{{ evento.lugar }}</td>
-                <td>{{ evento.fechaHora | date: 'dd-MMM-yyyy, HH:mm' }}</td>
+                <td>{{ evento.fechaHora | date: 'dd-MMM-yyyy' }}</td>
                 <td>
                     <button class="register-btn" *ngIf="evento.eventoId" (click)="registrarse(evento.eventoId!)">Registrarse</button>
                 </td>
