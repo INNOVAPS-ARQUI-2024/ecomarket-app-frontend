@@ -123,7 +123,7 @@
         <button (click)="irProgramarPublicacion()">Programar Publicación</button>
       </div>
     </div>
-    
+
 
     <!-- Sección 4: Vendedores destacados -->
     <div class="vendor-section">
@@ -142,13 +142,9 @@
 
     <!-- Sección 5: Categorías desplazables -->
     <div class="category-section">
-      <h3>Categorías</h3>
-      <h2>Buscar por Categorías</h2>
-      <div class="categories-grid">
-        <div class="category-card" *ngFor="let category of categories">
-          <img [src]="category.icon" alt="{{category.name}}">
-          <span>{{category.name}}</span>
-        </div>
+      <div class="home-container">
+        <app-lista-categorias
+          (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias>
       </div>
     </div>
 

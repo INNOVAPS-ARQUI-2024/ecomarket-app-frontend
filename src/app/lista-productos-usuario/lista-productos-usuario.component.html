@@ -1,0 +1,34 @@
+<div class="products-section">
+  <h3 *ngIf="selectedCategory">Productos en la categoría: {{ selectedCategory }}</h3>
+
+  <h2 *ngIf="!selectedCategory">Todos los Productos</h2>
+  <!-- Muestra un título diferente si no hay categoría seleccionada -->
+
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let product of paginatedProducts">
+      <img [src]="product.picture ? 'data:image/jpeg;base64,' + product.picture : 'default-image.jpg'"
+        alt="{{ product.name }}" class="product-image" />
+      <ng-template #noImage>
+        <img src="default-image.jpg" alt="Imagen no disponible" class="product-image" />
+      </ng-template>
+      <h4>{{ product.name }}</h4>
+      <p class="price">
+        ${{ product.price | number:'1.2-2' }}
+      </p>
+      <p><strong>Precio: {{ product.price | number:'1.2-2' }} {{ product.currency }}</strong></p>
+      <button (click)="verDetalles(product.productId!)">Detalles</button>
+    </div>
+  </div>
+
+
+  <div *ngIf="filteredProducts.length === 0 && selectedCategory" class="no-products">
+    <p>No se encontraron productos en esta categoría.</p>
+  </div>
+
+  <!-- Controles de paginación -->
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>
