@@ -55,8 +55,7 @@ export class ListaEventosComponent implements OnInit {
   }
 
   agregarEvento(): void {  // Cambiar agregarProducto a agregarEvento
-    // Implementa la lógica para agregar un evento o redirigir a la página correspondiente
-    console.log('Redirigir a la página para añadir un nuevo evento');
+    this.router.navigate(['/formularios/evento'])
   }
 
   eliminarEvento(id: string): void {  // Cambiar eliminarProducto a eliminarEvento

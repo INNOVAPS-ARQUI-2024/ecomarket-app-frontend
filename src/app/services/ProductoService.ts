@@ -7,7 +7,7 @@ import { Producto } from '../model/Producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'http://localhost:7999/api/productos'; 
+  private apiUrl = 'http://ecomarket-servicio-api-gateway:7999/api/productos'; 
 
   constructor(private http: HttpClient) { }
 
