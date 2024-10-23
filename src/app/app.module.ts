@@ -32,6 +32,9 @@ import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-dispo
 import { MisEventosComponent } from './mis-eventos/mis-eventos.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { ListaProductosUsuarioComponent } from './lista-productos-usuario/lista-productos-usuario.component';
+import { ListaCategoriasComponent } from './lista-categorias/lista-categorias.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
     MisEventosComponent,
     ProgramacionPublicacionesComponent,
     CrearPublicacionComponent,
+    ListaProductosUsuarioComponent,
+    ListaCategoriasComponent,
+    DetalleProductoComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { Producto } from '../model/Producto';
 })
 export class ProductoService {
 
-  private apiUrl = '/api/productos'; 
+  private apiUrl = '/api/productos';
 
 
   constructor(private http: HttpClient) { }
@@ -57,5 +57,13 @@ export class ProductoService {
   // Obtener productos por sellerId
   getProductosPorUsuario(sellerId: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.apiUrl}/usuario/${sellerId}`);
+  }
+
+  getProductosPorCategoria(categoria: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.apiUrl}/categoria/${categoria}`);
+  }
+
+  getProductosMasVendidos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/mas-vendidos`);
   }
 }

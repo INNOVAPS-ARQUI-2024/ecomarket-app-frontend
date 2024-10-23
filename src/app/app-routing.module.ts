@@ -23,9 +23,11 @@ import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-dispo
 import { MisEventosComponent } from './mis-eventos/mis-eventos.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home-usuario', pathMatch: 'full' },
   { path: 'login-usuario', component: LoginUsuarioComponent },
   { path: 'home-usuario', component: HomeUsuarioComponent},
   { path: 'pasarela-datos', component: PasarelaDatosComponent},
@@ -35,7 +37,6 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'registro-usuario', component: RegistroUsuarioComponent },
-  { path: '', redirectTo: '/home-usuario', pathMatch: 'full' },
   { path: 'vender-seleccion', component: VenderSeleccionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'formularios/producto', component: FormularioProductoComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
   { path: 'formularios/servicio', component: FormularioServicioComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },  // Solo para Vendedor
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'mis-eventos', component: MisEventosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'programacion-publicaciones', component: ProgramacionPublicacionesComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'crear-publicaciones', component: CrearPublicacionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
+  { path: 'detalle-producto/:id', component: DetalleProductoComponent }
 ];
 
 @NgModule({

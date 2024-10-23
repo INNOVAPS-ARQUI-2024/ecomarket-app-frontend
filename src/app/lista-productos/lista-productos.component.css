@@ -112,3 +112,35 @@ td {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  padding: 5px 10px;
+  background-color: #FFA14F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #4AB7B6;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+  font-weight: bold;
+}
