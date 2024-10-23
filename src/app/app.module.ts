@@ -25,6 +25,13 @@ import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos
 import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
 import { NotificacionComponent } from './notificacion/notificacion.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
+import { ModificarEventoComponent } from './modificar-evento/modificar-evento.component';
+import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
+import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-disponibles.component';
+import { MisEventosComponent } from './mis-eventos/mis-eventos.component';
+import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,13 @@ import { CarritoComponent } from './carrito/carrito.component';
     PasarelaTarjetaComponent,
     NotificacionComponent,
     CarritoComponent
+    ListaEventosComponent,
+    ModificarEventoComponent,
+    RegistroEventoComponent,
+    EventosDisponiblesComponent,
+    MisEventosComponent,
+    ProgramacionPublicacionesComponent,
+    CrearPublicacionComponent,
   ],
   imports: [
     BrowserModule,

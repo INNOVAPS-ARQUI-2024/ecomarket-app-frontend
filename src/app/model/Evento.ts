@@ -6,5 +6,6 @@ export interface Evento {
     descripcion: string;       // Descripción del evento
     rangoPrecios: number[];    // Rango de precios para el evento, como array [min, max]
     fechaHora: Date;           // Fecha y hora del evento, en formato Date
-    userId: string;            // ID del usuario creador del evento (vendedor)
+    sellerId: string;            // ID del usuario creador del evento (vendedor)
+    userIds: string[];         // Lista de IDs de usuarios asociados al evento (inscritos, interesados, etc.)
 }

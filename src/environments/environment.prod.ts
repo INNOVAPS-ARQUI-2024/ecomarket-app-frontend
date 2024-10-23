@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  apiUrl: 'http://ecomarket-servicio-api-gateway:7999/api',
   firebaseConfig: {
     apiKey: "AIzaSyDx2rLUQ6SeBbJrQtgfCQ9cN9s0wGdIjcI",
     authDomain: "ecomarket-arqui-2024.firebaseapp.com",

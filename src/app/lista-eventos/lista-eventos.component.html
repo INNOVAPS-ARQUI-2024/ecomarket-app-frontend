@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Mis eventos</h2>
+    <div class="actions-header">
+        <button class="add-btn" [routerLink]="['/formularios/evento']">Añadir +</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>IMAGEN</th>
+                <th>NOMBRE</th>
+                <th>LUGAR</th>
+                <th>FECHA</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let evento of eventos">
+                <td><img [src]="" alt="{{ evento.nombre }}" class="event-image" /></td>
+                <td>{{ evento.nombre }}</td>
+                <td>{{ evento.lugar }}</td>
+                <td>{{ evento.fechaHora | date: 'dd-MMM-yyyy' }}</td>
+                <td>
+                    <!-- Mostrar ambos botones si no se ha recibido ningún parámetro 'action' -->
+                    <ng-container *ngIf="!action">
+                        <button class="edit-btn" (click)="modificarEvento(evento.eventoId!)">✏️</button>
+                        <button class="delete-btn" (click)="eliminarEvento(evento.eventoId!)">️ Eliminar</button>
+                    </ng-container>
+                    <!-- Mostrar solo el botón de modificar si 'action' es 'modificar' -->
+                    <button class="edit-btn" *ngIf="action === 'modificar'"
+                        (click)="modificarEvento(evento.eventoId!)">✏️</button>
+
+                    <!-- Mostrar solo el botón de eliminar si 'action' es 'eliminar' -->
+                    <button class="delete-btn" *ngIf="action === 'eliminar'"
+                        (click)="eliminarEvento(evento.eventoId!)">️ Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="back-btn-container">
+        <button class="back-btn" (click)="goBack()">Volver a la página principal</button>
+    </div>
+</div>

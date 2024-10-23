@@ -13,13 +13,15 @@ export class ModificarProductoComponent implements OnInit {
     name: '',
     description: '',
     price: 0,
-    currency: '',
+    currency: 'USD',
     category: '',
-    stock: 0,  // El stock está aquí
+    stock: 0,
     sellerId: '',
     reviews: [],
     createdAt: new Date()
   };
+
+  selectedFile: File | null = null; // Variable para almacenar la imagen seleccionada
 
   constructor(
     private productoService: ProductoService,
@@ -44,10 +46,32 @@ export class ModificarProductoComponent implements OnInit {
     }
   }
 
+  // Método para manejar la selección de la imagen
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
+
+  // Método para guardar cambios en el producto
   guardarCambios(): void {
     const productId = this.producto.productId;
     if (productId) {
-      this.productoService.updateProducto(productId, this.producto).subscribe(
+      // Creamos el FormData para enviar los datos del producto junto con la imagen
+      const formData = new FormData();
+      formData.append('name', this.producto.name);
+      formData.append('description', this.producto.description);
+      formData.append('price', this.producto.price.toString());
+      formData.append('currency', this.producto.currency);
+      formData.append('category', this.producto.category);
+      formData.append('stock', this.producto.stock.toString());
+
+      if (this.selectedFile) {
+        formData.append('picture', this.selectedFile); // Añadimos la imagen si fue seleccionada
+      }
+
+      this.productoService.updateProducto(productId, formData).subscribe(
         () => {
           console.log('Producto actualizado');
           this.router.navigate(['/lista-productos']);

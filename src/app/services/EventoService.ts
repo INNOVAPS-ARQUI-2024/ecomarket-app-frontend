@@ -8,7 +8,9 @@ import { Evento } from '../model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://localhost:7999/api/eventos';
+
+  private apiUrl = '/api/eventos';
+
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +22,11 @@ export class EventoService {
   // Obtener un evento por su ID
   getEventoById(id: string): Observable<Evento> {
     return this.http.get<Evento>(`${this.apiUrl}/${id}`);
+  }
+
+  // Obtener eventos por ID de usuario
+  getEventosPorUsuario(userId: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/usuario/${userId}`);
   }
 
   // Crear un nuevo evento
@@ -35,5 +42,21 @@ export class EventoService {
   // Eliminar un evento por su ID
   deleteEvento(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  registrarUsuarioEnEvento(eventoId: string, userId: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registrar/${eventoId}/${userId}`, {});
+  }
+
+  obtenerEventosPorUsuario(userId: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/registrados/${userId}`);
+  }
+
+  getEventosPorFechaHora(fechaHora: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/fechahora/${fechaHora}`);
+  }
+
+  getEventosPorFecha(fecha: string): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apiUrl}/fecha/${fecha}`);
   }
 }

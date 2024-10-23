@@ -74,6 +74,74 @@ h3{
     padding-left: 40%;
 }
 
+  /*estilos para eventos*/
+  .event-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+  }
+
+  .event-section h3 {
+      margin-bottom: 15px;
+      color: #4AB7B6;
+      font-size: 24px;
+  }
+
+  .event-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+  }
+
+  .event-buttons button {
+      background-color: #4AB7B6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  .event-buttons button:hover {
+      background-color: #005f5f;
+  }
+
+  /* estilos para programación de publicaciones */
+  .publication-section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+  }
+
+  .publication-section h3 {
+    margin-bottom: 15px;
+    color: #4AB7B6;
+    font-size: 24px;
+  }
+
+  .publication-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
+  .publication-buttons button {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .publication-buttons button:hover {
+    background-color: #005f5f;
+  }
+
   
   /* Estilos para la sección de vendedores */
   .vendors {
