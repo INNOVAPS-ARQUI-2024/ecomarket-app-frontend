@@ -1,0 +1,47 @@
+<!-- <div class="publicacion-section">
+    <h3>Programar Publicación</h3>
+  
+    <form [formGroup]="publicacionForm" (ngSubmit)="crearPublicacion()">
+
+      <div class="form-group">
+        <label for="redSocial">Red Social</label>
+        <select formControlName="redSocial" id="redSocial" class="form-control">
+          <option value="">Seleccionar Red Social</option>
+          <option *ngFor="let red of redesSociales" [value]="red">{{ red }}</option>
+        </select>
+      </div>
+  
+
+      <div class="form-group">
+        <label for="contenido">Contenido</label>
+        <textarea formControlName="contenido" id="contenido" class="form-control" rows="5"></textarea>
+      </div>
+  
+
+      <div class="form-group">
+        <label for="fechaProgramada">Fecha y Hora</label>
+        <input formControlName="fechaProgramada" id="fechaProgramada" type="datetime-local" class="form-control" />
+      </div>
+  
+
+      <div class="form-group">
+        <button type="submit" [disabled]="publicacionForm.invalid" class="btn-programar">Programar Publicación</button>
+      </div>
+    </form>
+  
+
+    <h4>Calendario de Publicaciones Programadas</h4>
+    <div class="calendario">
+      <div *ngFor="let week of calendario">
+        <div *ngFor="let day of week" class="day">
+          <div class="date" *ngIf="day">{{ day.getDate() }}</div>
+          <div class="publicacion" *ngIf="isPublicacionProgramada(day)">
+            Publicación Programada
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <button (click)="volverHome()" class="btn-home">Volver al Home</button>
+  </div> -->
+  

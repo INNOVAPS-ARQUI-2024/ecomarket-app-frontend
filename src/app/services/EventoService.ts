@@ -8,7 +8,9 @@ import { Evento } from '../model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
+
   private apiUrl = '/api/eventos';
+
 
   constructor(private http: HttpClient) {}
 

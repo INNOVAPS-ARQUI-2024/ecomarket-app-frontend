@@ -62,6 +62,11 @@ export class HomeUsuarioComponent implements OnInit {
     this.router.navigate(['/mis-eventos']);
   }
 
+  irProgramarPublicacion() {
+    // Navegar hacia el componente de programación de publicaciones
+    this.router.navigate(['/programacion-publicaciones']);
+  }
+
   // Other logic and methods remain the same
   vendedores = [
     { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },

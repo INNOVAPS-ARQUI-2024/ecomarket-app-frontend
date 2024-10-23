@@ -28,6 +28,7 @@
                     <!-- Mostrar solo el botón de modificar si 'action' es 'modificar' -->
                     <button class="edit-btn" *ngIf="action === 'modificar'"
                         (click)="modificarEvento(evento.eventoId!)">✏️</button>
+
                     <!-- Mostrar solo el botón de eliminar si 'action' es 'eliminar' -->
                     <button class="delete-btn" *ngIf="action === 'eliminar'"
                         (click)="eliminarEvento(evento.eventoId!)">️ Eliminar</button>
