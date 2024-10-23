@@ -21,6 +21,10 @@ import { FormularioPublicidadComponent } from './formularios/formulario-publicid
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
 import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
+import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos.component';
+import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
+import { NotificacionComponent } from './notificacion/notificacion.component';
+import { CarritoComponent } from './carrito/carrito.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { ModificarEventoComponent } from './modificar-evento/modificar-evento.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
@@ -28,6 +32,9 @@ import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-dispo
 import { MisEventosComponent } from './mis-eventos/mis-eventos.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { ListaProductosUsuarioComponent } from './lista-productos-usuario/lista-productos-usuario.component';
+import { ListaCategoriasComponent } from './lista-categorias/lista-categorias.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +51,10 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
     FormularioPublicidadComponent,
     ListaProductosComponent,
     ModificarProductoComponent,
+    PasarelaDatosComponent,
+    PasarelaTarjetaComponent,
+    NotificacionComponent,
+    CarritoComponent
     ListaEventosComponent,
     ModificarEventoComponent,
     RegistroEventoComponent,
@@ -51,6 +62,9 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
     MisEventosComponent,
     ProgramacionPublicacionesComponent,
     CrearPublicacionComponent,
+    ListaProductosUsuarioComponent,
+    ListaCategoriasComponent,
+    DetalleProductoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,114 @@
+<div class="container-general">
+    <div class="container-general-2">
+        <div class="container-link">
+            <p> Home / Carrito / <b>CheckOut</b></p>
+        </div>
+        <div class="container-contenido">
+            <div class="container-detalles">
+                <div class="container-detalles-titulo">
+                    <h2>Billing Details</h2>
+                </div>
+    
+                <div class="container-detalles-formulario">
+                    <form #paymentForm="ngForm">
+                        <div class="form-group">
+                            <label for="primer-nombre">Primer Nombre</label>
+                            <input type="text" id="primer-nombre">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="nombre-empresa">Nompre Empresa</label>
+                            <input type="text" id="nombre-empresa">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" id="direccion">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="apartment">Apartamento, piso, etc. (opcional)</label>
+                            <input type="text" id="apartment">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" id="ciudad">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="numero-telefono">Número Telefonico</label>
+                            <input type="number" id="numero-telefono">
+                        </div>
+    
+                        <div class="email">
+                            <label for="primer-nombre">Email</label>
+                            <input type="email" id="email">
+                        </div>
+                      </form>
+                </div>
+    
+                <div class="container-detalles-checkbox">
+                    <div class="form-group">
+                        <label>
+                          <input type="checkbox">
+                          ¿Desea guardar la información para futuras compras?
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <div class="container-pagos">
+                <div class="container-pagos-productos">
+                    <div class="producto">
+                        <div class="img-p">
+                            <img src="https://via.placeholder.com/40" alt="">
+                        <p>LCD Monitor</p>
+                        </div>
+                        <p>$650</p>
+                    </div>
+                    <div class="producto">
+                        <div class="img-p">
+                            <img src="https://via.placeholder.com/40" alt="">
+                        <p>Gamerpad</p>
+                        </div>
+                        <p>$1100</p>
+                    </div>
+                </div>
+                <div class="container-pagos-precio">
+                    <div class="totales">
+                        <p>Subtotal:</p>
+                        <p>$1750</p>
+                    </div>
+                    <hr>
+                    <div class="totales">
+                        <p>Shipping:</p>
+                        <p>Free</p>
+                    </div>
+                    <hr>
+                    <div class="totales">
+                        <p>Total:</p>
+                        <p>$1750</p>
+                    </div>
+                </div>
+                <div class="container-pagos-seleccion">
+                    <label class="custom-radio">
+                        <input type="radio" name="options" value="option1"/>
+                        Banco
+                    </label>
+                      
+                    <label class="custom-radio">
+                        <input type="radio" name="options" value="option2" />
+                        Pago al recibir
+                    </label>
+                </div>
+                <div class="container-pagos-cupon">
+                    <input type="text" placeholder="Codigo Cupon">
+                    <button>Redimir</button>
+                </div>
+                <div class="pagar">
+                    <button (click)="onClickPagar()" >Pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

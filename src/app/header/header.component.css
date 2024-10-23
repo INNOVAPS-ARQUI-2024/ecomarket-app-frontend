@@ -68,6 +68,12 @@
   cursor: pointer;
 }
 
+.icons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .icons i {
   font-size: 18px;
   color: black;
