@@ -1,46 +1,162 @@
+* {
+  font-family: Inter, sans-serif;
+}
+
+button {
+  background-color: #4AB7B6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 15px; /* Añadir margen entre botones */
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #3a9898;
+}
+
+/* Estilo adicional para el contenido de la publicación programada */
+.publication-details {
+  margin: 20px 0; /* Separar la información de la publicación programada */
+  font-style: italic;
+  list-style: none;
+}
+
+.publication-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.publication-list li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+
+/* Estilos específicos del calendario */
 .calendar-container {
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .calendar {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-  }
-  
-  .calendar th,
-  .calendar td {
-    width: 14.28%;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .calendar td {
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
-  
-  .calendar td:hover {
-    background-color: #eee;
-  }
-  
-  .selected {
-    background-color: #4AB7B6;
-    color: white;
-  }
-  
-  .today {
-    border: 2px solid #4AB7B6;
-  }
-  
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.calendar th,
+.calendar td {
+  width: 14.28%;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calendar td {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.calendar td:hover {
+  background-color: #eee;
+}
+
+.selected {
+  background-color: #4AB7B6;
+  color: white;
+}
+
+.today {
+  border: 2px solid #4AB7B6;
+}
+
+/* Botones dentro del header del calendario (Anterior, Siguiente) */
+.calendar-header button {
+  padding: 5px 10px; /* Ajuste de padding para botones pequeños */
+}
+
+/*decorar hora y elecció*/
+/* Contenedor de selección de hora y red social */
+.selection-container {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.selection-container label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Asegura que ambos campos estén centrados */
+.time-selection,
+.social-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;  /* Usa el 100% del contenedor */
+  max-width: 400px;  /* Limita el ancho máximo */
+  margin: 10px 0;
+}
+
+input[type="time"],
+.social-selection select {
+  padding: 10px;
+  width: 100%;  /* Asegura que los campos usen todo el ancho disponible */
+  max-width: 300px;  /* Limita el ancho máximo para que no se extienda demasiado */
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;  /* Alinea el texto y la selección de la hora al centro */
+}
+
+input[type="time"]:focus,
+.social-selection select:focus {
+  outline: none;
+  border-color: #4AB7B6;
+}
+
+button.schedule-btn {
+  background-color: #4AB7B6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button.schedule-btn:hover {
+  background-color: #3fa2a0;
+}
+
+button.schedule-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px #4AB7B6;
+}
+
