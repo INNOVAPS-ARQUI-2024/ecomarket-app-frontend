@@ -1,0 +1,202 @@
+h2 {
+    text-align: left;
+}
+
+p {
+    font-family: Inter, sans-serif;
+}
+
+
+.container-general {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+}
+
+.container-general-2 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-link {
+    padding: 10px;
+}
+
+.container-contenido {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-detalles {
+    width: 50%;
+    padding: 30px;
+}
+
+.container-detalles label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: Inter, sans-serif;;
+    color: #505050;
+}
+
+.container-detalles-titulo {
+    font-family: Inter, sans-serif;
+    margin-bottom: 30px;
+}
+
+.container-detalles-formulario input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+.container-pagos {
+    width: 50%;
+    padding: 30px;
+}
+
+.container-pagos-productos {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10%;
+    padding-right: 40%;
+    margin-top: 80px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    font-weight: normal;
+}
+
+.producto .img-p {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.producto img {
+    width: 40px;
+    height: 40px;
+}
+
+.container-pagos-precio {
+    align-items: center;
+    padding: 0px 10%;
+    padding-right: 40%;
+    margin-top: 30px;
+}
+
+.container-pagos-precio hr {
+    width: 100%;
+}
+
+.totales {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-pagos-seleccion {
+    margin-top: 20px;
+    padding: 0px 10%;
+    padding-right: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container-pagos-seleccion label{
+    color: black;
+    font-family: Inter, sans-serif;
+
+}
+
+.custom-radio {
+  align-items: center; 
+  cursor: pointer; 
+  margin-top: 10px;
+}
+
+.container-pagos-cupon {
+    margin-top: 40px;
+    padding: 0px 10%;
+    padding-right: 40%;   
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.container-pagos-cupon input {
+    width: 60%;
+    padding: 10px;
+    
+    border: 2px solid rgb(94, 94, 94);
+    border-radius: 5px;
+    background-color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.container-pagos-cupon button {
+    width: 30%;
+    background-color: #C6A4CE;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.container-pagos-cupon button:hover {
+    background-color: #977b9d;
+}
+
+.pagar {
+    padding: 0px 10%;
+    padding-right: 40%;   
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.pagar button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #C6A4CE;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.pagar button:hover {
+    background-color: #977b9d;
+}

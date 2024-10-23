@@ -1,0 +1,132 @@
+.container-detalles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #e8e8e8;
+}
+
+.container-detalles-formulario {
+    width: fit-content;
+    height: fit-content;
+    background-color: #fff;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.09),    0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 26px;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    -ms-border-radius: 26px;
+    -o-border-radius: 26px;
+    max-width: 450px;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.form-group-card {
+    width: 100%;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 25px;
+}
+
+.split input {
+    width: 100%;
+}
+
+.split:nth-child(2){
+    width: 96%;
+}
+
+.input-label {
+    font-size: 14px;
+    color: #1b1b1b;
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    margin-bottom: 5px;
+}
+
+.input-field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 16px;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -ms-border-radius: 9px;
+    -o-border-radius: 9px;
+    outline: none;
+    background-color: #f2f2f2;
+    border: 1px solid #e5e5e5;
+    transition: al 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -webkit-transition: al 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -moz-transition: al 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -ms-transition: al 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -o-transition: al 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input-field:focus{
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 2px #242424;
+    background-color: transparent;
+}
+
+.comprar {
+    height: 55px;
+    background: #f2f2f2;
+    border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #363636 0%, #1b1b1b 50%, #000 100%);
+    box-shadow: 0 0 0 0 #fff, 0 0 0 0 #000;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -ms-transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    -o-transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.comprar:hover {
+    box-shadow: 0 0 0 2px #fff , 0 0 0 4px #000;
+}
+
+.notification {
+    background-color: #3b9f3c; /* Color de fondo verde */
+    width: 15%;
+    color: white; /* Color del texto */
+    padding: 15px; /* Espaciado interno */
+    position: fixed; /* Posiciona la notificación de manera fija */
+    top: 50%; /* Coloca la notificación a la mitad de la pantalla */
+    left: 50%; /* Coloca la notificación a la mitad de la pantalla */
+    transform: translate(-50%, -50%); /* Centra la notificación */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: opacity 0.5s; /* Transición suave para la opacidad */
+    opacity: 1; /* Inicialmente visible */
+    z-index: 1000; /* Asegura que la notificación esté por encima de otros elementos */
+    text-align: center; /* Centra el texto */
+    display: flex; /* Establece un contenedor flexible */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    min-height: 50px; /* Altura mínima para la notificación */
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+}
+

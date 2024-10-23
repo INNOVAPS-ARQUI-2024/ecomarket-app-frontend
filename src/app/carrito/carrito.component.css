@@ -1,0 +1,174 @@
+h2 {
+    font-family: Inter, sans-serif;
+    text-align: left;
+}
+
+h3 {
+    text-align: left;
+}
+
+p {
+    font-family: Inter, sans-serif;
+}
+
+
+.container-general {
+    margin: 5%;
+}
+
+.container-ruta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ruta {
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.container-productos-general {
+    padding: 10px;
+}
+
+.container-productos-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista-titulos {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Fondo blanco para el card */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px;
+    font-weight: bold;
+    color: rgb(42, 42, 42);
+    margin-bottom: 30px;
+}
+
+.lista-productos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.producto {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Fondo blanco para el card */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px;
+    font-weight: bold;
+    color: rgb(42, 42, 42);
+    margin-bottom: 10px;
+}
+
+.producto-img-name {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.input-field {
+    width: 50px;
+}
+
+.container-productos-botones {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botones {
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botones button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid rgb(63, 63, 63);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+}
+
+.botones button:hover {
+    background-color: #dddddd;
+}
+
+.pagos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-pagos-precio {
+    border: 1px solid black;
+    width: 20%;
+    align-items: center;
+    padding: 20px 5%;
+    margin-top: 30px;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -ms-border-radius: 14px;
+    -o-border-radius: 14px;
+}
+
+.container-pagos-precio hr {
+    width: 100%;
+}
+
+.totales {
+    display: flex;
+    justify-content: space-between;
+}
+
+.boton-check {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.boton-check button {
+    padding: 10px 20px;
+    background-color: #C6A4CE;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    cursor: pointer;
+}
+
+.boton-check button:hover {
+    background-color: #aa87b1;
+}

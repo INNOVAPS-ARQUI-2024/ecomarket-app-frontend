@@ -1,0 +1,28 @@
+<div class="container-detalles">
+
+    <div class="container-detalles-formulario">
+        <form (ngSubmit)="showNotification()">
+            <div class="form-group-card">
+                <label for="nombre-propietario" class="input-label">Nombre Propietario</label>
+                <input type="text" id="primer-nombre" placeholder="Nombre Completo" class="input-field">
+            </div>
+        
+            <div class="form-group-card">
+                <label for="numero-tarjeta" class="input-label">Numero Tarjeta</label>
+                <input type="text" id="nombre-empresa" placeholder="0000 0000 0000 0000" class="input-field">
+            </div>
+
+            <div class="form-group-card">
+                <label for="direccion" class="input-label"> Direccion</label>
+                <div class="split">
+                    <input type="text" class="input-field" placeholder="01/24">
+                    <input type="number" class="input-field" placeholder="CVV">
+                </div>
+            </div>
+            <button type="submit" class="comprar" (click)="onClickCompraFinalizada()">Pagar</button>
+          </form>
+          <div *ngIf="notificationVisible" class="notification">
+            Pago exitoso
+        </div>
+    </div>
+</div>
