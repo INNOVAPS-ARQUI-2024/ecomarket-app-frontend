@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventoService } from '../services/EventoService';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Evento } from 'src/app/model/Evento';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
+import { Evento } from 'src/app/model/Evento';
+import { EventoService } from '../services/EventoService';
 
 @Component({
   selector: 'app-mis-eventos',
@@ -46,6 +45,7 @@ export class MisEventosComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate
+    this.router.navigate(['/home-usuario']);
+
   }
 }

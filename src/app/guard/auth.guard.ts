@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const expectedRole = next.data['role'];  // Accedemos al 'role' usando notación de corchetes
+    const expectedRole = next.data['role'];  // Accedemos al 'role', puede ser string o array
 
     return this.afAuth.authState.pipe(
       take(1),
@@ -29,8 +29,8 @@ export class AuthGuard implements CanActivate {
           // Si el usuario está autenticado, busca sus detalles en la base de datos
           return this.db.object(`/users/${user.uid}`).valueChanges().pipe(
             map((userDetails: any) => {
-              if (userDetails && userDetails.role === expectedRole) {
-                return true;  // El usuario tiene el rol adecuado
+              if (userDetails && this.checkUserRole(userDetails.role, expectedRole)) {
+                return true;  // El usuario tiene un rol adecuado
               } else {
                 console.log('Acceso denegado. Rol no autorizado.');
                 this.router.navigate(['/login-usuario']);
@@ -41,5 +41,16 @@ export class AuthGuard implements CanActivate {
         }
       })
     );
+  }
+
+  // Método para verificar el rol del usuario
+  private checkUserRole(userRole: string, expectedRole: string | string[]): boolean {
+    if (Array.isArray(expectedRole)) {
+      // Si es un array, revisa si el rol del usuario está en la lista
+      return expectedRole.includes(userRole);
+    } else {
+      // Si es un string, verifica que coincida
+      return userRole === expectedRole;
+    }
   }
 }

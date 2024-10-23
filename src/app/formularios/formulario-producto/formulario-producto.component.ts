@@ -22,7 +22,8 @@ export class FormularioProductoComponent {
     createdAt: new Date()
   };
 
-  errorMessage: string = '';  // Variable to store error message
+  errorMessage: string = '';  // Variable para almacenar mensajes de error
+  selectedFile: File | null = null;  // Variable para almacenar la imagen seleccionada
 
   constructor(
     private productoService: ProductoService,
@@ -31,7 +32,7 @@ export class FormularioProductoComponent {
   ) { }
 
   ngOnInit(): void {
-    // Aquí nos suscribimos una sola vez al estado de autenticación
+    // Suscribirse al estado de autenticación para obtener el userId
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.producto.sellerId = user.uid;
@@ -41,7 +42,15 @@ export class FormularioProductoComponent {
     });
   }
 
-  // Validate stock to ensure it's an integer and greater than zero
+  // Manejar la selección de archivos de imagen
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
+
+  // Validar stock para asegurar que sea mayor a cero y entero
   validateStock(): boolean {
     if (this.producto.stock <= 0 || !Number.isInteger(this.producto.stock)) {
       this.errorMessage = 'La cantidad en stock debe ser un número entero positivo.';
@@ -50,7 +59,7 @@ export class FormularioProductoComponent {
     return true;
   }
 
-  // Validate price to ensure it is non-negative
+  // Validar precio para asegurar que no sea negativo
   validatePrice(): boolean {
     if (this.producto.price < 0) {
       this.errorMessage = 'El precio no puede ser negativo.';
@@ -59,7 +68,7 @@ export class FormularioProductoComponent {
     return true;
   }
 
-  // Validate name, description, and category to ensure they are not empty
+  // Validar campos obligatorios (nombre, descripción, categoría)
   validateFields(): boolean {
     if (!this.producto.name.trim() || !this.producto.description.trim() || !this.producto.category.trim()) {
       this.errorMessage = 'El nombre, descripción y categoría no pueden estar vacíos.';
@@ -68,7 +77,7 @@ export class FormularioProductoComponent {
     return true;
   }
 
-  // onSubmit: Se ejecuta cuando el formulario es enviado
+  // Enviar formulario
   onSubmit(): void {
     if (!this.validateFields() || !this.validateStock() || !this.validatePrice()) {
       return;  // No proceder si la validación falla
@@ -79,8 +88,22 @@ export class FormularioProductoComponent {
       return;
     }
   
-    // Llama al servicio para crear el producto
-    this.productoService.createProducto(this.producto).subscribe(
+    // Crear el FormData para enviar el producto con la imagen
+    const formData = new FormData();
+    formData.append('name', this.producto.name);
+    formData.append('description', this.producto.description);
+    formData.append('price', this.producto.price.toString());
+    formData.append('currency', this.producto.currency);
+    formData.append('category', this.producto.category);
+    formData.append('stock', this.producto.stock.toString());
+    formData.append('sellerId', this.producto.sellerId);
+
+    if (this.selectedFile) {
+      formData.append('picture', this.selectedFile); // Agregamos la imagen si fue seleccionada
+    }
+
+    // Llamar al servicio para crear el producto
+    this.productoService.createProducto(formData).subscribe(
       response => {
         console.log('Producto creado:', response);
         this.router.navigate(['/home-usuario']);
@@ -90,6 +113,4 @@ export class FormularioProductoComponent {
       }
     );
   }
-  
-
 }
