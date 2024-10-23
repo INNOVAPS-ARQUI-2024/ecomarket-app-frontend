@@ -1,0 +1,106 @@
+/* Sección principal */
+.publicacion-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  h3 {
+    text-align: center;
+    color: #4AB7B6;
+    font-size: 24px;
+  }
+  
+  h4 {
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para el formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .btn-programar {
+    width: 100%;
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-programar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-programar:hover:not(:disabled) {
+    background-color: #005f5f;
+  }
+  
+  /* Estilos del calendario */
+  .calendario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .day {
+    width: calc(100% / 7);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 5px;
+  }
+  
+  .date {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .publicacion {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  
+  /* Botón de volver al Home */
+  .btn-home {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #4AB7B6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-home:hover {
+    background-color: #005f5f;
+  }
+  

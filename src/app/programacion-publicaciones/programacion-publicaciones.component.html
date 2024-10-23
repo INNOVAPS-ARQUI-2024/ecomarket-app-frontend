@@ -1,0 +1,32 @@
+<!-- <div class="calendar-container">
+    <h2>Programación de Publicaciones</h2>
+    <div class="calendar-header">
+      <button (click)="prevMonth()">Anterior</button>
+      <span>{{ monthName }} {{ currentYear }}</span>
+      <button (click)="nextMonth()">Siguiente</button>
+    </div>
+  
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th *ngFor="let day of weekDays">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of weeks">
+          <td *ngFor="let date of week" (click)="selectDate(date)" [ngClass]="{'selected': isSelected(date), 'today': isToday(date)}">
+            {{ date.getDate() }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="schedulePublication()">Programar Publicación</button>
+  
+    <div *ngIf="selectedDate">
+      <p>Publicación programada para el {{ selectedDate | date: 'fullDate' }}</p>
+    </div>  
+    
+    <button (click)="irAlHome()">Volver al Home</button>
+  </div>
+   -->

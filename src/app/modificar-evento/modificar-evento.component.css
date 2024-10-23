@@ -1,14 +1,12 @@
-.modificar-producto-container {
+.modificar-evento-container {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    height: 100vh;
-    /* Ajusta el contenedor a la altura total de la pantalla */
+    height: 100vh; /* Ajusta el contenedor a la altura total de la pantalla */
 }
 
-.imagen-producto-container {
-    background-color: #eaf7f8;
-    /* Fondo azul claro */
+.imagen-evento-container {
+    background-color: #eaf7f8; /* Fondo azul claro */
     width: 50%;
     display: flex;
     justify-content: center;
@@ -17,7 +15,7 @@
     border-radius: 10px;
 }
 
-.imagen-producto h3 {
+.imagen-evento h3 {
     font-size: 24px;
     font-weight: bold;
     color: #333;
@@ -40,9 +38,8 @@
     color: #00796b;
 }
 
-.formulario-producto-container {
-    background-color: white;
-    /* Fondo blanco */
+.formulario-evento-container {
+    background-color: white; /* Fondo blanco */
     width: 50%;
     padding: 40px;
     display: flex;
@@ -57,9 +54,7 @@
     color: #333;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -107,16 +102,14 @@ textarea {
 .labels {
     color: #243B97;
     font-weight: bold;
+}
 
+.range-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: auto;
+
+input[type="range"] {
+    width: 45%;
 }
-  
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: auto;
-    margin: 0;
-}
-  
