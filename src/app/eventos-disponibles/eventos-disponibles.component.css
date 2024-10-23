@@ -1,0 +1,101 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 900px;
+}
+
+.actions-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.date-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #CBE4E8;
+    color: #71717A;
+    padding: 15px 10px;
+}
+
+td {
+    background-color: #f9f9f9;
+    padding: 15px 10px;
+    color: #71717A;
+}
+
+.event-image {
+    width: 50px;
+    height: 50px;
+}
+
+.register-btn {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #005f5f;
+}
+
+.back-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #005f5f;
+}
+
+.search-btn {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #005f5f;
+}
+
+.datetime-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

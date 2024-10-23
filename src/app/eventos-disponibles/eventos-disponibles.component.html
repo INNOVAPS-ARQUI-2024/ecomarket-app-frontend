@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Buscar Eventos</h2>
+    <div class="actions-header">
+        <input type="date" [(ngModel)]="fechaBusqueda" class="date-input">
+        <button class="search-btn" (click)="buscarEventos()">Buscar</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>IMAGEN</th>
+                <th>NOMBRE</th>
+                <th>LUGAR</th>
+                <th>FECHA</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let evento of eventos">
+                <!-- <td><img [src]="evento.imagenUrl || 'placeholder.png'" alt="{{ evento.nombre }}" class="event-image" /></td> -->
+                <td>{{ evento.nombre }}</td>
+                <td>{{ evento.lugar }}</td>
+                <td>{{ evento.fechaHora | date: 'dd-MMM-yyyy' }}</td>
+                <td>
+                    <button class="register-btn" *ngIf="evento.eventoId" (click)="registrarse(evento.eventoId!)">Registrarse</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="back-btn-container">
+        <button class="back-btn" (click)="goBack()">Volver a la página principal</button>
+    </div>
+</div>
