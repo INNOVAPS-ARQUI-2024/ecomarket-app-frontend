@@ -33,6 +33,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onClickGoCarrito(){
+    this.router.navigate(['/carrito']);
+  }
+
+  onClickGoNotificacion(){
+    this.router.navigate(['/notificaciones']);
+  }
+
   // Función para cerrar sesión
   logOut() {
     this.afAuth.signOut().then(() => {

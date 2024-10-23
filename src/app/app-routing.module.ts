@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
@@ -14,15 +14,24 @@ import { ModificarProductoComponent } from './modificar-producto/modificar-produ
 import { ModificarEventoComponent } from './modificar-evento/modificar-evento.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
+import {PasarelaDatosComponent} from './pasarela/pasarela-datos/pasarela-datos.component';
+import {PasarelaTarjetaComponent} from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component'
+import {NotificacionComponent } from './notificacion/notificacion.component';
+import {CarritoComponent } from './carrito/carrito.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-disponibles.component';
 import { MisEventosComponent } from './mis-eventos/mis-eventos.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 
+
 const routes: Routes = [
   { path: 'login-usuario', component: LoginUsuarioComponent },
   { path: 'home-usuario', component: HomeUsuarioComponent},
+  { path: 'pasarela-datos', component: PasarelaDatosComponent},
+  { path: 'pasarela-tarjeta', component: PasarelaTarjetaComponent},
+  { path: 'notificaciones', component: NotificacionComponent},
+  { path: 'carrito', component: CarritoComponent},
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'registro-usuario', component: RegistroUsuarioComponent },

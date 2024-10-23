@@ -21,7 +21,8 @@
       </div>
       <div class="icons">
         <i class="fa fa-heart"></i>
-        <i class="fa fa-shopping-cart"></i>
+        <img class="fa fa-shopping-cart" (click)="onClickGoCarrito()" src="https://via.placeholder.com/40" alt=""/>
+        <img class="fa fa-bell" (click)="onClickGoNotificacion()" src="https://via.placeholder.com/40" alt=""/>
       </div>
       <!-- Mostrar la imagen de perfil solo si el usuario está autenticado -->
       <div *ngIf="isAuthenticated" class="profile-picture">

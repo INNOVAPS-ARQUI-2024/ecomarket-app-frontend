@@ -1,0 +1,89 @@
+h2 {
+    font-family: Inter, sans-serif;
+}
+
+h3 {
+    font-family: Inter, sans-serif;
+}
+
+p {
+    font-family: Inter, sans-serif;
+}
+
+span {
+    font-family: Inter, sans-serif;
+}
+
+.notification-container {
+    padding: 20px;
+    background-color: #f2f2f2; /* Fondo claro */
+    display: flex;
+    justify-content: center; /* Centra el card en la pantalla */
+    flex-direction: column;
+    align-items: center;
+}
+
+.notification-card {
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    max-width: 1000px; /* Limita el ancho máximo */
+    background-color: #ffffff; /* Fondo blanco para el card */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el título y las ganancias */
+    align-items: center; /* Alinea verticalmente */
+}
+
+.notification-title {
+    font-size: 20px;
+    color: #333333; /* Color del texto */
+}
+
+.notification-earnings {
+    font-size: 18px;
+    color: #4CAF50; /* Color verde para las ganancias */
+    font-weight: bold; /* Peso del texto más grueso */
+}
+
+.notification-details {
+    margin: 15px 0; /* Espacio arriba y abajo */
+    font-size: 14px;
+    color: #666666; /* Color gris para el texto */
+}
+
+.notification-items {
+    margin-top: 20px; /* Espacio superior */
+}
+
+.item {
+    display: flex; /* Flexbox para el contenido del artículo */
+    align-items: center; /* Alinea verticalmente */
+    margin-bottom: 15px; /* Espacio inferior entre artículos */
+    border-bottom: 1px solid #e5e5e5; /* Línea de separación */
+    padding-bottom: 10px; /* Espacio interno */
+    gap: 30px;
+}
+
+.item-image {
+    border-radius: 6px; /* Bordes redondeados para la imagen */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+.item-info {
+    display: flex; /* Flexbox para alinear la información del artículo */
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+
+.item-name {
+    font-weight: bold; /* Nombre en negrita */
+}
+
+.item-price, .item-quantity {
+    font-size: 14px; /* Tamaño de texto más pequeño */
+    color: #999999; /* Color gris para el precio y cantidad */
+}

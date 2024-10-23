@@ -21,6 +21,10 @@ import { FormularioPublicidadComponent } from './formularios/formulario-publicid
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
 import { ModificarProductoComponent } from './modificar-producto/modificar-producto.component';
+import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos.component';
+import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
+import { NotificacionComponent } from './notificacion/notificacion.component';
+import { CarritoComponent } from './carrito/carrito.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { ModificarEventoComponent } from './modificar-evento/modificar-evento.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
@@ -44,6 +48,10 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
     FormularioPublicidadComponent,
     ListaProductosComponent,
     ModificarProductoComponent,
+    PasarelaDatosComponent,
+    PasarelaTarjetaComponent,
+    NotificacionComponent,
+    CarritoComponent
     ListaEventosComponent,
     ModificarEventoComponent,
     RegistroEventoComponent,
