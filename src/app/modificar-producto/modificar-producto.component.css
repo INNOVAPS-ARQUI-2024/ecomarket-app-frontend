@@ -109,3 +109,14 @@ textarea {
     font-weight: bold;
 
 }
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: auto;
+}
+  
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: auto;
+    margin: 0;
+}
+  

@@ -1,6 +1,6 @@
 <div class="formulario-producto">
     <h2>Soy vendedor de un producto :)</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
         <label for="nombreProducto">Nombre del producto</label>
         <input id="nombreProducto" [(ngModel)]="producto.name" name="nombreProducto" required>
@@ -26,6 +26,10 @@
         <label for="stock">Cantidad en stock</label>
         <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required min="1" step="1"
             placeholder="0">
+
+        <!-- Nuevo campo para la imagen -->
+        <label for="picture">Imagen del producto</label>
+        <input id="picture" type="file" (change)="onFileChange($event)" accept="image/*">
 
         <!-- Display error message if it exists -->
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

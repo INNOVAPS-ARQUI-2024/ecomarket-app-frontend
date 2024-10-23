@@ -8,7 +8,9 @@ import { Evento } from '../model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://ecomarket-servicio-api-gateway:7999/api/eventos';
+
+  private apiUrl = '/api/eventos';
+
 
   constructor(private http: HttpClient) {}
 

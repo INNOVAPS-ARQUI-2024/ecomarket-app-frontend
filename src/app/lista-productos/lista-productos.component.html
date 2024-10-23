@@ -11,17 +11,25 @@
                 <th>NOMBRE</th>
                 <th>PRECIO</th>
                 <th>FECHA DE PUBLICACIÓN</th>
+                <th>VENDIDOS</th> <!-- Nuevo campo para mostrar vendidos -->
                 <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let producto of productos">
-                <td><img [src]="" alt="{{ producto.name }}" class="product-image" /></td>
+                <!-- Mostrar la imagen si está disponible -->
+                <td>
+                    <img [src]="producto.picture ? 'data:image/jpeg;base64,' + producto.picture : 'default-image.jpg'"
+                         alt="{{ producto.name }}"
+                         class="product-image"
+                         *ngIf="producto.picture; else noImage" />
+                    <ng-template #noImage><span>No Image</span></ng-template>
+                </td>
                 <td>{{ producto.name }}</td>
                 <td>{{ producto.price | currency: 'USD':true }}</td>
                 <td>{{ producto.createdAt | date: 'dd-MMM-yyyy' }}</td>
+                <td>{{ producto.sold || 0 }}</td> <!-- Mostrar unidades vendidas -->
                 <td>
-                    <!-- Mostrar ambos botones si no se ha recibido ningún parámetro 'action' -->
                     <!-- Mostrar ambos botones si no se ha recibido ningún parámetro 'action' -->
                     <ng-container *ngIf="!action">
                         <button class="edit-btn" (click)="modificarProducto(producto.productId!)">✏️</button>
