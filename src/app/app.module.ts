@@ -54,7 +54,7 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
     PasarelaDatosComponent,
     PasarelaTarjetaComponent,
     NotificacionComponent,
-    CarritoComponent
+    CarritoComponent,
     ListaEventosComponent,
     ModificarEventoComponent,
     RegistroEventoComponent,
