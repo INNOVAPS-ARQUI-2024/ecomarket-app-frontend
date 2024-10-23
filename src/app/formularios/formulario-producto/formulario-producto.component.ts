@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/model/Producto';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductoService } from 'src/app/services/ProductoService';
 
 @Component({
@@ -28,18 +28,23 @@ export class FormularioProductoComponent {
   constructor(
     private productoService: ProductoService,
     private router: Router,
-    private afAuth: AngularFireAuth
+    private authService: AuthService // Cambiado a AuthService en lugar de AngularFireAuth
   ) { }
 
   ngOnInit(): void {
-    // Suscribirse al estado de autenticación para obtener el userId
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.producto.sellerId = user.uid;
-      } else {
-        console.error('Usuario no autenticado');
+    // Solicitar el estado del usuario desde el backend
+    this.authService.getUser().subscribe(
+      (user) => {
+        if (user && user.uid) {
+          this.producto.sellerId = user.uid;
+        } else {
+          console.error('Usuario no autenticado');
+        }
+      },
+      (error) => {
+        console.error('Error al obtener el usuario', error);
       }
-    });
+    );
   }
 
   // Manejar la selección de archivos de imagen
@@ -82,12 +87,12 @@ export class FormularioProductoComponent {
     if (!this.validateFields() || !this.validateStock() || !this.validatePrice()) {
       return;  // No proceder si la validación falla
     }
-  
+
     if (!this.producto.sellerId) {
       console.error('No se ha asignado un sellerId.');
       return;
     }
-  
+
     // Crear el FormData para enviar el producto con la imagen
     const formData = new FormData();
     formData.append('name', this.producto.name);

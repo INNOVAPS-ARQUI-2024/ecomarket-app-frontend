@@ -1,46 +1,44 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  private apiUrl = '/api/usuarios'; // Ajusta la URL del backend
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   // Iniciar sesión con email y contraseña
-  login(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        // Si la autenticación es exitosa, redirige a la página principal
-        this.router.navigate(['/home-usuario']);
-      })
-      .catch((error) => {
-        console.error('Error en el inicio de sesión', error);
-      });
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/ingreso`, { email, password });
   }
 
   // Registrar un nuevo usuario
-  register(email: string, password: string) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        // Aquí podrías realizar más acciones, como enviar un email de verificación
-        this.router.navigate(['/home-usuario']);
-      })
-      .catch((error) => {
-        console.error('Error en el registro', error);
-      });
+  register(name: string, email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registro`, { name, email, password });
   }
 
   // Cerrar sesión
-  logout() {
-    return this.afAuth.signOut().then(() => {
-      this.router.navigate(['/login-usuario']);
+  logout(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`, {});
+  }
+
+  // Obtener el estado actual del usuario (verificación de token)
+  getUser(): Observable<any> {
+    const token = localStorage.getItem('authToken');  // Asegúrate de que tienes el token
+    if (!token) {
+      return throwError('No se ha encontrado un token de autenticación');
+    }
+
+    return this.http.get(`${this.apiUrl}/validar-token`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     });
   }
 
-  // Obtener el estado actual del usuario (si está autenticado)
-  getUser() {
-    return this.afAuth.authState;
-  }
+
 }
