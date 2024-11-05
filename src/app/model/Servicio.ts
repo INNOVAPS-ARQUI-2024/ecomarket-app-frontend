@@ -6,7 +6,8 @@ export interface Servicio {
   category: string;
   providerId: string;
   availability: string;
-  reviews: string[];  // Array de IDs de reseñas
+  reviews: string[];
   createdAt: Date;
   updatedAt: Date;
+  sellerId: string;
 }

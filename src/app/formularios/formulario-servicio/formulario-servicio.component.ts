@@ -19,7 +19,8 @@ export class FormularioServicioComponent {
     availability: '',
     reviews: [],
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    sellerId: ''
   };
 
   errorMessage: string = '';  // Variable para almacenar el mensaje de error

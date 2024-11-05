@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Mis productos a la venta</h2>
+  
+    <div class="actions-header">
+        <button class="add-btn" [routerLink]="['/formularios/servicio']">Añadir +</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>DESCRIPCION</th>
+                <th>TIPO</th>
+                <th>FECHA DE PUBLICACIÓN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let servicio of servicios">
+                <td>{{ servicio.name }}</td>
+                <td>{{servicio.description}}</td>
+                <td>{{ servicio.category}}</td>
+                <td>{{ servicio.createdAt | date: 'dd-MMM-yyyy' }}</td>
+                <td>
+                    <ng-container *ngIf="!action">
+                        <button class="edit-btn" (click)="modificarServicio(servicio.serviceId!)">✏️</button>
+                        <button class="delete-btn" (click)="eliminarServicio(servicio.serviceId!)">🗑️ Eliminar</button>
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  
+    <div class="back-btn-container">
+        <button class="back-btn" (click)="goBack()">Volver a la página principal</button>
+    </div>
+  </div>
+  

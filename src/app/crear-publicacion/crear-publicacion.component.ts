@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FacebookService } from '../services/FacebookService';
-import { TwitterService } from '../services/TwitterService';
 
 @Component({
   selector: 'app-crear-publicacion',

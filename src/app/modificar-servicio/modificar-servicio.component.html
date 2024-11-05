@@ -1,0 +1,29 @@
+<div class="modificar-servicio-container">
+    <div class="imagen-servicio-container">
+        <div class="imagen-servicio">
+            <h3>Imagen del servicio</h3>
+            <div class="imagen-placeholder">
+                <div class="placeholder-box">Add photos</div> <!-- Placeholder temporal -->
+            </div>
+        </div>
+    </div>
+    <div class="formulario-servicio-container">
+        <div class="formulario-modificar">
+            <h2>Modifica tu servicio!</h2>
+            <form (ngSubmit)="guardarCambios()">
+                <label class="labels" for="nombreServicio">Nombre del servicio</label>
+                <input id="nombreServicio" [(ngModel)]="servicio.name" name="nombre" required />
+
+                <label class="labels" for="descripcionServicio">¿De qué se trata tu servicio?</label>
+                <textarea id="descripcionServicio" [(ngModel)]="servicio.description" name="descripcion" required></textarea>
+
+                <label class="labels" for="costo">¿El servicio tiene algún costo?</label>
+                <input type="checkbox" id="costo" [(ngModel)]="servicioConCosto" />
+
+                <p class="descripcion-rapidez">Se ejecuta hasta un 20 por ciento más rápido, lo que permite que las aplicaciones también se inicien un 20 por ciento más rápido.</p>
+
+                <button type="submit" class="submit-btn">¡Listo!</button>
+            </form>
+        </div>
+    </div>
+</div>

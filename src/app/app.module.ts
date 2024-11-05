@@ -35,6 +35,8 @@ import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos
 import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
+import { ListaServiciosComponent } from './lista-servicios/lista-servicios.component';
+import { ModificarServicioComponent } from './modificar-servicio/modificar-servicio.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { RegistroEventoComponent } from './registro-evento/registro-evento.compo
     ListaProductosUsuarioComponent,
     ListaCategoriasComponent,
     DetalleProductoComponent,
+    ListaServiciosComponent,
+    ModificarServicioComponent,
   ],
   imports: [
     BrowserModule,

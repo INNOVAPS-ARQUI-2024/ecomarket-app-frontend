@@ -1,0 +1,103 @@
+.modificar-servicio-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 100vh;
+}
+
+.imagen-servicio-container {
+    background-color: #eaf7f8;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.imagen-servicio h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.imagen-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: #f0f4f7;
+    border: 2px dashed #00796b;
+    border-radius: 10px;
+}
+
+.placeholder-box {
+    text-align: center;
+    font-size: 18px;
+    color: #00796b;
+}
+
+.formulario-servicio-container {
+    background-color: white;
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 10px;
+}
+
+.formulario-modificar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    background-color: #C6A4CE;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #6200ea;
+}
+
+.labels {
+    color: #243B97;
+    font-weight: bold;
+}
+
+.range-input {
+    display: flex;
+    gap: 10px;
+}
+
+.range-value {
+    font-size: 16px;
+    color: #00796b;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.descripcion-rapidez {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}

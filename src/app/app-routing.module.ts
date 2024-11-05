@@ -24,6 +24,8 @@ import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-t
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
+import { ListaServiciosComponent } from './lista-servicios/lista-servicios.component';
+import { ModificarServicioComponent } from './modificar-servicio/modificar-servicio.component';
 
 
 const routes: Routes = [
@@ -50,7 +52,9 @@ const routes: Routes = [
   { path: 'mis-eventos', component: MisEventosComponent, canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
   { path: 'programacion-publicaciones', component: ProgramacionPublicacionesComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'crear-publicaciones', component: CrearPublicacionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
-  { path: 'detalle-producto/:id', component: DetalleProductoComponent }
+  { path: 'detalle-producto/:id', component: DetalleProductoComponent },
+  { path: 'lista-servicios', component: ListaServiciosComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
+  { path: 'modificar-servicio', component: ModificarServicioComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
 ];
 
 @NgModule({
