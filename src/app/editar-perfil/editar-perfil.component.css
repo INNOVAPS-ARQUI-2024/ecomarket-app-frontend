@@ -34,7 +34,7 @@
 .perfil-comprador button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #C6A4CE;
     color: white;
     border: none;
     border-radius: 4px;
@@ -43,7 +43,7 @@
 }
 
 .perfil-comprador button:hover {
-    background-color: #0056b3;
+    background-color: #b16fbf;
 }
 
 /* Contenedor para preferencias de notificación */
@@ -62,4 +62,22 @@
 .notification-preferences input[type="checkbox"] {
     margin-left: 8px; /* Espacio entre el texto y el checkbox */
     transform: scale(1.2); /* Ajusta el tamaño del checkbox si es necesario */
+}
+/* Aplica estos estilos solo al enlace del historial de compras */
+.btn-historial-compras {
+    display: inline-block; /* Para asegurarte de que se comporte como un botón */
+    width: 100%;
+    padding: 10px;
+    background-color: #C6A4CE;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center; /* Centra el texto dentro del botón */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+.btn-historial-compras:hover {
+    background-color: #b16fbf;
 }

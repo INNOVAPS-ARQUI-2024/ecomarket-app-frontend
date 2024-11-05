@@ -12,6 +12,7 @@ import { FormularioPublicidadComponent } from './formularios/formulario-publicid
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HeaderComponent } from './header/header.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
@@ -55,6 +56,8 @@ const routes: Routes = [
   { path: 'detalle-producto/:id', component: DetalleProductoComponent },
   { path: 'pending-registrations', component: PendingRegistrationsComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
   { path: 'editar-perfil', component: EditarPerfilComponent , canActivate: [AuthGuard],   data: { role: ['Vendedor', 'Comprador','Admin'] } },
+  { path: 'historial-compras', component: HistorialComprasComponent , canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
+
 
 ];
 
