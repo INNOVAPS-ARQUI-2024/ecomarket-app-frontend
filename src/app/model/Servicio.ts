@@ -9,5 +9,4 @@ export interface Servicio {
   reviews: string[];
   createdAt: Date;
   updatedAt: Date;
-  sellerId: string;
 }

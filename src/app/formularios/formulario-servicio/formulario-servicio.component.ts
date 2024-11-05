@@ -15,12 +15,11 @@ export class FormularioServicioComponent {
     description: '',
     price: 0,
     category: '',
-    providerId: '',
+    providerId: '',        // Usaremos providerId para almacenar el ID del proveedor
     availability: '',
     reviews: [],
     createdAt: new Date(),
-    updatedAt: new Date(),
-    sellerId: ''
+    updatedAt: new Date()
   };
 
   errorMessage: string = '';  // Variable para almacenar el mensaje de error
