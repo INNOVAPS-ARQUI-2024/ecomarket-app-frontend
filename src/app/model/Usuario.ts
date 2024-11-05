@@ -2,7 +2,7 @@ export interface Usuario {
   userId?: string;
   name: string;
   email: string;
-  role: string;  // "Comprador" o "Vendedor"
+  role: string;  // "Comprador" o "Vendedor o Admin"
   profilePicture?: string;  // Imagen de perfil opcional
   phone?: string;
   createdAt: Date;

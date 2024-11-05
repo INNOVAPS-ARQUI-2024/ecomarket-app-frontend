@@ -21,6 +21,7 @@ import { ModificarProductoComponent } from './modificar-producto/modificar-produ
 import { NotificacionComponent } from './notificacion/notificacion.component';
 import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos.component';
 import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
+import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
@@ -50,7 +51,9 @@ const routes: Routes = [
   { path: 'mis-eventos', component: MisEventosComponent, canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
   { path: 'programacion-publicaciones', component: ProgramacionPublicacionesComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'crear-publicaciones', component: CrearPublicacionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
-  { path: 'detalle-producto/:id', component: DetalleProductoComponent }
+  { path: 'detalle-producto/:id', component: DetalleProductoComponent },
+  { path: 'pending-registrations', component: PendingRegistrationsComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
+
 ];
 
 @NgModule({
