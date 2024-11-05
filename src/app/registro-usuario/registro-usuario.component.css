@@ -1,21 +1,9 @@
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: white;
-}
-
 /* Contenedor principal del formulario de registro */
 .registro-usuario {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    padding: 40px 0; /* Añade padding para dar espacio alrededor */
 }
 
 /* Sección general con la imagen y el formulario */
@@ -127,4 +115,21 @@ body {
         padding: 20px;
         width: 100%;
     }
+}
+/* Contenedor para preferencias de notificación */
+.notification-preferences {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 10px; /* Espacio entre columnas */
+}
+
+.notification-preferences label {
+    display: flex;
+    justify-content: space-between; /* Alinea el texto y el checkbox */
+    font-weight: normal; /* Ajuste de estilo para el texto */
+}
+
+.notification-preferences input[type="checkbox"] {
+    margin-left: 8px; /* Espacio entre el texto y el checkbox */
+    transform: scale(1.2); /* Ajusta el tamaño del checkbox si es necesario */
 }

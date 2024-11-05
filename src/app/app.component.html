@@ -1,12 +1,11 @@
-<!-- Header de la pagina -->
-<app-header></app-header>
+<!-- app.component.html -->
+<div class="main-content">
+    <!-- Header de la página -->
+    <app-header></app-header>
 
+    <!-- Contenido de la ruta -->
+    <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
-
-<!-- router-outlet es el lugar donde se mostrará el contenido de las rutas.
-Por ejemplo, cuando el usuario navegue a /productos, el componente lista-productos será cargado aquí.
--->
-
-<!-- Footer de la pagina -->
- <app-footer></app-footer>
+<!-- Footer de la página -->
+<app-footer></app-footer>

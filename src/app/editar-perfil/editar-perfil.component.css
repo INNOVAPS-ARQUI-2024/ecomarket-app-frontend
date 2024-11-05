@@ -1,0 +1,65 @@
+.perfil-comprador {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.perfil-comprador h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.perfil-comprador form div {
+    margin-bottom: 15px;
+}
+
+.perfil-comprador label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.perfil-comprador input[type="text"],
+.perfil-comprador input[type="checkbox"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.perfil-comprador button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.perfil-comprador button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor para preferencias de notificación */
+.notification-preferences {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 10px; /* Espacio entre columnas */
+}
+
+.notification-preferences label {
+    display: flex;
+    justify-content: space-between; /* Alinea el texto y el checkbox */
+    font-weight: normal; /* Ajuste de estilo para el texto */
+}
+
+.notification-preferences input[type="checkbox"] {
+    margin-left: 8px; /* Espacio entre el texto y el checkbox */
+    transform: scale(1.2); /* Ajusta el tamaño del checkbox si es necesario */
+}

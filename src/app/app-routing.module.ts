@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-disponibles.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'crear-publicaciones', component: CrearPublicacionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'detalle-producto/:id', component: DetalleProductoComponent },
   { path: 'pending-registrations', component: PendingRegistrationsComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
+  { path: 'editar-perfil', component: EditarPerfilComponent , canActivate: [AuthGuard],   data: { role: ['Vendedor', 'Comprador','Admin'] } },
 
 ];
 

@@ -41,6 +41,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/notificaciones']);
   }
 
+  irAEditarPerfil(): void {
+    this.router.navigate(['/editar-perfil']);
+  }
   // Función para cerrar sesión
   logOut() {
     this.afAuth.signOut().then(() => {
