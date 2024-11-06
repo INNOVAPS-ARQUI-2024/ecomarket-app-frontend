@@ -1,0 +1,42 @@
+.historial-compras {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.historial-compras h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.producto {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.producto-imagen {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.producto-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.producto-info p {
+    margin: 5px 0;
+    color: #666;
+}

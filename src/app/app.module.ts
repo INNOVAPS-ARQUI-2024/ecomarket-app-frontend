@@ -15,14 +15,20 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { VenderSeleccionComponent } from './vender-seleccion/vender-seleccion.component';
 
+import { EditarUsuarioAdminComponent } from './admin/editar-usuario-admin/editar-usuario-admin.component';
+import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
+import { ModificarPermisosComponent } from './admin/modificar-permisos/modificar-permisos.component';
+import { RegistroUsuarioAdminComponent } from './admin/registro-usuario-admin/registro-usuario-admin.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-disponibles.component';
 import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
 import { FormularioProductoComponent } from './formularios/formulario-producto/formulario-producto.component';
 import { FormularioPublicidadComponent } from './formularios/formulario-publicidad/formulario-publicidad.component';
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 import { ListaCategoriasComponent } from './lista-categorias/lista-categorias.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { ListaProductosUsuarioComponent } from './lista-productos-usuario/lista-productos-usuario.component';
@@ -33,8 +39,10 @@ import { ModificarProductoComponent } from './modificar-producto/modificar-produ
 import { NotificacionComponent } from './notificacion/notificacion.component';
 import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos.component';
 import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
+import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
+import { VistaAdminComponent } from './admin/vista-admin/vista-admin.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +73,14 @@ import { RegistroEventoComponent } from './registro-evento/registro-evento.compo
     ListaProductosUsuarioComponent,
     ListaCategoriasComponent,
     DetalleProductoComponent,
+    PendingRegistrationsComponent,
+    EditarPerfilComponent,
+    HistorialComprasComponent,
+    ListaUsuariosComponent,
+    RegistroUsuarioAdminComponent,
+    EditarUsuarioAdminComponent,
+    ModificarPermisosComponent,
+    VistaAdminComponent,
   ],
   imports: [
     BrowserModule,

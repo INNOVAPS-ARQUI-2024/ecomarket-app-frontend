@@ -111,8 +111,8 @@
     <div class="event-section">
       <h3>Eventos Disponibles</h3>
       <div class="event-buttons">
-          <button (click)="registrarse()">Registrarse en Eventos</button>
-          <button (click)="verEventosRegistrados()">Ver Mis Eventos</button>
+        <button (click)="registrarse()">Registrarse en Eventos</button>
+        <button (click)="verEventosRegistrados()">Ver Mis Eventos</button>
       </div>
     </div>
 
@@ -143,8 +143,7 @@
     <!-- Sección 5: Categorías desplazables -->
     <div class="category-section">
       <div class="home-container">
-        <app-lista-categorias
-          (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias>
+        <app-lista-categorias (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias>
       </div>
     </div>
 
