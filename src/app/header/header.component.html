@@ -26,8 +26,8 @@
       </div>
       <!-- Mostrar la imagen de perfil solo si el usuario está autenticado -->
       <div *ngIf="isAuthenticated" class="profile-picture">
-        <img [src]="profilePictureUrl" alt="Imagen de perfil">
-      </div>
+        <img [src]="profilePictureUrl" alt="Imagen de perfil" (click)="irAEditarPerfil()">
+      </div>      
       <!-- Botón de log out, solo visible si el usuario está autenticado -->
       <button *ngIf="isAuthenticated" (click)="logOut()" class="logout-btn">Log Out</button>
     </div>

@@ -36,6 +36,8 @@ import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-t
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
 import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,8 @@ import { PendingRegistrationsComponent } from './pending-registrations/pending-r
     ListaCategoriasComponent,
     DetalleProductoComponent,
     PendingRegistrationsComponent,
+    EditarPerfilComponent,
+    HistorialComprasComponent,
   ],
   imports: [
     BrowserModule,

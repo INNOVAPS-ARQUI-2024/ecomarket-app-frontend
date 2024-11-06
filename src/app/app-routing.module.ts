@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { EventosDisponiblesComponent } from './eventos-disponibles/eventos-disponibles.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormularioEventoComponent } from './formularios/formulario-evento/formulario-evento.component';
@@ -11,6 +12,7 @@ import { FormularioPublicidadComponent } from './formularios/formulario-publicid
 import { FormularioServicioComponent } from './formularios/formulario-servicio/formulario-servicio.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HeaderComponent } from './header/header.component';
+import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
@@ -53,6 +55,9 @@ const routes: Routes = [
   { path: 'crear-publicaciones', component: CrearPublicacionComponent, canActivate: [AuthGuard], data: { role: 'Vendedor' } },
   { path: 'detalle-producto/:id', component: DetalleProductoComponent },
   { path: 'pending-registrations', component: PendingRegistrationsComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
+  { path: 'editar-perfil', component: EditarPerfilComponent , canActivate: [AuthGuard],   data: { role: ['Vendedor', 'Comprador','Admin'] } },
+  { path: 'historial-compras', component: HistorialComprasComponent , canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
+
 
 ];
 

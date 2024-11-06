@@ -8,24 +8,35 @@ import { Usuario } from '../model/Usuario';
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
-})
+}) 
 export class RegistroUsuarioComponent implements OnInit {
   email: string = '';
   password: string = '';
-  confirmPassword: string = '';  // Campo para confirmar la contraseña
+  confirmPassword: string = '';
   name: string = '';
-  role: string = 'Comprador';  // Comprador por defecto
-  profilePicture: string = '';  // Imagen de perfil (URL)
-  phone: string = '';  // Número de teléfono
-  errorMessage: string = '';  // Mensajes de error
+  role: string = 'Comprador';
+  profilePicture: string = '';
+  phone: string = '';
+  address: string = '';  // Dirección de envío obligatoria
+  errorMessage: string = '';
+  notificationPreferences: string[] = [];  // Array para las preferencias de notificación
 
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase,  
+    private db: AngularFireDatabase,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  togglePreference(preference: string): void {
+    const index = this.notificationPreferences.indexOf(preference);
+    if (index === -1) {
+      this.notificationPreferences.push(preference);
+    } else {
+      this.notificationPreferences.splice(index, 1);
+    }
+  }
 
   onRegister() {
     // Verificar si las contraseñas coinciden
@@ -34,32 +45,39 @@ export class RegistroUsuarioComponent implements OnInit {
       return;
     }
 
+    if (!this.address) {
+      this.errorMessage = "La dirección de envío es obligatoria.";
+      return;
+    }
+
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
       .then((result) => {
-        // Usuario autenticado automáticamente después del registro
         const userId = result.user?.uid;
         const createdAt = new Date();
         const updatedAt = createdAt;
         const isActive = true;
 
-        // Crea el objeto de Usuario con todos los campos
+        // Crea el objeto de Usuario sin el campo "approved"
         const usuario: Usuario = {
           userId: userId || '',
           name: this.name,
           email: this.email,
-          role: this.role,  // Guardar el rol (Comprador o Vendedor)
-          profilePicture: this.profilePicture || '',  // Imagen de perfil (opcional)
+          role: this.role,
+          profilePicture: this.profilePicture || '',
+          phone: this.phone || '',
+          address: this.address,
+          paymentMethods: [],
+          notificationPreferences: this.notificationPreferences,
           createdAt: createdAt,
           updatedAt: updatedAt,
           isActive: isActive,
-          phone: this.phone || ''  // Guardar el teléfono (opcional)
+          approved: false
         };
 
         // Guardar el usuario en Firebase Realtime Database
         if (userId) {
           this.db.object(`/users/${userId}`).set(usuario)
             .then(() => {
-              // Redirige al usuario después del registro
               this.router.navigate(['/home-usuario']);
             })
             .catch((error) => {
@@ -68,7 +86,6 @@ export class RegistroUsuarioComponent implements OnInit {
         }
       })
       .catch((error) => {
-        // Manejar errores en el registro
         this.errorMessage = "Error en el registro: " + error.message;
       });
   }
