@@ -41,6 +41,7 @@ import { HistorialComprasComponent } from './historial-compras/historial-compras
 import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
 import { RegistroUsuarioAdminComponent } from './admin/registro-usuario-admin/registro-usuario-admin.component';
 import { EditarUsuarioAdminComponent } from './admin/editar-usuario-admin/editar-usuario-admin.component';
+import { ModificarPermisosComponent } from './admin/modificar-permisos/modificar-permisos.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { EditarUsuarioAdminComponent } from './admin/editar-usuario-admin/editar
     ListaUsuariosComponent,
     RegistroUsuarioAdminComponent,
     EditarUsuarioAdminComponent,
+    ModificarPermisosComponent,
   ],
   imports: [
     BrowserModule,
