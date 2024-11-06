@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditarUsuarioAdminComponent } from './admin/editar-usuario-admin/editar-usuario-admin.component';
 import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
+import { RegistroUsuarioAdminComponent } from './admin/registro-usuario-admin/registro-usuario-admin.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
@@ -59,6 +61,8 @@ const routes: Routes = [
   { path: 'editar-perfil', component: EditarPerfilComponent , canActivate: [AuthGuard],   data: { role: ['Vendedor', 'Comprador','Admin'] } },
   { path: 'historial-compras', component: HistorialComprasComponent , canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
   { path: 'admin/lista-usuarios', component: ListaUsuariosComponent  , canActivate: [AuthGuard], data: { role: 'Admin' } },
+  { path: 'admin/registro-usuario', component: RegistroUsuarioAdminComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
+  { path: 'admin/editar-usuario/:id', component: EditarUsuarioAdminComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
 
 ];
 

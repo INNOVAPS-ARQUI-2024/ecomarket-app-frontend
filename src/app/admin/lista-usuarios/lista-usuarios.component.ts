@@ -57,10 +57,6 @@ export class ListaUsuariosComponent implements OnInit {
     }
   }
 
-  editUser(uid: string) {
-    console.log(`Editar usuario con UID: ${uid}`);
-    // Lógica de edición
-  }
 
   deleteUser(uid: string) {
     if (confirm(`¿Está seguro de que quiere eliminar este usuario?`)) {

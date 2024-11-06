@@ -1,35 +1,41 @@
 <div class="container">
     <h2>Lista de Usuarios</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>IMAGEN</th>
-                <th>NOMBRE</th>
-                <th>CORREO</th>
-                <th>ROL</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let user of usuariosPaginados">
-                <tr *ngIf="user.role !== 'Admin'">
-                    <td>
-                        <img [src]="user.profilePicture || 'https://via.placeholder.com/40'"
-                             alt="{{ user.name }}" class="user-image" />
-                    </td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.role }}</td>
-                    <td>
-                        <button class="edit-btn" (click)="editUser(user.uid)">✏️ Editar</button>
-                        <button class="delete-btn" (click)="deleteUser(user.uid)">🗑️ Eliminar</button>
-                    </td>
-                </tr>
-            </ng-container>
-        </tbody>
-    </table>
+    <div class="actions-header">
 
+        <a routerLink="/admin/registro-usuario" >Registrar Usuario Administrativo</a>
+
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>IMAGEN</th>
+                    <th>NOMBRE</th>
+                    <th>CORREO</th>
+                    <th>ROL</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let user of usuariosPaginados">
+                    <tr *ngIf="user.role !== 'Admin'">
+                        <td>
+                            <img [src]="user.profilePicture || 'https://via.placeholder.com/40'" alt="{{ user.name }}"
+                                class="user-image" />
+                        </td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            <a [routerLink]="['/admin/editar-usuario', user.uid]" class="edit-btn">✏️ Editar</a>
+                            <button class="delete-btn" (click)="deleteUser(user.uid)">🗑️ Eliminar</button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
     <div class="pagination-controls">
         <button (click)="anteriorPagina()" [disabled]="paginaActual === 1">Anterior</button>
         <span>Página {{ paginaActual }} de {{ totalPaginas }}</span>

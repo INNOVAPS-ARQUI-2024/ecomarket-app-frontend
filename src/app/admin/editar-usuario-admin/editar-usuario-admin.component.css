@@ -1,0 +1,81 @@
+.perfil-comprador {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.perfil-comprador h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.perfil-comprador form div {
+    margin-bottom: 15px;
+}
+
+.perfil-comprador label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.perfil-comprador input[type="text"],
+.perfil-comprador input[type="email"],
+.perfil-comprador input[type="tel"],
+.perfil-comprador select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.perfil-comprador button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4AB7B6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.perfil-comprador button:hover {
+    background-color: #369c9c;
+}
+
+/* Estilo para el mensaje de error */
+.error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Ajustes de estilo para el campo de selección de roles */
+.perfil-comprador select {
+    -webkit-appearance: none; /* Quitar estilo por defecto en Safari */
+    -moz-appearance: none; /* Quitar estilo por defecto en Firefox */
+    appearance: none; /* Quitar estilo por defecto en otros navegadores */
+    background-color: #fff;
+}
+
+/* Agrega un icono de flecha para el select */
+.perfil-comprador select {
+    position: relative;
+    padding-right: 30px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 24 24%22 fill%3D%22gray%22%3E%3Cpath d%3D%22M7 10l5 5 5-5z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}

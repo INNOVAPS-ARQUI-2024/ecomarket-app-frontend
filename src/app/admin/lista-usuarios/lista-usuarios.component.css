@@ -80,16 +80,20 @@ td {
     font-weight: bold;
 }
 .edit-btn {
-    background-color: #cbe4e87c;
+    background-color: #cbd5e87c;
     padding: 5px 10px;
     margin-right: 5px;
     border: none;
     border-radius: 5px;
+    color: white;
+
     cursor: pointer;
+    text-align: center; /* Centra el texto dentro del botón */
+    text-decoration: none; /* Elimina el subrayado */
 }
 
 .edit-btn:hover {
-    background-color: #cac7bc;
+    background-color: #797979;
 }
 
 .delete-btn {
@@ -103,4 +107,28 @@ td {
 
 .delete-btn:hover {
     background-color: #cc0000;
+}
+
+.actions-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.actions-header a {
+    display: inline-block; /* Asegura que se comporte como un botón */
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    text-align: center; /* Centra el texto dentro del botón */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 16px;
+}
+
+.actions-header a:hover {
+    background-color: #005f5f;
+    color: white;
 }
