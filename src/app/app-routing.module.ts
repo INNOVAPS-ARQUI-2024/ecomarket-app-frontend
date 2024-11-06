@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
@@ -57,7 +58,7 @@ const routes: Routes = [
   { path: 'pending-registrations', component: PendingRegistrationsComponent , canActivate: [AuthGuard], data: { role: 'Admin' } },
   { path: 'editar-perfil', component: EditarPerfilComponent , canActivate: [AuthGuard],   data: { role: ['Vendedor', 'Comprador','Admin'] } },
   { path: 'historial-compras', component: HistorialComprasComponent , canActivate: [AuthGuard],  data: { role: ['Vendedor', 'Comprador'] } },
-
+  { path: 'admin/lista-usuarios', component: ListaUsuariosComponent  , canActivate: [AuthGuard], data: { role: 'Admin' } },
 
 ];
 

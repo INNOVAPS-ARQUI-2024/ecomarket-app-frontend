@@ -117,10 +117,12 @@
     </div>
 
     <!-- Sección de Registros Pendientes (solo visible para administradores) -->
-    <div *ngIf="isAdmin" class="pending-registration-section">
+    <div *ngIf="isAdmin" class="admin-section">
       <h3>Registros Pendientes</h3>
-      <div class="registration-buttons">
+      <div class="admin-buttons">
         <button (click)="navigateToPendingRegistrations()">Ir a Registros Pendientes</button>
+        <a routerLink="/admin/lista-usuarios">Lista de Usuarios</a>
+
       </div>
     </div>
 

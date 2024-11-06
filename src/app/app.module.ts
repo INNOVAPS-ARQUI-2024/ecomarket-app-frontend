@@ -38,6 +38,7 @@ import { RegistroEventoComponent } from './registro-evento/registro-evento.compo
 import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
+import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { HistorialComprasComponent } from './historial-compras/historial-compras
     PendingRegistrationsComponent,
     EditarPerfilComponent,
     HistorialComprasComponent,
+    ListaUsuariosComponent,
   ],
   imports: [
     BrowserModule,
