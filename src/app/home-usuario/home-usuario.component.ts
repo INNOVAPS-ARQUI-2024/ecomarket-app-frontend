@@ -14,6 +14,7 @@ export class HomeUsuarioComponent implements OnInit {
   isVendedor: boolean = false; // Controlamos si el usuario es vendedor
   userId: string | null = null;
   selectedCategory: any = null;
+  isAdmin: boolean = false;  // Bandera para saber si el usuario es administrador
 
   // Declare the boolean flags for each vendor type
   showProducto: boolean = false;
@@ -65,31 +66,30 @@ export class HomeUsuarioComponent implements OnInit {
   selectedVendor: string = ''; // Initialize with an empty string or a default value
 
   ngOnInit(): void {
-    // Verifica si el usuario está autenticado
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
-
-        // Accede a los detalles del usuario en la base de datos
         this.db.object(`/users/${this.userId}`).valueChanges().subscribe((userDetails: any) => {
-          if (userDetails && userDetails.role === 'Vendedor') {
-            this.isVendedor = true; // El usuario es un vendedor
-
-            // Verificar la lista de tipos de vendedor y configurar las banderas
-            const tiposVendedor = userDetails.tiposVendedor || [];
-            this.showProducto = tiposVendedor.includes('producto');
-            this.showServicio = tiposVendedor.includes('servicio');
-            this.showEvento = tiposVendedor.includes('evento');
-            this.showPublicidad = tiposVendedor.includes('publicidad'); // For "Organización"
-          } else {
-            this.isVendedor = false; // El usuario no es vendedor
+          if (userDetails) {
+            // Verifica el rol del usuario
+            if (userDetails.role === 'Admin') {
+              this.isAdmin = true; // El usuario es administrador
+            } else if (userDetails.role === 'Vendedor') {
+              this.isVendedor = true; // El usuario es un vendedor
+              const tiposVendedor = userDetails.tiposVendedor || [];
+              this.showProducto = tiposVendedor.includes('producto');
+              this.showServicio = tiposVendedor.includes('servicio');
+              this.showEvento = tiposVendedor.includes('evento');
+              this.showPublicidad = tiposVendedor.includes('publicidad');
+            }
           }
         });
       } else {
-        this.router.navigate(['/login']); // Redirige al login si no está autenticado
+        this.router.navigate(['/login']);
       }
     });
   }
+
 
   cargarProductosMasVendidos(): void {
     this.productoService.getProductosMasVendidos().subscribe(
@@ -104,6 +104,9 @@ export class HomeUsuarioComponent implements OnInit {
 
   registrarse(): void {
     this.router.navigate(['/eventos-disponibles']);
+  }
+  navigateToPendingRegistrations(): void {
+    this.router.navigate(['/pending-registrations']);
   }
 
   verEventosRegistrados(): void {
