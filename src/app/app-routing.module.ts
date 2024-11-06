@@ -4,6 +4,7 @@ import { EditarUsuarioAdminComponent } from './admin/editar-usuario-admin/editar
 import { ListaUsuariosComponent } from './admin/lista-usuarios/lista-usuarios.component';
 import { ModificarPermisosComponent } from './admin/modificar-permisos/modificar-permisos.component';
 import { RegistroUsuarioAdminComponent } from './admin/registro-usuario-admin/registro-usuario-admin.component';
+import { VistaAdminComponent } from './admin/vista-admin/vista-admin.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
@@ -65,6 +66,9 @@ const routes: Routes = [
   { path: 'admin/registro-usuario', component: RegistroUsuarioAdminComponent, canActivate: [AuthGuard] },//, data: { role: 'Admin' } },
   { path: 'admin/editar-usuario/:id', component: EditarUsuarioAdminComponent, canActivate: [AuthGuard] },//, data: { role: 'Admin' } },
   { path: 'admin/modificar-permisos', component: ModificarPermisosComponent, canActivate: [AuthGuard] },//, data: { role: ['Admin'] } },
+  { path: 'admin/vista', component: VistaAdminComponent, canActivate: [AuthGuard] },//, data: { role: ['Admin'] } },
+
+  
 ];
 
 @NgModule({

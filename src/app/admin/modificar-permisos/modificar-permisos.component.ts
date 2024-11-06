@@ -16,7 +16,7 @@ export class ModificarPermisosComponent implements OnInit {
     'eventos-disponibles', 'mis-eventos', 'programacion-publicaciones',
     'crear-publicaciones', 'detalle-producto/:id', 'pending-registrations',
     'editar-perfil', 'historial-compras', 'admin/lista-usuarios', 
-    'admin/registro-usuario', 'admin/editar-usuario/:id','admin/modificar-permisos'
+    'admin/registro-usuario', 'admin/editar-usuario/:id','admin/modificar-permisos','admin/vista'
   ];
   isLoading = true;
   saveMessage: string | null = null;
