@@ -46,6 +46,6 @@ export class MisEventosComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate
+    this.router.navigate(['/home-usuario']);
   }
 }

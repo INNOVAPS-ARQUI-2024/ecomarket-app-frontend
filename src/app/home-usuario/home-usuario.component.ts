@@ -106,9 +106,9 @@ export class HomeUsuarioComponent implements OnInit {
     this.router.navigate(['/eventos-disponibles']);
   }
 
-  verEventosRegistrados(): void {
-    this.router.navigate(['/mis-eventos']);
-  }
+  // verEventosRegistrados(): void {
+  //   this.router.navigate(['/mis-eventos']);
+  // }
 
   irProgramarPublicacion() {
     // Navegar hacia el componente de programación de publicaciones
