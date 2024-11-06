@@ -1,0 +1,25 @@
+<div class="publication-form">
+    <h2>Programar Publicación</h2>
+  
+    <div class="content">
+        <textarea [(ngModel)]="postContent" placeholder="Escribe tu contenido aquí"></textarea>
+        <br>
+        <input type="file" (change)="onFileSelected($event)" />
+    </div>
+  
+    <!-- Selección de plataformas -->
+    <div *ngFor="let platform of platforms">
+        <label>
+            <input type="checkbox" [(ngModel)]="selectedPlatforms[platform]" /> {{ platform }}
+        </label>
+    </div>
+  
+    <div class="schedule-date">
+      <label for="scheduleDate">Fecha y hora de publicación:</label>
+      <input type="datetime-local" [(ngModel)]="scheduleDate" />
+    </div>
+  
+    <div>
+      <button (click)="schedulePost()">Programar Publicación</button>
+    </div>
+  </div>

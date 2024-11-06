@@ -1,0 +1,73 @@
+* {
+    font-family: Inter, sans-serif;
+  }
+  
+  .publication-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 50%;
+    margin: 3% auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    margin: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4AB7B6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  
+  button:hover {
+    background-color: #3c9e9b;
+  }
+  
+  .platform-selection {
+    margin: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .schedule-date {
+    margin: 20px;
+  }
+  
+  input[type="date"] {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+  }
+  
+  input[type="date"]:focus {
+    outline: none;
+    border-color: #4AB7B6;
+  }

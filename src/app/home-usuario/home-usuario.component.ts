@@ -112,7 +112,7 @@ export class HomeUsuarioComponent implements OnInit {
 
   irProgramarPublicacion() {
     // Navegar hacia el componente de programación de publicaciones
-    this.router.navigate(['/programacion-publicaciones']);
+    this.router.navigate(['/admin-publicaciones']);
   }
 
   // Other logic and methods remain the same

@@ -1,32 +1,56 @@
-<!-- <div class="calendar-container">
-    <h2>Programación de Publicaciones</h2>
-    <div class="calendar-header">
-      <button (click)="prevMonth()">Anterior</button>
-      <span>{{ monthName }} {{ currentYear }}</span>
-      <button (click)="nextMonth()">Siguiente</button>
-    </div>
-  
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th *ngFor="let day of weekDays">{{ day }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let week of weeks">
-          <td *ngFor="let date of week" (click)="selectDate(date)" [ngClass]="{'selected': isSelected(date), 'today': isToday(date)}">
-            {{ date.getDate() }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <button (click)="schedulePublication()">Programar Publicación</button>
-  
-    <div *ngIf="selectedDate">
-      <p>Publicación programada para el {{ selectedDate | date: 'fullDate' }}</p>
-    </div>  
-    
-    <button (click)="irAlHome()">Volver al Home</button>
+<div class="calendar-container">
+  <h2>Programación de Publicaciones</h2>
+
+  <!-- Calendario -->
+  <div class="calendar-header">
+    <button (click)="prevMonth()">Anterior</button>
+    <span>{{ monthName }} {{ currentYear }}</span>
+    <button (click)="nextMonth()">Siguiente</button>
   </div>
-   -->
+
+  <table class="calendar">
+    <thead>
+      <tr>
+        <th *ngFor="let day of weekDays">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of weeks">
+        <td *ngFor="let date of week" (click)="selectDate(date)" [ngClass]="{'selected': isSelected(date), 'today': isToday(date)}">
+          <span *ngIf="date">{{ date.getDate() }}</span>
+        </td>
+      </tr>          
+    </tbody>
+  </table>
+
+  <!-- Selección de hora y red social -->
+  <div class="selection-container">
+    <div class="time-selection">
+      <label for="hora">Selecciona la hora:</label>
+      <input id="hora" type="time" [(ngModel)]="selectedTime">
+    </div>
+
+    <div class="social-selection">
+      <label for="socialMedia">Selecciona la red social:</label>
+      <select id="socialMedia" [(ngModel)]="socialMedia">
+        <option value="Facebook">Facebook</option>
+        <option value="Twitter">Twitter</option>
+        <option value="Instagram">Instagram</option>
+      </select>
+    </div>
+
+    <button class="schedule-btn" (click)="schedulePublication()">Programar Publicación</button>
+  </div>
+
+  <!-- Lista de publicaciones programadas -->
+  <div *ngIf="programmedPosts.length > 0">
+    <h3>Publicaciones programadas</h3>
+    <ul class="publication-list">
+      <li *ngFor="let post of programmedPosts">
+        Publicación en {{ post.socialMedia }} programada para el {{ post.date }}
+      </li>
+    </ul>
+  </div>
+
+  <button class="schedule-btn" (click)="irAlHome()">Volver al Home</button>
+</div>

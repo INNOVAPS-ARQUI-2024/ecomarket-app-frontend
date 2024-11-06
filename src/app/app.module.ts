@@ -35,6 +35,7 @@ import { PasarelaDatosComponent } from './pasarela/pasarela-datos/pasarela-datos
 import { PasarelaTarjetaComponent } from './pasarela/pasarela-tarjeta/pasarela-tarjeta.component';
 import { ProgramacionPublicacionesComponent } from './programacion-publicaciones/programacion-publicaciones.component';
 import { RegistroEventoComponent } from './registro-evento/registro-evento.component';
+import { AdminPublicacionesComponent } from './admin-publicaciones/admin-publicaciones.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { RegistroEventoComponent } from './registro-evento/registro-evento.compo
     ListaProductosUsuarioComponent,
     ListaCategoriasComponent,
     DetalleProductoComponent,
+    AdminPublicacionesComponent,
   ],
   imports: [
     BrowserModule,
