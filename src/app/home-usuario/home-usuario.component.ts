@@ -105,9 +105,7 @@ export class HomeUsuarioComponent implements OnInit {
   registrarse(): void {
     this.router.navigate(['/eventos-disponibles']);
   }
-  navigateToPendingRegistrations(): void {
-    this.router.navigate(['/pending-registrations']);
-  }
+
 
   verEventosRegistrados(): void {
     this.router.navigate(['/mis-eventos']);

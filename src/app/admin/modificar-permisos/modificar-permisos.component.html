@@ -1,0 +1,19 @@
+<div class="container" *ngIf="!isLoading">
+    <h2>Modificar Permisos de Roles</h2>
+    <div *ngFor="let role of roleKeys">
+        <h3>{{ role }}</h3>
+        <div class="permissions">
+            <label *ngFor="let route of availableRoutes">
+                <input type="checkbox" [checked]="rolesPermissions[role].includes(route)"
+                    (change)="togglePermission(role, route)" />
+                {{ route }}
+            </label>
+        </div>
+    </div>
+    <button (click)="savePermissions()">Guardar Cambios</button>
+    <p *ngIf="saveMessage">{{ saveMessage }}</p>
+</div>
+
+<div *ngIf="isLoading">
+    <p>Cargando permisos...</p>
+</div>

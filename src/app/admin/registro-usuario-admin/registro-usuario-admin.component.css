@@ -1,0 +1,59 @@
+.registro-usuario {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.general-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-registro {
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-registro h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.form-registro label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-registro input,
+.form-registro select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-registro button {
+    background-color: #4AB7B6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.form-registro button:hover {
+    background-color: #005f5f;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}

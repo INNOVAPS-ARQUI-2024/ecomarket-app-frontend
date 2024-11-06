@@ -4,8 +4,6 @@
      </div>
      
     <h2>Gestión de Perfil</h2>
-    <!-- Enlace al historial de compras -->
-
 
     <form (ngSubmit)="actualizarPerfil()">
         <div>
@@ -24,34 +22,32 @@
         </div>
 
         <div>
-            <label for="metodosPago">Métodos de Pago</label>
-            <input id="metodosPago" [(ngModel)]="perfilComprador.metodosPago" name="metodosPago" type="text"
-                placeholder="Visa, MasterCard..." />
+            <label for="correo">Correo Electrónico</label>
+            <input id="correo" [(ngModel)]="nuevoCorreo" name="correo" type="email" required />
         </div>
 
         <div>
             <label>Preferencias de Notificación</label>
             <div class="notification-preferences">
                 <div>
-                    <label>Teléfonos <input type="checkbox" (change)="togglePreference('Teléfonos')" /></label>
+                    <label>Teléfonos <input type="checkbox" [checked]="isPreferenceSelected('Teléfonos')" (change)="togglePreference('Teléfonos')" /></label>
                 </div>
                 <div>
-                    <label>Portátiles <input type="checkbox" (change)="togglePreference('Portátiles')" /></label>
+                    <label>Portátiles <input type="checkbox" [checked]="isPreferenceSelected('Portátiles')" (change)="togglePreference('Portátiles')" /></label>
                 </div>
                 <div>
-                    <label>Ropa <input type="checkbox" (change)="togglePreference('Ropa')" /></label>
+                    <label>Ropa <input type="checkbox" [checked]="isPreferenceSelected('Ropa')" (change)="togglePreference('Ropa')" /></label>
                 </div>
                 <div>
-                    <label>Tecnología <input type="checkbox" (change)="togglePreference('Tecnología')" /></label>
+                    <label>Tecnología <input type="checkbox" [checked]="isPreferenceSelected('Tecnología')" (change)="togglePreference('Tecnología')" /></label>
                 </div>
                 <div>
-                    <label>Mascotas <input type="checkbox" (change)="togglePreference('Mascotas')" /></label>
+                    <label>Mascotas <input type="checkbox" [checked]="isPreferenceSelected('Mascotas')" (change)="togglePreference('Mascotas')" /></label>
                 </div>
                 <div>
-                    <label>Alimentos <input type="checkbox" (change)="togglePreference('Alimentos')" /></label>
+                    <label>Alimentos <input type="checkbox" [checked]="isPreferenceSelected('Alimentos')" (change)="togglePreference('Alimentos')" /></label>
                 </div>
             </div>
-
         </div>
 
         <button type="submit">Guardar Cambios</button>
