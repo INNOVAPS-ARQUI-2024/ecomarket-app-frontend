@@ -1,0 +1,20 @@
+<div class="formulario-evento">
+    <h2>Registrarse en un Evento</h2>
+    <div>
+        <label for="nombreEvento">Nombre del evento:</label>
+        <span id="nombreEvento">{{ evento.nombre }}</span>
+    </div>
+    <div>
+        <label for="descripcion">Descripción:</label>
+        <span id="descripcion">{{ evento.descripcion }}</span>
+    </div>
+    <div>
+        <label for="precioMinimo">Precio Mínimo:</label>
+        <span id="precioMinimo">{{ evento.rangoPrecios[0] }}</span>
+    </div>
+    <div>
+        <label for="precioMaximo">Precio Máximo:</label>
+        <span id="precioMaximo">{{ evento.rangoPrecios[1] }}</span>
+    </div>
+    <button (click)="registrar()" class="btn-registrarse">Registrarse</button>
+</div>

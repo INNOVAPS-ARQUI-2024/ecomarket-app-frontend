@@ -1,0 +1,23 @@
+<div class="category-section">
+  <h3>Categorías</h3>
+  <h2>Buscar por Categorías</h2>
+  <div class="categories-grid">
+    <div
+      class="category-card"
+      *ngFor="let category of categories"
+      (click)="onCategorySelected(category)"
+      [class.selected]="selectedCategory === category.name">
+      <img [src]="category.icon" alt="{{ category.name }}">
+      <span>{{ category.name }}</span>
+    </div>
+  </div>
+
+  <!-- Botón para deseleccionar categoría -->
+  <button (click)="deselectCategory()" *ngIf="selectedCategory">Limpiar Filtro</button>
+</div>
+
+<!-- Llamar al componente de productos y pasarle la lista y la categoría seleccionada -->
+<app-lista-productos-usuario
+  [products]="products"
+  [selectedCategory]="selectedCategory">
+</app-lista-productos-usuario>

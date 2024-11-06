@@ -1,0 +1,67 @@
+<div class="container-general">
+    <div class="container-ruta">
+        <div class="ruta">
+            <p>Home / <b>Carrito</b></p>
+        </div>
+    </div>
+
+    <div class="container-productos-general">
+        <div class="container-productos-lista">
+            <div class="lista-titulos">
+                <p>Producto</p>
+                <p>Precio</p>
+                <p>Cantidad</p>
+                <p>Subtotal</p>
+            </div>
+            <div class="lista-productos">
+                <div class="producto">
+                    <div class="producto-img-name">
+                        <img src="https://via.placeholder.com/40" alt="">
+                        <p>LCD Monitor</p>
+                    </div>
+                    <p>$650</p>
+                    <input type="number" class="input-field">
+                    <p>$650</p>
+                </div>
+                <div class="producto">
+                    <div class="producto-img-name">
+                        <img src="https://via.placeholder.com/40" alt="">
+                        <p>Gamepad</p>
+                    </div>
+                    <p>$550</p>
+                    <input type="number" class="input-field">
+                    <p>$1100</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-productos-botones">
+            <div class="botones">
+                <button>Volver a la tienda</button>
+                <button>Actualizar Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagos">
+        <div class="container-pagos-precio">
+            <h2>Total Del Carrito</h2>
+            <div class="totales">
+                <p>Subtotal:</p>
+                <p>$1750</p>
+            </div>
+            <hr>
+            <div class="totales">
+                <p>Shipping:</p>
+                <p>Free</p>
+            </div>
+            <hr>
+            <div class="totales">
+                <p>Total:</p>
+                <p>$1750</p>
+            </div>
+            <div class="boton-check">
+                <button (click)="onClickCheckOut()">CheckOut</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+.categories-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.category-card {
+  text-align: center;
+}
+
+.category-card img {
+  width: 100px;
+  height: 100px;
+}
+
+.category-card span {
+  display: block; /* Asegura que el texto esté en una nueva línea */
+  margin-top: 5px; /* Espacio entre la imagen y el nombre */
+}
+
+.category-card {
+  padding: 1%;
+  cursor: pointer;
+  /* Otros estilos que necesites */
+}
+
+.category-card.selected {
+
+  background-color: rgba(128, 0, 128, 0.1); /* Color de fondo suave */
+  /* Otros estilos que necesites para la categoría seleccionada */
+}
+
+button {
+  background-color: #C89AEF; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+  margin-top: 20px; /* Espaciado superior para separar del contenido anterior */
+  width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+}
+
+button:hover {
+  background-color: purple; /* Color de fondo más claro al pasar el ratón */
+}
+
+button:disabled {
+  background-color: gray; /* Color cuando el botón está deshabilitado */
+  cursor: not-allowed; /* Cursor para indicar que no se puede hacer clic */
+}

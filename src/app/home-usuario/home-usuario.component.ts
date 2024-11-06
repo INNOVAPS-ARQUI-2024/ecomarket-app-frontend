@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
+import { ProductoService } from '../services/ProductoService';
 
 @Component({
   selector: 'app-home-usuario',
@@ -12,66 +13,13 @@ export class HomeUsuarioComponent implements OnInit {
 
   isVendedor: boolean = false; // Controlamos si el usuario es vendedor
   userId: string | null = null;
+  selectedCategory: any = null;
 
   // Declare the boolean flags for each vendor type
   showProducto: boolean = false;
   showServicio: boolean = false;
   showEvento: boolean = false;
   showPublicidad: boolean = false; // For "Organización"
-
-  constructor(
-    private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase, // Para acceder a Firebase Realtime Database
-    private router: Router
-  ) {}
-
-  selectedVendor: string = ''; // Initialize with an empty string or a default value
-
-  ngOnInit(): void {
-    // Verifica si el usuario está autenticado
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userId = user.uid;
-
-        // Accede a los detalles del usuario en la base de datos
-        this.db.object(`/users/${this.userId}`).valueChanges().subscribe((userDetails: any) => {
-          if (userDetails && userDetails.role === 'Vendedor') {
-            this.isVendedor = true; // El usuario es un vendedor
-
-            // Verificar la lista de tipos de vendedor y configurar las banderas
-            const tiposVendedor = userDetails.tiposVendedor || [];
-            this.showProducto = tiposVendedor.includes('producto');
-            this.showServicio = tiposVendedor.includes('servicio');
-            this.showEvento = tiposVendedor.includes('evento');
-            this.showPublicidad = tiposVendedor.includes('publicidad'); // For "Organización"
-          } else {
-            this.isVendedor = false; // El usuario no es vendedor
-          }
-        });
-      } else {
-        this.router.navigate(['/login']); // Redirige al login si no está autenticado
-      }
-    });
-  }
-
-  // Other logic and methods remain the same
-  vendedores = [
-    { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },
-    { nombre: 'John PO', imagen: './assets/images/JohnPo.png' },
-    { nombre: 'Fabian Fabrizio', imagen: './assets/images/FabianFabrizio.png' },
-    { nombre: 'Juanpis', imagen: './assets/images/Juampis.png' },
-    { nombre: 'Jhon Abraham', imagen: './assets/images/JohnAbraham.png' },
-    { nombre: 'Julia & Romina', imagen: './assets/images/Juli&Romina.png' }
-  ];
-
-  categories = [
-    { name: 'Phone', icon: './assets/images/Telefonos.png' },
-    { name: 'Computers', icon: './assets/images/Computadores.png' },
-    { name: 'SmartWatch', icon: './assets/images/Smartwatch.png' },
-    { name: 'Tecnología', icon: './assets/images/Tecnologia.png' },
-    { name: 'HeadPhones', icon: './assets/images/Audifonos.png' },
-    { name: 'Gaming', icon: './assets/images/Gaming.png' }
-  ];
 
   productosMasVendidos = [
     {
@@ -106,6 +54,87 @@ export class HomeUsuarioComponent implements OnInit {
       reviews: 65
     }
   ];
+
+  constructor(
+    private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase, // Para acceder a Firebase Realtime Database
+    private router: Router,
+    private productoService: ProductoService
+  ) {}
+
+  selectedVendor: string = ''; // Initialize with an empty string or a default value
+
+  ngOnInit(): void {
+    // Verifica si el usuario está autenticado
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+
+        // Accede a los detalles del usuario en la base de datos
+        this.db.object(`/users/${this.userId}`).valueChanges().subscribe((userDetails: any) => {
+          if (userDetails && userDetails.role === 'Vendedor') {
+            this.isVendedor = true; // El usuario es un vendedor
+
+            // Verificar la lista de tipos de vendedor y configurar las banderas
+            const tiposVendedor = userDetails.tiposVendedor || [];
+            this.showProducto = tiposVendedor.includes('producto');
+            this.showServicio = tiposVendedor.includes('servicio');
+            this.showEvento = tiposVendedor.includes('evento');
+            this.showPublicidad = tiposVendedor.includes('publicidad'); // For "Organización"
+          } else {
+            this.isVendedor = false; // El usuario no es vendedor
+          }
+        });
+      } else {
+        this.router.navigate(['/login']); // Redirige al login si no está autenticado
+      }
+    });
+  }
+
+  cargarProductosMasVendidos(): void {
+    this.productoService.getProductosMasVendidos().subscribe(
+      (data: any[]) => {
+        this.productosMasVendidos = data;
+      },
+      (error) => {
+        console.error('Error al cargar productos más vendidos', error);
+      }
+    );
+  }
+
+  registrarse(): void {
+    this.router.navigate(['/eventos-disponibles']);
+  }
+
+  verEventosRegistrados(): void {
+    this.router.navigate(['/mis-eventos']);
+  }
+
+  irProgramarPublicacion() {
+    // Navegar hacia el componente de programación de publicaciones
+    this.router.navigate(['/programacion-publicaciones']);
+  }
+
+  // Other logic and methods remain the same
+  vendedores = [
+    { nombre: 'Blanca Rosa', imagen: './assets/images/BlancaRosa.png' },
+    { nombre: 'John PO', imagen: './assets/images/JohnPo.png' },
+    { nombre: 'Fabian Fabrizio', imagen: './assets/images/FabianFabrizio.png' },
+    { nombre: 'Juanpis', imagen: './assets/images/Juampis.png' },
+    { nombre: 'Jhon Abraham', imagen: './assets/images/JohnAbraham.png' },
+    { nombre: 'Julia & Romina', imagen: './assets/images/Juli&Romina.png' }
+  ];
+
+  categories = [
+    { name: 'Phone', icon: './assets/images/Telefonos.png' },
+    { name: 'Computers', icon: './assets/images/Computadores.png' },
+    { name: 'SmartWatch', icon: './assets/images/Smartwatch.png' },
+    { name: 'Tecnología', icon: './assets/images/Tecnologia.png' },
+    { name: 'HeadPhones', icon: './assets/images/Audifonos.png' },
+    { name: 'Gaming', icon: './assets/images/Gaming.png' }
+  ];
+
+
 
   moreProducts = [
     {

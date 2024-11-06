@@ -18,6 +18,7 @@ export class FormularioEventoComponent {
   precioMinimo: number = 100; // Valor mínimo inicial del rango de precios
   precioMaximo: number = 500; // Valor máximo inicial del rango de precios
   userId: string = ''; // ID del usuario autenticado
+  userIds: string[] = [];
   errorMessage: string = ''; // Variable para almacenar mensajes de error
 
   constructor(
@@ -90,7 +91,8 @@ export class FormularioEventoComponent {
       descripcion: this.descripcion,
       rangoPrecios: [this.precioMinimo, this.precioMaximo], // Rango de precios como array [min, max]
       fechaHora: new Date(this.fechaHora), // Convierte la fecha y hora a tipo Date
-      userId: this.userId // ID del creador autenticado
+      sellerId: this.userId, // ID del creador autenticado
+      userIds: this.userIds //lista de id
     };
 
     // Llama al servicio para crear el evento

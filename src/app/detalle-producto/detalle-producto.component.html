@@ -1,0 +1,27 @@
+<div *ngIf="producto" class="producto-wrapper">
+  <div class="producto-container">
+    <div class="img-container">
+      <img [src]="producto.picture ? 'data:image/jpeg;base64,' + producto.picture : 'default-image.jpg'"
+        alt="{{ producto.name }}" class="producto-img">
+    </div>
+    <div class="producto-info">
+      <h2 class="producto-name">{{ producto.name }}</h2>
+      <p><strong>Descripción:</strong> {{ producto.description }}</p>
+      <p><strong>Precio:</strong> {{ producto.price | number: '1.2-2' }} {{ producto.currency }}</p>
+      <p><strong>Categoría:</strong> {{ producto.category }}</p>
+      <p><strong>Stock disponible:</strong> {{ producto.stock }}</p>
+      <button class="producto-btn">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <div class="productos-relacionados">
+    <h3>Productos de la misma categoría</h3>
+    <div class="productos-grid">
+      <div *ngFor="let relatedProduct of productosRelacionados" class="related-product" (click)="irADetalleProducto(relatedProduct)">
+        <img [src]="relatedProduct.picture ? 'data:image/jpeg;base64,' + relatedProduct.picture : 'default-image.jpg'"
+             alt="{{ relatedProduct.name }}" class="related-product-img">
+        <p>{{ relatedProduct.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>

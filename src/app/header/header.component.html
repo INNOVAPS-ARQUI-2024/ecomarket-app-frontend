@@ -21,7 +21,8 @@
       </div>
       <div class="icons">
         <i class="fa fa-heart"></i>
-        <i class="fa fa-shopping-cart"></i>
+        <span class="fa fa-shopping-cart" (click)="onClickGoCarrito()">🛒</span>
+        <span class="fa fa-bell" (click)="onClickGoNotificacion()">🔔</span>
       </div>
       <!-- Mostrar la imagen de perfil solo si el usuario está autenticado -->
       <div *ngIf="isAuthenticated" class="profile-picture">

@@ -107,7 +107,22 @@
       </div>
     </div>
 
+    <!-- Sección de Eventos -->
+    <div class="event-section">
+      <h3>Eventos Disponibles</h3>
+      <div class="event-buttons">
+          <button (click)="registrarse()">Registrarse en Eventos</button>
+          <button (click)="verEventosRegistrados()">Ver Mis Eventos</button>
+      </div>
+    </div>
 
+    <!-- seccion de publicaciones -->
+    <div class="publication-section">
+      <h3>Programación de Publicaciones</h3>
+      <div class="publication-buttons">
+        <button (click)="irProgramarPublicacion()">Programar Publicación</button>
+      </div>
+    </div>
 
 
     <!-- Sección 4: Vendedores destacados -->
@@ -127,13 +142,9 @@
 
     <!-- Sección 5: Categorías desplazables -->
     <div class="category-section">
-      <h3>Categorías</h3>
-      <h2>Buscar por Categorías</h2>
-      <div class="categories-grid">
-        <div class="category-card" *ngFor="let category of categories">
-          <img [src]="category.icon" alt="{{category.name}}">
-          <span>{{category.name}}</span>
-        </div>
+      <div class="home-container">
+        <app-lista-categorias
+          (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias>
       </div>
     </div>
 
