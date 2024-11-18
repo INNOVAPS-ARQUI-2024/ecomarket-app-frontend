@@ -7,7 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class UsuarioService {
 
-    private apiUrl = '/api/usuarios';
+    private apiUrl = 'http://localhost:7999/api/usuarios';
 
     constructor(private http: HttpClient) { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Producto } from '../model/Producto';
 import { ProductoService } from '../services/ProductoService';
 
@@ -8,6 +8,9 @@ import { ProductoService } from '../services/ProductoService';
   styleUrls: ['./lista-categorias.component.css']
 })
 export class ListaCategoriasComponent implements OnInit {
+
+  @Input() selectedCategory!: string;
+  @Output() selectedCategoryChange = new EventEmitter<string>();
 
   categories = [
     { name: 'Teléfonos', icon: './assets/images/Telefonos.png' },
@@ -21,7 +24,6 @@ export class ListaCategoriasComponent implements OnInit {
   products: Producto[] = [];
   filteredProducts: Producto[] = [];
 
-  selectedCategory: string | null = null;
 
   constructor(private productoService: ProductoService) {}
 
@@ -46,6 +48,6 @@ export class ListaCategoriasComponent implements OnInit {
   }
 
   deselectCategory(): void {
-    this.selectedCategory = null;
+    this.selectedCategory = "";
   }
 }

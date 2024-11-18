@@ -7,7 +7,6 @@
       <a [routerLink]="['/admin/vista']" *ngIf="isAdmin" >Admin</a>
       <a href="#">Home</a>
       <a href="#">Categorías</a>
-      <a [routerLink]="['/vender-seleccion']">Vender</a>
       <!-- Mostrar enlaces de registro/inicio solo si el usuario NO está autenticado -->
       <ng-container *ngIf="!isAuthenticated">
         <a [routerLink]="['/registro-usuario']">Crear Cuenta</a>

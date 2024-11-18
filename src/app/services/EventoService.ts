@@ -9,7 +9,7 @@ import { Evento } from '../model/Evento';
 })
 export class EventoService {
 
-  private apiUrl = '/api/eventos';
+  private apiUrl = 'http://localhost:7999/api/eventos';
 
 
   constructor(private http: HttpClient) {}
