@@ -4,10 +4,9 @@
       <h1>EcoMarket</h1>
     </div>
     <nav class="nav-links">
-      <a href="#">Admin</a>
+      <a [routerLink]="['/admin/vista']" *ngIf="isAdmin" >Admin</a>
       <a href="#">Home</a>
       <a href="#">Categorías</a>
-      <a [routerLink]="['/vender-seleccion']">Vender</a>
       <!-- Mostrar enlaces de registro/inicio solo si el usuario NO está autenticado -->
       <ng-container *ngIf="!isAuthenticated">
         <a [routerLink]="['/registro-usuario']">Crear Cuenta</a>
@@ -26,7 +25,7 @@
       </div>
       <!-- Mostrar la imagen de perfil solo si el usuario está autenticado -->
       <div *ngIf="isAuthenticated" class="profile-picture">
-        <img [src]="profilePictureUrl" alt="Imagen de perfil">
+        <img [src]="profilePictureUrl" alt="Imagen de perfil" (click)="irAEditarPerfil()">
       </div>
       <!-- Botón de log out, solo visible si el usuario está autenticado -->
       <button *ngIf="isAuthenticated" (click)="logOut()" class="logout-btn">Log Out</button>

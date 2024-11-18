@@ -1,42 +1,48 @@
-
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database'; // Para acceder a la base de datos de usuarios
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private db: AngularFireDatabase,
+    private authService: AuthService
+  ) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    const expectedRole = next.data['role'];  // Accedemos al 'role', puede ser string o array
+  ): Observable<boolean> {
+    const routePath = this.normalizeRoutePath(state.url);  // Normalizamos la ruta solicitada
 
     return this.afAuth.authState.pipe(
       take(1),
       switchMap(user => {
         if (!user) {
-          // Si el usuario no está autenticado, redirige a la página de login
           this.router.navigate(['/login-usuario']);
-          return [false];
+          return of(false);
         } else {
-          // Si el usuario está autenticado, busca sus detalles en la base de datos
-          return this.db.object(`/users/${user.uid}`).valueChanges().pipe(
-            map((userDetails: any) => {
-              if (userDetails && this.checkUserRole(userDetails.role, expectedRole)) {
-                return true;  // El usuario tiene un rol adecuado
+          return this.authService.getUserRole().pipe(
+            switchMap(userRole => {
+              if (userRole) {
+                return this.checkPermissions(userRole, routePath);
               } else {
-                console.log('Acceso denegado. Rol no autorizado.');
-                this.router.navigate(['/login-usuario']);
-                return false;
+                this.router.navigate(['/home-usuario']);
+                return of(false);
               }
+            }),
+            catchError(() => {
+              this.router.navigate(['/login-usuario']);
+              return of(false);
             })
           );
         }
@@ -44,15 +50,27 @@ export class AuthGuard implements CanActivate {
     );
   }
 
-  // Método para verificar el rol del usuario
-  private checkUserRole(userRole: string, expectedRole: string | string[]): boolean {
-    if (Array.isArray(expectedRole)) {
-      // Si es un array, revisa si el rol del usuario está en la lista
-      return expectedRole.includes(userRole);
-    } else {
-      // Si es un string, verifica que coincida
-      return userRole === expectedRole;
-    }
+  // Normaliza rutas con parámetros dinámicos a un formato común
+  private normalizeRoutePath(routePath: string): string {
+    // Reemplaza cualquier segmento que parezca un ID por ":id"
+    return routePath.slice(1).replace(/\/[a-zA-Z0-9_-]{20,}/g, '/:id');
+  }
+
+  // Comprobar permisos específicos en Firebase para la ruta solicitada
+  private checkPermissions(userRole: string, routePath: string): Observable<boolean> {
+    console.log(`Verificando permisos de ${userRole} para la ruta ${routePath}`);
+    return this.db.object<string[]>(`/roles/${userRole}`).valueChanges().pipe(
+      take(1),
+      map((allowedRoutes) => {
+        console.log(`Rutas permitidas para ${userRole}:`, allowedRoutes);
+        if (allowedRoutes && allowedRoutes.includes(routePath)) {
+          return true;
+        } else {
+          console.log('Acceso denegado. Permiso no autorizado para la ruta:', routePath);
+          this.router.navigate(['/home-usuario']);
+          return false;
+        }
+      })
+    );
   }
 }
-

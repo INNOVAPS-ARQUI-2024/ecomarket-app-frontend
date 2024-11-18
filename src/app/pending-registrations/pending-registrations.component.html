@@ -1,0 +1,29 @@
+<!-- Sección de Registros Pendientes -->
+<div class="pending-registration-section">
+  <h3>Registros Pendientes</h3>
+  <div class="registration-buttons">
+      <button (click)="showAll()">Mostrar Todos</button>
+      <button (click)="showInternal()">Mostrar Registros Internos</button>
+      <button (click)="showExternal()">Mostrar Registros Externos</button>
+  </div>
+  
+  <table class="registrations-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let registration of filteredRegistrations">
+        <td>{{ registration.name }}</td>
+        <td>{{ registration.email }}</td>
+        <td>
+          <button (click)="approve(registration.id)" class="approve-btn">Aprobar</button>
+          <button (click)="reject(registration.id)" class="reject-btn">Rechazar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

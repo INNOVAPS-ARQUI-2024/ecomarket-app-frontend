@@ -6,21 +6,13 @@
     <div class="first-section">
       <div class="menu">
         <ul>
-          <li>Ropa de hombre</li>
-          <li>Electrodomésticos</li>
-          <li>Medicina</li>
-          <li>Deportes</li>
-          <li>Juguetes</li>
-          <li>Mascotas</li>
-          <li>Maquillaje</li>
-        </ul>
-        <button class="buy-packages-btn">Comprar Paquetes</button>
+          <li *ngFor="let categoria of categorias" (click)="selectCategory(categoria)">{{ categoria }}</li>
+        </ul> 
       </div>
-      <div class="menu-image">
-        <img src="/assets/images/PrimeraSeccion.png" alt="Imagen de sección">
-      </div>
+      <div class="menu-image"> <img src="/assets/images/PrimeraSeccion.png" alt="Imagen de sección"> </div>
     </div>
   </section>
+
 
   <div class="content">
 
@@ -108,16 +100,16 @@
     </div>
 
     <!-- Sección de Eventos -->
-    <div class="event-section">
+    <div *ngIf="!isVendedor" class="event-section">
       <h3>Eventos Disponibles</h3>
       <div class="event-buttons">
-          <button (click)="registrarse()">Registrarse en Eventos</button>
-          <button (click)="verEventosRegistrados()">Ver Mis Eventos</button>
+        <button (click)="registrarse()">Registrarse en Eventos</button>
+        <button (click)="verEventosRegistrados()">Ver Mis Eventos</button>
       </div>
     </div>
 
     <!-- seccion de publicaciones -->
-    <div class="publication-section">
+    <div *ngIf="isVendedor" class="publication-section">
       <h3>Programación de Publicaciones</h3>
       <div class="publication-buttons">
         <button (click)="irProgramarPublicacion()">Programar Publicación</button>
@@ -125,48 +117,31 @@
     </div>
 
 
-    <!-- Sección 4: Vendedores destacados -->
-    <div class="vendor-section">
-      <h3>Hoy!</h3>
-      <div class="vendors">
-        <div *ngFor="let vendedor of vendedores" class="vendor-card">
-          <div class="vendor-info">
-            <h3>{{vendedor.nombre}}</h3>
-            <button>Consultar</button>
-          </div>
-          <img [src]="vendedor.imagen" alt="{{vendedor.nombre}}">
-        </div>
-      </div>
-      <a href="/todos-los-vendedores" class="see-all-vendors-btn">Ver todos los vendedores</a>
-    </div>
-
     <!-- Sección 5: Categorías desplazables -->
     <div class="category-section">
-      <div class="home-container">
-        <app-lista-categorias
-          (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias>
-      </div>
+      <div class="home-container" #categorySection> <app-lista-categorias [selectedCategory]="selectedCategory"
+          (selectedCategoryChange)="selectedCategory = $event"></app-lista-categorias> </div>
     </div>
+
 
     <!-- Sección 6: Explorar más productos -->
     <section class="more-products-section">
-      <h3>Este mes</h3>
       <div class="more-products-header">
-        <h2>Productos más Vendidos</h2>
-        <button class="view-all-btn">Ver todo</button>
+        <h3>Productos más Vendidos:</h3>
       </div>
       <div class="products-grid">
-        <div class="product-card" *ngFor="let product of productosMasVendidos; let i = index">
-          <a [routerLink]="['producto-detalle/:id', i]">
-            <img [src]="product.image" alt="{{product.name}}">
+        <div (click)="verDetalles(product.productId!)" class="product-card" *ngFor="let product of productosMasVendidos.slice(5); let i = index" >
+          <a [routerLink]="['/producto-detalle', product.productId]">
+            <img [src]="'data:image/jpeg;base64,' + product.picture" alt="{{product.name}}">
           </a>
           <div class="product-info">
             <h4>{{product.name}}</h4>
             <p class="price">
-              ${{product.price}} <span class="old-price" *ngIf="product.oldPrice">{{product.oldPrice}}</span>
+              ${{product.price | number: '1.2-2'}} <span class="old-price"
+                *ngIf="product.price">{{calculateOldPrice(product.price) | number: '1.2-2'}}</span>
             </p>
             <p class="rating">
-              {{product.stars}} estrellas <span>({{product.reviews}})</span>
+              {{calculateStars()}} estrellas
             </p>
           </div>
         </div>
@@ -177,47 +152,37 @@
     </section>
 
     <!-- Sección 7: Productos más vendidos -->
-    <section class="bestseller-section">
-      <h3>más productos</h3>
-      <div class="bestseller-section-head">
-        <h1>Explora más productos</h1>
+    <section class="productos-nuevos-section">
+      <h3>Explora más Productos</h3>
+      <div class="productos-nuevos-section-head">
+        <!-- Añadimos un encabezado si es necesario -->
       </div>
-      <div class="products-grid">
-        <div class="product-card" *ngFor="let product of moreProducts; let i = index">
-          <a [routerLink]="['/producto', i]">
-            <img [src]="product.imageUrl" alt="{{product.name}}">
+      <div class="productos-nuevos-grid">
+        <div (click)="verDetalles(product.productId!)" class="productos-nuevos-card" *ngFor="let product of productosMasVendidos.slice(0, 5); let i = index">
+          <a [routerLink]="['/producto', product.productId]">
+            <div class="productos-nuevos-image-wrapper">
+              <img [src]="'data:image/jpeg;base64,' + product.picture" alt="{{product.name}}">
+            </div>
           </a>
-          <div class="product-info">
+          <div class="productos-nuevos-info">
             <h4>{{product.name}}</h4>
-            <p class="price">
-              ${{product.price}} <span class="price" *ngIf="product.price">{{product.price}}</span>
+            <p class="productos-nuevos-description">{{product.description}}</p>
+            <p class="productos-nuevos-category">Categoría: {{product.category}}</p>
+            <p class="productos-nuevos-sold">Vendidos: {{product.sold}}</p>
+            <p class="productos-nuevos-price">
+              ${{product.price | number: '1.2-2'}} <span *ngIf="product.currency">{{product.currency}}</span>
             </p>
-            <p class="rating">
-              {{calculateStars(product.starsArray)}} estrellas <span>({{product.reviews}})</span>
+            <p class="productos-nuevos-rating">
+              {{calculateStars()}} estrellas
             </p>
           </div>
         </div>
       </div>
-      <a href="/productos" class="view-all-button">Ver todos los productos</a>
+      <a (click)="selectCategory('')" class="view-all-button">Ver todos los productos</a>
     </section>
 
-    <!-- Sección 8: Nuevos productos -->
-    <section class="new-products-section">
-      <h3>Lo Nuevo</h3>
-      <h2>Nuevos Productos</h2>
-      <div class="new-products-grid">
-        <div class="product-box" *ngFor="let product of newProducts"
-          [style.backgroundImage]="'url(' + product.backgroundImageUrl + ')'">
-          <div class="product-info">
-            <h4>{{ product.name }}</h4>
-            <p>{{ product.description }}</p>
-            <a href="#">Ir a la sección</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Sección 9: Características del servicio -->
+    <!-- Sección 8: Características del servicio -->
     <div class="service-features-section">
       <div class="service-feature" *ngFor="let feature of serviceFeatures">
         <img [src]="feature.icon" alt="{{ feature.title }}">

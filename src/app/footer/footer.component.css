@@ -1,24 +1,40 @@
+/* Configuración general para que el footer se mantenga en la parte inferior */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos del Footer */
 .footer {
   background-color: #4AB7B6;
-  padding: 40px 20px;
   color: white;
-  display: flex; /* Permite que las columnas estén en línea */
-  justify-content: space-between; /* Espaciado entre columnas */
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
 }
 
 .footer-column {
-  flex: 1; /* Permite que cada columna ocupe el mismo ancho */
-  margin: 10px; /* Espacio entre columnas */
-  min-width: 200px; /* Ancho mínimo para cada columna */
-  flex-wrap: wrap;
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
 }
 
 .footer h3 {
@@ -42,6 +58,7 @@
   text-decoration: underline;
 }
 
+/* Sección de suscripción */
 .subscribe {
   display: flex;
   align-items: center;
@@ -62,6 +79,7 @@
   cursor: pointer;
 }
 
+/* Sección de aplicaciones */
 .app-section {
   display: flex;
   align-items: center;
@@ -69,8 +87,8 @@
 }
 
 .app-section img {
-  width: 80px; /* Ajusta este valor según tus necesidades */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 80px; /* Ajusta el tamaño según necesites */
+  height: auto;
 }
 
 .app-buttons img {
@@ -78,22 +96,37 @@
   margin-bottom: 5px;
 }
 
-.social-icons img {
-  width: 30px; /* Ajusta este valor según tus necesidades */
-  height: auto; /* Mantiene la proporción de la imagen */
-  margin: 0 5px; /* Espacio entre los íconos */
+/* Iconos sociales */
+.social-icons img, .social-icons i {
+  width: 30px;
+  height: auto;
+  margin: 0 5px;
+  cursor: pointer;
+  color: white;
 }
-
 
 .social-icons i {
   font-size: 18px;
-  color: white;
   margin-right: 10px;
-  cursor: pointer;
-  width: 20px;
-  height: auto;
 }
 
 .social-icons i:hover {
   color: #ddd;
+}
+
+/* Adaptabilidad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-column {
+      width: 100%;
+      text-align: center;
+  }
+
+  .social-icons img, .social-icons i {
+      margin: 0 10px;
+  }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { ProductoService } from '../services/ProductoService';
+import { Producto } from '../model/Producto';
 
 @Component({
   selector: 'app-home-usuario',
@@ -14,6 +15,7 @@ export class HomeUsuarioComponent implements OnInit {
   isVendedor: boolean = false; // Controlamos si el usuario es vendedor
   userId: string | null = null;
   selectedCategory: any = null;
+  isAdmin: boolean = false;  // Bandera para saber si el usuario es administrador
 
   // Declare the boolean flags for each vendor type
   showProducto: boolean = false;
@@ -21,90 +23,63 @@ export class HomeUsuarioComponent implements OnInit {
   showEvento: boolean = false;
   showPublicidad: boolean = false; // For "Organización"
 
-  productosMasVendidos = [
-    {
-      image: './assets/images/Control.png',
-      name: 'Havic HV G-92 Gamepad',
-      price: 260,
-      oldPrice: 300,
-      stars: 5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/BolsoGucci.png',
-      name: 'Gucci Duffled Bag',
-      price: 960,
-      oldPrice: 1160,
-      stars: 4.5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/RGBcooler.png',
-      name: 'RGB Liquid CPU Cooler',
-      price: 160,
-      oldPrice: 170,
-      stars: 4.5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/Bookshelf.png',
-      name: 'Small Bookshelf',
-      price: 360,
-      stars: 5,
-      reviews: 65
-    }
-  ];
+  categorias: string[] = ['Teléfonos', 'Portátiles', 'Ropa', 'Tecnología', 'Mascotas', 'Alimentos'];
+
+  @ViewChild('categorySection') categorySection!: ElementRef;
+
+  selectCategory(categoria: string): void { this.selectedCategory = categoria; this.scrollToSection(); }
+  scrollToSection(): void { this.categorySection.nativeElement.scrollIntoView({ behavior: 'smooth' }); }
+  productosMasVendidos: Producto[] = [];
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase, // Para acceder a Firebase Realtime Database
     private router: Router,
     private productoService: ProductoService
-  ) {}
+  ) { }
 
   selectedVendor: string = ''; // Initialize with an empty string or a default value
 
   ngOnInit(): void {
-    // Verifica si el usuario está autenticado
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
-
-        // Accede a los detalles del usuario en la base de datos
         this.db.object(`/users/${this.userId}`).valueChanges().subscribe((userDetails: any) => {
-          if (userDetails && userDetails.role === 'Vendedor') {
-            this.isVendedor = true; // El usuario es un vendedor
-
-            // Verificar la lista de tipos de vendedor y configurar las banderas
-            const tiposVendedor = userDetails.tiposVendedor || [];
-            this.showProducto = tiposVendedor.includes('producto');
-            this.showServicio = tiposVendedor.includes('servicio');
-            this.showEvento = tiposVendedor.includes('evento');
-            this.showPublicidad = tiposVendedor.includes('publicidad'); // For "Organización"
-          } else {
-            this.isVendedor = false; // El usuario no es vendedor
+          if (userDetails) {
+            // Verifica el rol del usuario
+            if (userDetails.role === 'Admin') {
+              this.isAdmin = true; // El usuario es administrador
+            } else if (userDetails.role === 'Vendedor') {
+              this.isVendedor = true; // El usuario es un vendedor
+              const tiposVendedor = userDetails.tiposVendedor || [];
+              this.showProducto = tiposVendedor.includes('producto');
+              this.showServicio = tiposVendedor.includes('servicio');
+              this.showEvento = tiposVendedor.includes('evento');
+              this.showPublicidad = tiposVendedor.includes('publicidad');
+            }
           }
         });
       } else {
-        this.router.navigate(['/login']); // Redirige al login si no está autenticado
+        this.router.navigate(['/login']);
       }
     });
+    this.productoService.getProductosMasVendidos().subscribe((data: Producto[]) => {
+      this.productosMasVendidos = data;
+
+    }, (error) => { console.error('Error fetching more products', error); });
   }
 
-  cargarProductosMasVendidos(): void {
-    this.productoService.getProductosMasVendidos().subscribe(
-      (data: any[]) => {
-        this.productosMasVendidos = data;
-      },
-      (error) => {
-        console.error('Error al cargar productos más vendidos', error);
-      }
-    );
+  verDetalles(productId: string): void {
+    this.router.navigate(['/detalle-producto', productId]);
   }
-
+  
   registrarse(): void {
     this.router.navigate(['/eventos-disponibles']);
   }
+
+  calculateStars(): number {
+    return 5;
+  }// Lógica para calcular las estrellas basada en las reviews return reviews.length; // Ajusta esto según tu lógica }
 
   verEventosRegistrados(): void {
     this.router.navigate(['/mis-eventos']);
@@ -114,6 +89,8 @@ export class HomeUsuarioComponent implements OnInit {
     // Navegar hacia el componente de programación de publicaciones
     this.router.navigate(['/programacion-publicaciones']);
   }
+
+  calculateOldPrice(price: number): number { return price * 1.2; } // Old price es 20% más caro }
 
   // Other logic and methods remain the same
   vendedores = [
@@ -202,10 +179,6 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#003300', '#ff0000'] // verde oscuro y rojo
     }
   ];
-
-  calculateStars(starsArray: boolean[]): number {
-    return starsArray.filter(star => star).length; // Cuenta cuántas estrellas son verdaderas
-  }
 
   changeColor(product: { name: any; }, color: any) {
     console.log(`Cambiando el color del producto ${product.name} a ${color}`);
