@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { ProductoService } from '../services/ProductoService';
+import { Producto } from '../model/Producto';
 
 @Component({
   selector: 'app-home-usuario',
@@ -22,46 +23,20 @@ export class HomeUsuarioComponent implements OnInit {
   showEvento: boolean = false;
   showPublicidad: boolean = false; // For "Organización"
 
-  productosMasVendidos = [
-    {
-      image: './assets/images/Control.png',
-      name: 'Havic HV G-92 Gamepad',
-      price: 260,
-      oldPrice: 300,
-      stars: 5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/BolsoGucci.png',
-      name: 'Gucci Duffled Bag',
-      price: 960,
-      oldPrice: 1160,
-      stars: 4.5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/RGBcooler.png',
-      name: 'RGB Liquid CPU Cooler',
-      price: 160,
-      oldPrice: 170,
-      stars: 4.5,
-      reviews: 65
-    },
-    {
-      image: './assets/images/Bookshelf.png',
-      name: 'Small Bookshelf',
-      price: 360,
-      stars: 5,
-      reviews: 65
-    }
-  ];
+  categorias: string[] = ['Teléfonos', 'Portátiles', 'Ropa', 'Tecnología', 'Mascotas', 'Alimentos'];
+
+  @ViewChild('categorySection') categorySection!: ElementRef;
+
+  selectCategory(categoria: string): void { this.selectedCategory = categoria; this.scrollToSection(); }
+  scrollToSection(): void { this.categorySection.nativeElement.scrollIntoView({ behavior: 'smooth' }); }
+  productosMasVendidos: Producto[] = [];
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase, // Para acceder a Firebase Realtime Database
     private router: Router,
     private productoService: ProductoService
-  ) {}
+  ) { }
 
   selectedVendor: string = ''; // Initialize with an empty string or a default value
 
@@ -88,24 +63,23 @@ export class HomeUsuarioComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
+    this.productoService.getProductosMasVendidos().subscribe((data: Producto[]) => {
+      this.productosMasVendidos = data;
+
+    }, (error) => { console.error('Error fetching more products', error); });
   }
 
-
-  cargarProductosMasVendidos(): void {
-    this.productoService.getProductosMasVendidos().subscribe(
-      (data: any[]) => {
-        this.productosMasVendidos = data;
-      },
-      (error) => {
-        console.error('Error al cargar productos más vendidos', error);
-      }
-    );
+  verDetalles(productId: string): void {
+    this.router.navigate(['/detalle-producto', productId]);
   }
-
+  
   registrarse(): void {
     this.router.navigate(['/eventos-disponibles']);
   }
 
+  calculateStars(): number {
+    return 5;
+  }// Lógica para calcular las estrellas basada en las reviews return reviews.length; // Ajusta esto según tu lógica }
 
   verEventosRegistrados(): void {
     this.router.navigate(['/mis-eventos']);
@@ -115,6 +89,8 @@ export class HomeUsuarioComponent implements OnInit {
     // Navegar hacia el componente de programación de publicaciones
     this.router.navigate(['/programacion-publicaciones']);
   }
+
+  calculateOldPrice(price: number): number { return price * 1.2; } // Old price es 20% más caro }
 
   // Other logic and methods remain the same
   vendedores = [
@@ -203,10 +179,6 @@ export class HomeUsuarioComponent implements OnInit {
       colors: ['#003300', '#ff0000'] // verde oscuro y rojo
     }
   ];
-
-  calculateStars(starsArray: boolean[]): number {
-    return starsArray.filter(star => star).length; // Cuenta cuántas estrellas son verdaderas
-  }
 
   changeColor(product: { name: any; }, color: any) {
     console.log(`Cambiando el color del producto ${product.name} a ${color}`);

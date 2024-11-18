@@ -66,9 +66,7 @@ const routes: Routes = [
   { path: 'admin/registro-usuario', component: RegistroUsuarioAdminComponent, canActivate: [AuthGuard] },//, data: { role: 'Admin' } },
   { path: 'admin/editar-usuario/:id', component: EditarUsuarioAdminComponent, canActivate: [AuthGuard] },//, data: { role: 'Admin' } },
   { path: 'admin/modificar-permisos', component: ModificarPermisosComponent, canActivate: [AuthGuard] },//, data: { role: ['Admin'] } },
-  { path: 'admin/vista', component: VistaAdminComponent, canActivate: [AuthGuard] },//, data: { role: ['Admin'] } },
-
-  
+  { path: 'admin/vista', component: VistaAdminComponent, canActivate: [AuthGuard] },//, data: { role: ['Admin'] } },  
 ];
 
 @NgModule({
